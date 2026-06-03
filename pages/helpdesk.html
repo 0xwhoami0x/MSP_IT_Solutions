@@ -4,70 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Helpdesk — MSP IT Solutions</title>
-  <link rel="stylesheet" href="../assets/css/nav.css?v=9" />
-  <link rel="stylesheet" href="../assets/css/base.css?v=9" />
-  <link rel="stylesheet" href="../assets/css/pages/helpdesk.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/nav.css?v=11" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=11" />
+  <link rel="stylesheet" href="../assets/hermes/widget.css?v=11" />
+  <link rel="stylesheet" href="../assets/css/helpdesk.css?v=11" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   
-  <style>
-    .hd-stack {
-      --s-surface: #121a2e;
-      --s-surface-2: #1a2238;
-      --s-border: #243049;
-      --s-text: #e6ecf8;
-      --s-muted: #8c97b3;
-      --s-primary: #00b4d8;
-      --font-ui: 'Inter', system-ui, sans-serif;
-      max-width: 1100px; margin: 0 auto; padding: 1rem 3rem 4rem;
-      font-family: var(--font-ui);
-    }
-    .hd-stack .hd-head { margin-bottom: 1.5rem; }
-    .hd-stack .hd-head h3 { font-family: var(--font-display); letter-spacing: 1px; font-size: 1.8rem; color: var(--s-text); margin-bottom: 0.4rem; }
-    .hd-stack .hd-head p { font-size: 0.95rem; color: var(--s-muted); max-width: 60ch; }
-    .hd-stack .tool-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px,100%), 1fr));
-      gap: 0.75rem; margin-bottom: 2.5rem;
-    }
-    .hd-stack .tool-card {
-      background: var(--s-surface); border: 1px solid var(--s-border);
-      border-radius: 0.75rem; padding: 1rem; transition: transform 180ms, border-color 180ms;
-    }
-    .hd-stack .tool-card:hover { transform: translateY(-2px); border-color: var(--s-primary); }
-    .hd-stack .tool-icon {
-      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
-      border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 1.1rem; background: var(--s-surface-2);
-    }
-    .hd-stack .tool-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.15rem; }
-    .hd-stack .tool-product { font-size: 0.8rem; font-weight: 600; color: var(--s-primary); margin-bottom: 0.3rem; }
-    .hd-stack .tool-desc { font-size: 0.8rem; color: var(--s-muted); line-height: 1.5; }
-    .hd-stack .workflow-label {
-      text-align: center; font-size: 0.9rem; font-weight: 600; color: var(--s-muted);
-      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem;
-    }
-    .hd-stack .workflow-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(170px,100%), 1fr)); gap: 0.75rem;
-    }
-    .hd-stack .workflow-card { background: var(--s-surface); border: 1px solid var(--s-border); border-radius: 0.75rem; padding: 1rem; }
-    .hd-stack .workflow-step {
-      width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
-      font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
-    }
-    .hd-stack .workflow-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.4rem; }
-    .hd-stack .workflow-desc { font-size: 0.8rem; color: var(--s-muted); line-height: 1.55; }
-    .hd-stack .workflow-desc .arrow { color: var(--s-primary); font-weight: 600; margin: 0 2px; }
-    @media (max-width: 640px) {
-      .hd-stack { padding: 1rem 1.25rem 2.5rem; }
-      .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 380px) {
-      .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <script defer src="../assets/js/nav.js?v=11"></script>
+  <script defer src="../assets/js/main.js?v=11"></script>
+  <script defer src="../assets/hermes/hermes.js?v=11"></script>
 </head>
 <body>
 
-<!-- NAV BAR -->
-<script src="../assets/js/nav.js?v=8"></script>
 
   <!-- HERO -->
   <section class="svc-hero">
@@ -262,6 +210,5 @@
     <a href="portal.html" class="btn">Get Started via Portal</a>
   </section>
 
-  <script src="../assets/js/main.js?v=8"></script>
 </body>
 </html>

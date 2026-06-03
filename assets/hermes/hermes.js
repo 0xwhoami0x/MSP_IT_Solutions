@@ -1,12 +1,13 @@
 /* ============================================================
-   hermes.js — Hermes AI Help Desk Widget
-   Loaded on every page.
+   hermes.js — Hermes AI Help Desk Widget (self-contained)
+   Drop-in: a page only needs hermes/hermes.js + hermes/widget.css.
+   This script injects its own button + chat panel and wires it up.
 
    MODES:
-   1. Demo mode (default) — rotates canned responses, no API key needed
-   2. Live mode — paste your Anthropic API key into HERMES_API_KEY
-   3. Server mode — set HERMES_SERVER to your backend URL
-      (hermes-server.js) for ticket logging + AI via server
+   1. Demo mode (default) — keyword-matched canned replies, no key needed
+   2. Live mode — paste an Anthropic API key into HERMES_API_KEY
+   3. Server mode — set HERMES_SERVER to your own backend URL for
+      ticket logging + AI proxied server-side
 
    SECURITY NOTE: If you set HERMES_API_KEY here, that key is
    visible to anyone who views page source. For production use,
@@ -61,7 +62,7 @@
 
   // Rotated so repeated unrecognized messages don't echo verbatim.
   var FALLBACKS = [
-    "I'm here to help! I can point you to the right page (pricing, services, SLA, contact, the portal\u2026), " +
+    "I'm here to help! I can point you to the right page (pricing, services, the portal\u2026), " +
       "answer a quick question, or log an IT issue as a ticket. What do you need?",
     "Happy to help. Tell me what's up \u2014 for example \u201Cwhere's your pricing?\u201D, \u201Cwhat are your hours?\u201D, " +
       "or describe an IT problem like \u201CI can't log in\u201D and I'll open a ticket.",
@@ -116,8 +117,8 @@
     // (e.g. "what does email setup cost") — answer it, don't open a ticket.
     if (has('how much', 'cost', 'costs', 'price', 'pricing', 'quote', 'rates', 'priced') &&
         !problemSignal && !securitySignal) {
-      return guide("Pricing lives on the Pricing page \u2014 in the menu under IT Services \u2192 Pricing. It breaks " +
-                   "down our per-device and per-user plans. Want me to summarize the tiers here instead?");
+      return guide("Pricing is on the Pricing page \u2014 top menu \u2192 Pricing. It breaks down our two plans, " +
+                   "Blended and Full Support, per user per month. Want me to summarize the tiers here instead?");
     }
 
     if (securitySignal || problemSignal || requestSignal) {
@@ -192,36 +193,32 @@
 
     /* ---- 2. INFORMATION / TALKING NAV (no ticket) ---- */
     if (has('pricing', 'price', 'cost', 'how much', 'quote', 'rates')) {
-      return guide("Pricing lives on the Pricing page \u2014 in the menu under IT Services \u2192 Pricing. It breaks " +
-                   "down our per-device and per-user plans. Want me to summarize the tiers here instead?");
+      return guide("Pricing is on the Pricing page \u2014 top menu \u2192 Pricing. It breaks down our two plans, " +
+                   "Blended and Full Support, per user per month. Want me to summarize the tiers here instead?");
     }
     if (has('sla', 'service level', 'response time', 'uptime', 'guarantee')) {
-      return guide("Our response targets and uptime commitments are on the Service Levels (SLA) page \u2014 IT " +
-                   "Services \u2192 Service Levels. In short: P1 is paged immediately, P2 within 1 hour, P3 same " +
-                   "business day, P4 within 3 business days.");
+      return guide("Our response targets are in the SLA Tiers section of the Pricing page. In short: P1 is paged " +
+                   "immediately, P2 within 1 hour, P3 same business day, P4 within 3 business days.");
     }
     if (has('transition', 'onboarding', 'migrate', 'switch provider', 'switching', 'move to you', 'leaving our')) {
-      return guide("Switching to us? The Transition Plan page walks through onboarding \u2014 IT Services \u2192 " +
-                   "Transition Plan. It covers assessment, a parallel run, and cutover, with zero downtime as the goal.");
+      return guide("Switching to us? The Service Transition Plan section on the Pricing page walks through " +
+                   "onboarding \u2014 a structured six-week program with sign-off at each phase.");
     }
     if (has('service', 'services', 'catalog', 'what do you offer', 'what do you do', 'offerings', 'managed')) {
-      return guide("Everything we manage is on the Service Catalog \u2014 the top-level IT Services link: managed " +
-                   "help desk, network, security, backup, and cloud. Anything specific you're after?");
+      return guide("We have four service pages \u2014 Network, Cloud, Helpdesk, and Security \u2014 each in the top " +
+                   "menu. Anything specific you're after?");
     }
     if (has('contact', 'phone', 'call you', 'reach you', 'get in touch', 'speak to', 'talk to someone')) {
-      return guide("To reach a human, head to the Contact page in the top menu \u2014 phone line, email, and a form. " +
-                   "If it's an active IT issue though, just describe it here and I'll triage it right now.");
+      return guide("To get started, use the Client Portal button at the top-right of any page, or see the Pricing " +
+                   "page for plans. If it's an active IT issue, just describe it here and I'll triage it right now.");
     }
     if (has('team', 'who works', 'staff', 'engineers', 'specialists', 'employees')) {
-      return guide("Meet the folks behind the desk on our Team page \u2014 About \u2192 Our Team. You'll see each " +
+      return guide("Meet the folks behind the desk in the Team section on the Home page \u2014 you'll see each " +
                    "engineer and specialist and what they cover.");
     }
     if (has('approach', 'process', 'methodology', 'how it works', 'assessment', 'design phase', 'implementation')) {
-      return guide("Our Approach page lays out four phases \u2014 Assessment, Design, Implementation, and Support. " +
-                   "You can jump straight to any of them from the dropdown under Our Approach.");
-    }
-    if (has('blog', 'news', 'article', 'insight', 'tips')) {
-      return guide("Our latest write-ups are on the Blog, linked in the top menu \u2014 a good spot for IT tips and updates.");
+      return guide("Our work runs in four phases \u2014 Assessment, Design, Implementation, and Support \u2014 each " +
+                   "detailed on a service page (Security, Network, Cloud, and Helpdesk respectively).");
     }
     if (has('portal', 'dashboard', 'client area', 'my account', 'log in page', 'login page', 'sign in page')) {
       return guide("The Client Portal is the button at the top-right of every page \u2014 sign in there to see your " +
@@ -229,9 +226,8 @@
     }
     if (has('about', 'company', 'history', 'who are you', 'what is hermes', 'your name', 'are you a bot',
             'are you human', 'what are you')) {
-      return guide("I'm Hermes, the MSP IT Solutions help-desk agent. There's also background on the company on the " +
-                   "About page (About \u2192 Company). Short version: we're a managed IT provider supporting 276 " +
-                   "users across 7 sites with 592 devices.");
+      return guide("I'm Hermes, the MSP IT Solutions help-desk agent. There's background on the company on the Home " +
+                   "page. Short version: we're a managed IT provider supporting 276 users across 7 sites with 592 devices.");
     }
     if (has('hours', 'open', 'available', 'when can i', 'staffed')) {
       return guide("Our Help Desk is staffed Monday\u2013Friday, 8am\u20136pm, with 24/7 on-call for P1 emergencies. " +
@@ -242,15 +238,45 @@
                    "know about coverage for your location?");
     }
     if (has('menu', 'navigate', 'where do i find', 'where is', 'how do i get to', 'find the', 'page for', 'where can i')) {
-      return guide("Happy to point you around. Top menu sections: Our Approach; IT Services (Catalog, Pricing, SLA, " +
-                   "Transition, Helpdesk); About (Company, Team); Blog; and Contact \u2014 plus the Client Portal " +
-                   "button top-right. Which one are you after?");
+      return guide("Happy to point you around. Top menu: Home, Network, Cloud, Helpdesk, Security, and Pricing \u2014 " +
+                   "plus the Client Portal button top-right. Which one are you after?");
     }
 
     /* ---- 3. Fallback (no ticket) — rotated so it never repeats verbatim ---- */
     var msg = FALLBACKS[fallbackIdx % FALLBACKS.length];
     fallbackIdx++;
     return guide(msg);
+  }
+
+  /* ── Inject the widget markup ───────────────────────────────
+     Self-contained: hermes.js renders its own button + panel, so a
+     page only needs to load hermes/hermes.js + hermes/widget.css to
+     get the agent. Injected once (idempotent); runs after the DOM is
+     ready since this script is loaded with `defer`.
+  ------------------------------------------------------------ */
+  if (document.body && !document.getElementById('hermes-btn')) {
+    var WIDGET_HTML = '' +
+'<button id="hermes-btn" title="Get Help from Hermes" aria-label="Open Hermes help chat">' +
+  '<div id="hermes-dot"></div>' +
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 11H7v-2h10v2zm0-3H7V8h10v2z"/></svg>' +
+'</button>' +
+'<div id="hermes-panel" role="dialog" aria-label="Hermes Help Desk">' +
+  '<div class="hw-header">' +
+    '<div class="hw-avatar" aria-hidden="true">\u{1F916}</div>' +
+    '<div class="hw-title"><strong>HERMES</strong><span>MSP IT Solutions \u00B7 Help Desk Agent</span></div>' +
+    '<div class="hw-status" aria-label="Online"></div>' +
+    '<button class="hw-close" id="hermes-close" aria-label="Close chat">\u2715</button>' +
+  '</div>' +
+  '<div class="hw-messages" id="hermes-messages" aria-live="polite"></div>' +
+  '<div class="hw-input-row">' +
+    '<input type="text" id="hermes-input" placeholder="Describe your issue or ask a question\u2026" autocomplete="off" maxlength="500" />' +
+    '<button id="hermes-send" aria-label="Send message">' +
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>' +
+    '</button>' +
+  '</div>' +
+  '<div class="hw-footer-note">Powered by Hermes \u00B7 MSP IT Solutions</div>' +
+'</div>';
+    document.body.insertAdjacentHTML('beforeend', WIDGET_HTML);
   }
 
   /* ── Guard: only run if all required elements exist ─────────

@@ -1,4 +1,9 @@
-/* services.css — IT SERVICES PAGE (page-specific; shared styles in base.css) */
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  security.css — SECURITY PAGE — uses service cards and the image+text rows.
+   ║  Self-contained styles for this page. Edit freely; changes here  ║
+   ║  affect ONLY this page. Shared site chrome lives in nav.css;     ║
+   ║  shared section typography lives in base.css.                    ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
 
 :root {
   --page-bg:   #0a0f1e;
@@ -142,12 +147,7 @@
   .nm-center-label { font-size: 16px; }
 }
 
-/* ╔══════════════════════════════════════════════════════════════════╗
-   ║  photo-blocks.css — REUSABLE IMAGE/DISPLAY LAYOUT BLOCKS        ║
-   ║  Loaded on service pages (cloud, helpdesk, network, security).  ║
-   ║  Covers: img-wrap, img-block, img-captioned, img-text-row,      ║
-   ║  img-card-grid, and lightbox (JS-injected).                     ║
-   ╚══════════════════════════════════════════════════════════════════╝ */
+/* ── IMAGE / DISPLAY LAYOUT BLOCKS ──────────────────────────────── */
 
 /* ── VARIABLES ───────────────────────────────────────────────────── */
 :root {
@@ -215,14 +215,6 @@
 .img-card .img-display { width: 100%; height: 100%; object-fit: contain; }
 .img-card h3 { font-family: var(--font-display); font-size: var(--card-h3-size); color: var(--card-h3-color); letter-spacing: 0.5px; }
 .img-card p { font-size: var(--card-p-size); color: var(--card-p-color); line-height: 1.65; }
-
-/* ── LIGHTBOX (injected by nav.js) ──────────────────────────────── */
-.lightbox { display: none; position: fixed; inset: 0; z-index: 1000; background: var(--lightbox-bg); align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem; }
-.lightbox.open { display: flex; }
-.lightbox-img { max-width: var(--lightbox-max-w); max-height: var(--lightbox-max-h); object-fit: contain; border-radius: 6px; box-shadow: 0 0 60px rgba(0,0,0,0.8); }
-.lightbox-caption { font-size: 0.85rem; color: var(--lightbox-cap-color); text-align: center; font-style: italic; }
-.lightbox-close { position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 1.2rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-.lightbox-close:hover { background: rgba(255,255,255,0.2); }
 
 /* ── MOBILE ──────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
