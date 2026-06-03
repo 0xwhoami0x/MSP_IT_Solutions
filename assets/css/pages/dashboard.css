@@ -1,0 +1,78 @@
+/* dashboard.css — CLIENT PORTAL DASHBOARD (page-specific; shared styles in base.css) */
+
+:root { --page-bg: #0a0f1e; --border: rgba(255,255,255,0.07); --tag-color: #00b4d8; }
+
+.dash-wrap { max-width: 1080px; margin: 0 auto; padding: 2.5rem 2.5rem 4.5rem; }
+
+/* top bar */
+.dash-top {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+}
+.dash-top .welcome .eyebrow { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--tag-color); }
+.dash-top .welcome h1 { font-family: var(--font-display); font-size: 2rem; letter-spacing: 1px; }
+.dash-signout {
+  border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.7);
+  border-radius: 6px; padding: 0.55rem 1.1rem; font-family: var(--font-body); font-size: 0.82rem;
+  text-decoration: none; transition: all 0.2s;
+}
+.dash-signout:hover { border-color: rgba(239,68,68,0.5); color: #f87171; }
+
+/* stat cards */
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+.dstat {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.3rem 1.4rem;
+}
+.dstat .label { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.dstat .value { font-family: var(--font-display); font-size: 2.2rem; color: var(--tag-color); line-height: 1.1; margin-top: 0.3rem; }
+.dstat .delta { font-size: 0.75rem; color: #4ade80; margin-top: 0.2rem; }
+.dstat .delta.flat { color: rgba(255,255,255,0.4); }
+
+/* layout */
+.dash-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; }
+.panel {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.5rem;
+}
+.panel h3 { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 1px; margin-bottom: 1rem; }
+
+/* tickets table */
+.tix { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.tix th {
+  text-align: left; padding: 0.6rem 0.6rem; font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--tag-color); border-bottom: 1px solid rgba(0,180,216,0.25);
+}
+.tix td { padding: 0.7rem 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.75); }
+.tix tr:last-child td { border-bottom: none; }
+.tix .tid { font-family: var(--font-display); letter-spacing: 1px; color: rgba(255,255,255,0.5); }
+.badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+.b-p1 { background: rgba(239,68,68,0.15); color: #f87171; }
+.b-p2 { background: rgba(249,115,22,0.15); color: #fb923c; }
+.b-p3 { background: rgba(234,179,8,0.15); color: #facc15; }
+.b-p4 { background: rgba(34,197,94,0.15); color: #4ade80; }
+.status { font-size: 0.78rem; }
+.status.open { color: #facc15; }
+.status.prog { color: #00b4d8; }
+.status.done { color: #4ade80; }
+
+/* side panel */
+.site-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+.site-list li { display: flex; justify-content: space-between; font-size: 0.84rem; color: rgba(255,255,255,0.7); }
+.site-list .dot { color: #4ade80; }
+.qa { display: flex; flex-direction: column; gap: 0.6rem; }
+.qa button {
+  text-align: left; background: rgba(0,180,216,0.08); border: 1px solid rgba(0,180,216,0.25);
+  color: #cdeefb; border-radius: 8px; padding: 0.7rem 0.9rem; font-family: var(--font-body); font-size: 0.84rem; cursor: pointer;
+  transition: background 0.2s;
+}
+.qa button:hover { background: rgba(0,180,216,0.16); }
+.qa-note { margin-top: 0.8rem; font-size: 0.78rem; color: #4ade80; display: none; }
+.qa-note.show { display: block; }
+
+@media (max-width: 768px) {
+  .dash-wrap { padding: 2rem 1.25rem 3rem; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .dash-grid { grid-template-columns: 1fr; }
+  .tix .hide-sm { display: none; }
+}

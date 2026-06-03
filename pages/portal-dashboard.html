@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Client Portal — MSP IT Solutions</title>
+  <link rel="stylesheet" href="../assets/css/nav.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/widget.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/pages/dashboard.css?v=9" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAV BAR -->
+<script src="../assets/js/nav.js?v=8"></script>
+
+  <div class="dash-wrap">
+
+    <div class="dash-top fade-in">
+      <div class="welcome">
+        <div class="eyebrow">Client Portal</div>
+        <h1>Welcome back, Admin</h1>
+      </div>
+      <a class="dash-signout" href="portal.html">Sign out</a>
+    </div>
+
+    <!-- STATS -->
+    <div class="stat-row fade-in">
+      <div class="dstat"><div class="label">Open Tickets</div><div class="value">3</div><div class="delta">2 resolved this week</div></div>
+      <div class="dstat"><div class="label">Managed Devices</div><div class="value">592</div><div class="delta flat">across 7 sites</div></div>
+      <div class="dstat"><div class="label">SLA Compliance</div><div class="value">99.2%</div><div class="delta">+0.4% vs last month</div></div>
+      <div class="dstat"><div class="label">CSAT</div><div class="value">96%</div><div class="delta">+1% vs last month</div></div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="dash-grid">
+
+      <div class="panel fade-in">
+        <h3>Recent Tickets</h3>
+        <table class="tix">
+          <thead>
+            <tr><th>ID</th><th>Subject</th><th>Priority</th><th class="hide-sm">Status</th><th class="hide-sm">Updated</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tid">#4821</td>
+              <td>VPN dropping at Tacoma site</td>
+              <td><span class="badge b-p2">P2</span></td>
+              <td class="hide-sm"><span class="status prog">In Progress</span></td>
+              <td class="hide-sm">2h ago</td>
+            </tr>
+            <tr>
+              <td class="tid">#4818</td>
+              <td>New laptop setup — onboarding</td>
+              <td><span class="badge b-p4">P4</span></td>
+              <td class="hide-sm"><span class="status open">Open</span></td>
+              <td class="hide-sm">5h ago</td>
+            </tr>
+            <tr>
+              <td class="tid">#4815</td>
+              <td>Mailbox over quota warning</td>
+              <td><span class="badge b-p3">P3</span></td>
+              <td class="hide-sm"><span class="status open">Open</span></td>
+              <td class="hide-sm">Yesterday</td>
+            </tr>
+            <tr>
+              <td class="tid">#4810</td>
+              <td>Quarterly patch rollout</td>
+              <td><span class="badge b-p3">P3</span></td>
+              <td class="hide-sm"><span class="status done">Resolved</span></td>
+              <td class="hide-sm">2 days ago</td>
+            </tr>
+            <tr>
+              <td class="tid">#4807</td>
+              <td>Phishing report — finance dept</td>
+              <td><span class="badge b-p1">P1</span></td>
+              <td class="hide-sm"><span class="status done">Resolved</span></td>
+              <td class="hide-sm">3 days ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel fade-in">
+        <h3>Your Sites</h3>
+        <ul class="site-list">
+          <li><span>HQ — Seattle</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Tacoma Branch</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Bellevue Office</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Everett Warehouse</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Spokane Office</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Remote / VPN</span><span class="dot">&#9679; Online</span></li>
+          <li><span>Data Center (Colo)</span><span class="dot">&#9679; Online</span></li>
+        </ul>
+
+        <h3>Quick Actions</h3>
+        <div class="qa">
+          <button data-act>＋ Open a new ticket</button>
+          <button data-act>⬇ Download latest SLA report</button>
+          <button data-act>⚙ Manage users &amp; devices</button>
+        </div>
+        <p class="qa-note" id="qa-note">Demo: this action isn't wired up, but it's where the workflow would start.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-act]').forEach(function (b) {
+      b.addEventListener('click', function () { document.getElementById('qa-note').classList.add('show'); });
+    });
+  </script>
+
+  <script src="../assets/js/main.js?v=8"></script>
+  <script src="../assets/js/hermes.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* pricing.css — PRICING PAGE (page-specific only; shared styles in base.css) */
+
+:root {
+  --page-bg: #0a0f1e;
+  --accent:  #00b4d8;
+  --border:  rgba(255, 255, 255, 0.07);
+  --tag-color: #00b4d8;
+
+  --pricing-gap:       2rem;
+  --pricing-max-width: 800px;
+  --card-padding: 2.5rem;
+  --card-radius:  10px;
+  --featured-border: rgba(0, 180, 216, 0.4);
+  --featured-bg:     rgba(0, 180, 216, 0.05);
+  --card-title-size:  1.5rem;
+  --card-title-color: #ffffff;
+  --card-desc-size:  0.82rem;
+  --card-desc-color: rgba(255, 255, 255, 0.4);
+  --price-size:  3rem;
+  --price-color: #00b4d8;
+  --price-note-size:  0.8rem;
+  --price-note-color: rgba(255, 255, 255, 0.4);
+  --list-size:        0.85rem;
+  --list-color:       rgba(255, 255, 255, 0.6);
+  --list-check-color: #00b4d8;
+
+}
+
+.section { padding: 3rem 3rem; }
+
+/* PRICING CARD GRID */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--pricing-gap);
+  max-width: var(--pricing-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* PRICING CARD */
+.pricing-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  position: relative;
+}
+.pricing-card.featured { border-color: var(--featured-border); background: var(--featured-bg); }
+.pricing-card.featured::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: -1px; right: 1.5rem;
+  background: var(--accent);
+  color: var(--page-bg);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0 0 4px 4px;
+}
+.pricing-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--card-title-size);
+  color: var(--card-title-color);
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+.pricing-card .tier-desc { font-size: var(--card-desc-size); color: var(--card-desc-color); margin-bottom: 1rem; }
+.price {
+  font-family: var(--font-display);
+  font-size: var(--price-size);
+  color: var(--price-color);
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.price-note { font-size: var(--price-note-size); color: var(--price-note-color); margin-bottom: 1.5rem; }
+.pricing-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.pricing-card ul li { font-size: var(--list-size); color: var(--list-color); padding-left: 1.2rem; position: relative; }
+.pricing-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--list-check-color); font-size: 0.8rem; }
+
+@media (max-width: 768px) {
+  .section      { padding: 2.5rem 1.25rem; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price        { font-size: 2.2rem; }
+}
+/* sla.css — SLA PAGE (page-specific only; shared styles in base.css) */
+
+:root {
+  --page-bg: #0d1525;
+  --border:  rgba(255, 255, 255, 0.07);
+  --tag-color: #00b4d8;
+
+  --table-font-size: 0.9rem;
+  --th-bg:        rgba(0, 180, 216, 0.1);
+  --th-border:    rgba(0, 180, 216, 0.3);
+  --th-color:     #00b4d8;
+  --td-border:    rgba(255, 255, 255, 0.05);
+  --td-color:     rgba(255, 255, 255, 0.75);
+  --row-hover-bg: rgba(255, 255, 255, 0.03);
+
+  --kpi-value-size:  2.4rem;
+  --kpi-value-color: #00b4d8;
+  --kpi-label-size:  0.8rem;
+  --kpi-label-color: rgba(255, 255, 255, 0.55);
+
+  --badge-red-bg:      rgba(239, 68,  68,  0.15);
+  --badge-red-text:    #f87171;
+  --badge-orange-bg:   rgba(249, 115, 22,  0.15);
+  --badge-orange-text: #fb923c;
+  --badge-yellow-bg:   rgba(234, 179, 8,   0.15);
+  --badge-yellow-text: #facc15;
+  --badge-green-bg:    rgba(34,  197, 94,  0.15);
+  --badge-green-text:  #4ade80;
+}
+
+.section { padding: 2rem 3rem; }
+
+/* SLA TABLE */
+.sla-table { width: 100%; border-collapse: collapse; font-size: var(--table-font-size); }
+.sla-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  background: var(--th-bg);
+  border-bottom: 1px solid var(--th-border);
+  color: var(--th-color);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.sla-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--td-border);
+  color: var(--td-color);
+}
+.sla-table tr:hover td { background: var(--row-hover-bg); }
+
+/* PRIORITY BADGES */
+.badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.badge-red    { background: var(--badge-red-bg);    color: var(--badge-red-text);    }
+.badge-orange { background: var(--badge-orange-bg); color: var(--badge-orange-text); }
+.badge-yellow { background: var(--badge-yellow-bg); color: var(--badge-yellow-text); }
+.badge-green  { background: var(--badge-green-bg);  color: var(--badge-green-text);  }
+
+/* KPI CARDS */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.kpi-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: var(--kpi-value-size);
+  color: var(--kpi-value-color);
+  letter-spacing: 1px;
+}
+.kpi-label { font-size: var(--kpi-label-size); color: var(--kpi-label-color); margin-top: 0.3rem; }
+
+@media (max-width: 768px) {
+  .section   { padding: 2.5rem 1.25rem; }
+  .kpi-grid  { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .kpi-value { font-size: 1.8rem; }
+
+  /* SLA table → stacked cards */
+  .sla-table, .sla-table thead, .sla-table tbody,
+  .sla-table tr, .sla-table th, .sla-table td { display: block; }
+  .sla-table thead { display: none; }
+  .sla-table tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+  }
+  .sla-table td {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+    white-space: normal;
+  }
+  .sla-table td:last-child { border-bottom: none; }
+  .sla-table td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    width: 7rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--th-color);
+    opacity: 0.7;
+    padding-top: 0.1rem;
+  }
+}
+/* transition.css — TRANSITION PLAN PAGE (page-specific only; shared styles in base.css) */
+
+:root {
+  --page-bg: #0a0f1e;
+  --border:  rgba(255, 255, 255, 0.07);
+  --tag-color: #00b4d8;
+
+  --card-min-col: 260px;
+  --card-gap:     1.5rem;
+  --card-title-size:  1.3rem;
+  --card-title-color: #00b4d8;
+  --card-para-size:   0.86rem;
+  --card-para-color:  rgba(255, 255, 255, 0.55);
+  --card-para-weight: 300;
+  --list-size:   0.83rem;
+  --list-color:  rgba(255, 255, 255, 0.6);
+  --arrow-color: #00b4d8;
+}
+
+.section { padding: 1.5rem 4rem; }
+
+/* TRANSITION CARD GRID */
+.transition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min-col), 1fr));
+  gap: var(--card-gap);
+}
+
+/* TRANSITION CARD */
+.transition-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.25s;
+}
+.transition-card:hover { border-color: rgba(0, 180, 216, 0.25); }
+.transition-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--card-title-size);
+  letter-spacing: 1px;
+  color: var(--card-title-color);
+  margin-bottom: 0.75rem;
+}
+.transition-card p {
+  font-size: var(--card-para-size);
+  font-weight: var(--card-para-weight);
+  color: var(--card-para-color);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.transition-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.transition-card ul li {
+  font-size: var(--list-size);
+  color: var(--list-color);
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.5;
+}
+.transition-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--arrow-color);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .section         { padding: 2.5rem 1.25rem; }
+  .transition-grid { grid-template-columns: 1fr; }
+}

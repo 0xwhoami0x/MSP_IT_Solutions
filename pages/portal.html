@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal — MSP IT Solutions</title>
+  <link rel="stylesheet" href="../assets/css/nav.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/pages/portal.css?v=9" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  
+</head>
+<body>
+
+<!-- NAV BAR -->
+<script src="../assets/js/nav.js?v=8"></script>
+
+<div class="portal-wrap">
+  <div class="portal-card fade-in">
+    <div class="portal-lock" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm3 8H9V6a3 3 0 0 1 6 0v3zm-3 4a2 2 0 0 1 1 3.73V20h-2v-3.27A2 2 0 0 1 12 13z"/></svg>
+    </div>
+
+    <div class="portal-tag">Secure Access</div>
+    <h1 class="portal-title">Client Portal</h1>
+    <p class="portal-sub">Sign in to view tickets, devices, and SLA reports.</p>
+
+    <form id="portal-form" novalidate>
+      <div class="field">
+        <label for="portal-user">Username</label>
+        <input type="text" id="portal-user" placeholder="admin" autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="portal-password">Password</label>
+        <input type="password" id="portal-password" placeholder="admin" autocomplete="current-password" />
+      </div>
+
+      <div class="portal-row">
+        <label><input type="checkbox" id="portal-remember" /> Remember me</label>
+        <a href="#" id="portal-forgot">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="portal-btn" id="portal-submit">Sign In</button>
+
+      <div class="portal-msg" id="portal-msg" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="portal-demo">Demo login &mdash; use <b>admin</b> / <b>admin</b></p>
+    <p class="portal-foot">Not a client yet? <a href="contact.html">Contact us</a></p>
+  </div>
+</div>
+
+<script>
+  /* Demo auth: only admin / admin succeeds, then go to the dashboard.
+     This is a front-end demo only — no real authentication or backend. */
+  (function () {
+    var form   = document.getElementById('portal-form');
+    var user   = document.getElementById('portal-user');
+    var pass   = document.getElementById('portal-password');
+    var btn    = document.getElementById('portal-submit');
+    var msg    = document.getElementById('portal-msg');
+    var forgot = document.getElementById('portal-forgot');
+
+    function showMsg(text, type) {
+      msg.textContent = text;
+      msg.className = 'portal-msg show ' + type;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var u = user.value.trim();
+      var p = pass.value;
+
+      if (!u || !p) { showMsg('Please enter your username and password.', 'err'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+      showMsg('Verifying credentials…', 'ok');
+
+      setTimeout(function () {
+        if (u.toLowerCase() === 'admin' && p === 'admin') {
+          showMsg('✓ Welcome back. Loading your dashboard…', 'ok');
+          setTimeout(function () { window.location.href = 'portal-dashboard.html'; }, 600);
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Sign In';
+          showMsg('Invalid credentials. For this demo, use admin / admin.', 'err');
+          pass.value = '';
+          pass.focus();
+        }
+      }, 700);
+    });
+
+    forgot.addEventListener('click', function (e) {
+      e.preventDefault();
+      showMsg('Demo: a password-reset link would be emailed to you.', 'ok');
+    });
+  })();
+</script>
+
+<script src="../assets/js/main.js?v=8"></script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=pages/home.html" />
+  <title>MSP IT Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: #0a0f1e;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .loader {
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.4s ease 0.1s forwards;
+    }
+    .loader-logo {
+      font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: #00b4d8;
+      margin-bottom: 1rem;
+    }
+    .loader-logo span { color: #fff; }
+    .loader-bar {
+      width: 120px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .loader-bar::after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 40%;
+      background: #00b4d8;
+      border-radius: 2px;
+      animation: slide 0.8s ease infinite alternate;
+    }
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(210%); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="loader-logo">MSP <span>IT Solutions</span></div>
+    <div class="loader-bar"></div>
+  </div>
+  <script>
+    // Redirect immediately; the CSS animation is just a fallback
+    // for browsers that ignore meta refresh.
+    window.location.replace('pages/home.html');
+  </script>
+</body>
+</html>

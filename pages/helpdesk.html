@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helpdesk — MSP IT Solutions</title>
+  <link rel="stylesheet" href="../assets/css/nav.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=9" />
+  <link rel="stylesheet" href="../assets/css/pages/helpdesk.css?v=9" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+  
+  <style>
+    .hd-stack {
+      --s-surface: #121a2e;
+      --s-surface-2: #1a2238;
+      --s-border: #243049;
+      --s-text: #e6ecf8;
+      --s-muted: #8c97b3;
+      --s-primary: #00b4d8;
+      --font-ui: 'Inter', system-ui, sans-serif;
+      max-width: 1100px; margin: 0 auto; padding: 1rem 3rem 4rem;
+      font-family: var(--font-ui);
+    }
+    .hd-stack .hd-head { margin-bottom: 1.5rem; }
+    .hd-stack .hd-head h3 { font-family: var(--font-display); letter-spacing: 1px; font-size: 1.8rem; color: var(--s-text); margin-bottom: 0.4rem; }
+    .hd-stack .hd-head p { font-size: 0.95rem; color: var(--s-muted); max-width: 60ch; }
+    .hd-stack .tool-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px,100%), 1fr));
+      gap: 0.75rem; margin-bottom: 2.5rem;
+    }
+    .hd-stack .tool-card {
+      background: var(--s-surface); border: 1px solid var(--s-border);
+      border-radius: 0.75rem; padding: 1rem; transition: transform 180ms, border-color 180ms;
+    }
+    .hd-stack .tool-card:hover { transform: translateY(-2px); border-color: var(--s-primary); }
+    .hd-stack .tool-icon {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 0.5rem; margin-bottom: 0.75rem; font-size: 1.1rem; background: var(--s-surface-2);
+    }
+    .hd-stack .tool-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.15rem; }
+    .hd-stack .tool-product { font-size: 0.8rem; font-weight: 600; color: var(--s-primary); margin-bottom: 0.3rem; }
+    .hd-stack .tool-desc { font-size: 0.8rem; color: var(--s-muted); line-height: 1.5; }
+    .hd-stack .workflow-label {
+      text-align: center; font-size: 0.9rem; font-weight: 600; color: var(--s-muted);
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hd-stack .workflow-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(170px,100%), 1fr)); gap: 0.75rem;
+    }
+    .hd-stack .workflow-card { background: var(--s-surface); border: 1px solid var(--s-border); border-radius: 0.75rem; padding: 1rem; }
+    .hd-stack .workflow-step {
+      width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
+      font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
+    }
+    .hd-stack .workflow-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.4rem; }
+    .hd-stack .workflow-desc { font-size: 0.8rem; color: var(--s-muted); line-height: 1.55; }
+    .hd-stack .workflow-desc .arrow { color: var(--s-primary); font-weight: 600; margin: 0 2px; }
+    @media (max-width: 640px) {
+      .hd-stack { padding: 1rem 1.25rem 2.5rem; }
+      .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV BAR -->
+<script src="../assets/js/nav.js?v=8"></script>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="section-tag fade-in">Support That Resolves</div>
+    <h2 class="section-title fade-in">Helpdesk</h2>
+    <p class="section-intro fade-in">
+      Every request submitted to our help desk &mdash; whether it comes in through the self-service portal, a pop-up widget, or an SMS &mdash; is logged, prioritized against a defined SLA tier, and acknowledged within the committed response window. Our help desk practice combines Freshdesk for centralized ticketing, NinjaOne and JAMF Pro for endpoint management, and the Hermes AI agent for intelligent triage and routing. The result is a support operation that scales across your 592 endpoints and 270 users without adding headcount on your side.
+    </p>
+  </section>
+
+  <!-- SUPPORT PHASE -->
+  <section class="ap-phase fade-in" id="support">
+    <div>
+      <div class="ph-num">Phase 04</div>
+      <h2>Support</h2>
+      <p>The relationship doesn't end at go-live. We provide ongoing managed support with <span class="hl">SLA-backed response times</span>, proactive monitoring, and a help desk team that knows your environment &mdash; your systems, your users, and your quirks.</p>
+      <ul class="ap-list">
+        <li>24/7 P1 on-call coverage via portal, SMS, or Hermes agent</li>
+        <li>Proactive endpoint monitoring with automated remediation where scripted</li>
+        <li>Weekly patch compliance reports every Monday from NinjaOne</li>
+        <li>Monthly executive reporting on SLA compliance, CSAT, and ticket trends</li>
+        <li>Quarterly technology reviews with a forward-looking roadmap update</li>
+        <li>A dedicated help desk team that knows your environment by name</li>
+      </ul>
+    </div>
+    <div class="ph-icon" aria-hidden="true">&#127911;</div>
+  </section>
+
+  <!-- HELPDESK SERVICE CARDS -->
+  <section class="section">
+    <div class="section-tag fade-in">What We Deliver</div>
+    <h2 class="section-title fade-in">Help Desk Services</h2>
+    <p class="section-intro fade-in">
+      Every service component below is staffed by a named specialist, governed by a defined SLA tier, and reported monthly in your executive briefing. Nothing falls through the cracks.
+    </p>
+
+    <div class="services-grid">
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#128421;&#65039;</div>
+        <h3>Ticketing &amp; SLA Management</h3>
+        <p>Freshdesk is the single system of record for every request, incident, change, and problem across all seven sites. SLA rules auto-escalate any ticket approaching its response deadline and notify the shift lead before a breach occurs. Every ticket closes with a CSAT survey sent to the end user. Monthly reports surface ticket volume, response time performance, resolution rate, and top recurring issue categories so we can proactively eliminate repeat problems.</p>
+      </div>
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#128187;</div>
+        <h3>Windows Endpoint Management</h3>
+        <p>NinjaOne RMM manages all 592 Windows endpoints across your seven sites. Remote access allows technicians to connect to any device for troubleshooting without dispatching onsite. Automated patch deployment handles OS and application updates on a defined schedule, with compliance reports generated every Monday. Scripted remediations automatically resolve common issues &mdash; disk cleanup, service restarts, profile fixes &mdash; without requiring a ticket to be manually worked.</p>
+      </div>
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#127822;</div>
+        <h3>Apple Device Management</h3>
+        <p>JAMF Pro manages 57 MacBooks and 89 iPads with zero-touch enrollment through Apple Business Manager. New devices ship directly to employees and enroll automatically when powered on &mdash; no IT staff required on-site for setup. Configuration profiles enforce FileVault encryption, screen lock policies, and approved application lists. Software updates are pushed on schedule with deferral controls. Lost or stolen devices are remotely locked and wiped within minutes.</p>
+      </div>
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#128247;</div>
+        <h3>Thin Client &amp; VDI Management</h3>
+        <p>Citrix manages desktop delivery for all 138 thin clients across your sites. Virtual desktops stream from the co-located environment, keeping processing centralized and thin client hardware requirements minimal. vDisk updates apply to every thin client on the next reboot &mdash; there's no per-device patching cycle. The thin client fleet has a significantly longer replacement lifecycle than full PCs, reducing capital expenditure and on-site support burden.</p>
+      </div>
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#129302;</div>
+        <h3>AI-Assisted Triage &amp; Routing</h3>
+        <p>The Hermes AI agent handles first-contact triage for help desk requests submitted through the client portal or the on-site chat widget. Hermes classifies the request, assigns an SLA priority, routes it to the appropriate specialist queue, and sends the user an acknowledgment with the ticket number and expected response time. For common request types &mdash; password resets, VPN connectivity, software access &mdash; Hermes resolves the ticket automatically with Honcho-managed context keeping conversations coherent across sessions.</p>
+      </div>
+      <div class="card service-card fade-in">
+        <div class="service-icon">&#128101;</div>
+        <h3>Onboarding &amp; Offboarding</h3>
+        <p>New hire and departure workflows are templated in Freshdesk with defined task sequences. A new hire ticket automatically triggers account creation in Active Directory, Microsoft 365 license assignment, device configuration, and application access provisioning &mdash; all tracked in a single parent ticket with subtasks per system. Offboarding reverses the process: AD account disabled, M365 license revoked, device wiped, and access audit completed within one business day of the departure date.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP DESK PORTAL FIGURE -->
+  <section class="section">
+    <div class="img-text-row row-reverse fade-in">
+      <div class="img-col">
+        <div class="img-wrap">
+          <img src="../assets/img/f.png" alt="Help desk portal" class="img-display" lightbox="true" />
+        </div>
+      </div>
+      <div class="text-col">
+        <h3>Three Ways to Reach Support</h3>
+        <p>Users submit tickets through the self-service portal, via SMS text-in, or through the Hermes chat widget embedded in the client portal. Every channel feeds directly into Freshdesk with the same SLA rules applied regardless of submission method.</p>
+        <p>The Hermes AI agent handles triage and routing automatically &mdash; so tickets arrive in the right queue with the right priority without a dispatcher manually touching each one. Technicians open Freshdesk and find a pre-classified, pre-prioritized queue ready to work.</p>
+        <p>Automated remediation handles the most common request types without human intervention: password resets, VPN reconnections, disk cleanup, and software reinstalls are resolved in seconds with zero touch from the help desk team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFTWARE STACK + DEVICE WORKFLOW -->
+  <div class="hd-stack">
+    <div class="hd-head fade-in">
+      <h3>Proposed Software Stack</h3>
+      <p>Ten tools covering monitoring, management, productivity, documentation, and reporting across 270 users and 592 endpoints. Every tool is bundled or sourced at the best available rate and included in the per-user monthly fee.</p>
+    </div>
+
+    <div class="tool-grid">
+      <div class="tool-card fade-in">
+        <div class="tool-icon">📡</div>
+        <h4>Network Monitoring</h4>
+        <div class="tool-product">PRTG</div>
+        <div class="tool-desc">Real-time alerts for all network devices across all seven sites</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">🖥️</div>
+        <h4>Remote Access / VDI</h4>
+        <div class="tool-product">Citrix</div>
+        <div class="tool-desc">Streams desktops to 138 thin clients from co-located VMs</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">🍎</div>
+        <h4>Apple MDM</h4>
+        <div class="tool-product">JAMF Pro</div>
+        <div class="tool-desc">57 MacBooks + 89 iPads, zero-touch enrollment via ABM</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">☁️</div>
+        <h4>Productivity Suite</h4>
+        <div class="tool-product">Microsoft 365</div>
+        <div class="tool-desc">Email, Teams, SharePoint, and Teams Phone for all 270 users</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">🔧</div>
+        <h4>Remote Mgmt (RMM)</h4>
+        <div class="tool-product">NinjaOne</div>
+        <div class="tool-desc">Patching, remote access, and monitoring for 592 endpoints</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">🎫</div>
+        <h4>Help Desk</h4>
+        <div class="tool-product">Freshdesk</div>
+        <div class="tool-desc">SLA tracking, automation, CSAT surveys, and ticket history</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">🔐</div>
+        <h4>Identity Mgmt</h4>
+        <div class="tool-product">Azure AD</div>
+        <div class="tool-desc">Accounts, SSO, MFA, and conditional access — bundled with M365</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">📝</div>
+        <h4>Documentation</h4>
+        <div class="tool-product">Ninja Docs</div>
+        <div class="tool-desc">Runbooks, device configs, and change logs — bundled with NinjaOne</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">📋</div>
+        <h4>Project Tracking</h4>
+        <div class="tool-product">Jira Free</div>
+        <div class="tool-desc">Sprint and task tracking for the IT team's project backlog</div>
+      </div>
+      <div class="tool-card fade-in">
+        <div class="tool-icon">📊</div>
+        <h4>Reporting</h4>
+        <div class="tool-product">Power BI Pro</div>
+        <div class="tool-desc">Executive dashboards pulling from PRTG, NinjaOne, and M365</div>
+      </div>
+    </div>
+
+    <div class="workflow-label fade-in">Device Management Workflow</div>
+    <div class="workflow-grid">
+      <div class="workflow-card fade-in">
+        <div class="workflow-step">1</div>
+        <h4>Image Creation</h4>
+        <div class="workflow-desc">MDT (Windows), JAMF configuration profiles (Mac/iPad), Citrix vDisk (thin clients) — built, tested, and documented before any deployment begins</div>
+      </div>
+      <div class="workflow-card fade-in">
+        <div class="workflow-step">2</div>
+        <h4>Enrollment</h4>
+        <div class="workflow-desc">Windows Autopilot (Windows), JAMF zero-touch via ABM (Mac/iPad), Citrix stream-on-boot (thin clients) — no manual imaging required</div>
+      </div>
+      <div class="workflow-card fade-in">
+        <div class="workflow-step">3</div>
+        <h4>Onboarding</h4>
+        <div class="workflow-desc">New hire ticket <span class="arrow">→</span> AD/Azure account <span class="arrow">→</span> M365 license <span class="arrow">→</span> device assigned <span class="arrow">→</span> apps provisioned <span class="arrow">→</span> ticket closed</div>
+      </div>
+      <div class="workflow-card fade-in">
+        <div class="workflow-step">4</div>
+        <h4>Maintenance</h4>
+        <div class="workflow-desc">NinjaOne patches Windows on schedule; JAMF updates Mac/iPad; vDisk update pushes to all 138 thin clients on next reboot — zero per-device effort</div>
+      </div>
+      <div class="workflow-card fade-in">
+        <div class="workflow-step">5</div>
+        <h4>Offboarding</h4>
+        <div class="workflow-desc">Departure ticket <span class="arrow">→</span> device wiped <span class="arrow">→</span> AD disabled <span class="arrow">→</span> M365 license revoked <span class="arrow">→</span> access audit <span class="arrow">→</span> ticket closed within 1 business day</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="svc-cta fade-in">
+    <h2>Ready for a help desk that actually resolves?</h2>
+    <p>Talk to our help desk specialist about SLA tiers, device management coverage, and what the Hermes agent can handle for your team automatically.</p>
+    <a href="portal.html" class="btn">Get Started via Portal</a>
+  </section>
+
+  <script src="../assets/js/main.js?v=8"></script>
+</body>
+</html>

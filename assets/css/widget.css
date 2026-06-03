@@ -1,0 +1,360 @@
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  widget.css — HERMES AI CHAT WIDGET                             ║
+   ║  Loaded on every page. Fully self-contained — no dependencies   ║
+   ║  on any page CSS file. All variables defined here.              ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   WIDGET VARIABLES — all widget colors/sizes live here.
+   Edit these to restyle the widget without touching any page CSS.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  /* ── Widget-owned color tokens (not shared with page CSS) ───────── */
+  --w-accent:      #00b4d8;
+  --w-blue:        #1565c0;
+  --w-navy:        #0b1f3a;
+  --w-dark:        #0a0f1e;
+  --w-dark2:       #0d1525;
+  --w-white:       #ffffff;
+  --w-font-body:   'DM Sans', sans-serif;
+  --w-font-display:'Bebas Neue', sans-serif;
+
+  /* ── Floating button ───────────────────────────────────────────── */
+  --widget-btn-size:         58px;
+  --widget-btn-gradient:     linear-gradient(135deg, var(--w-blue), var(--w-accent));
+  --widget-btn-shadow:       rgba(0, 180, 216, 0.45);
+  --widget-btn-shadow-hover: rgba(0, 180, 216, 0.6);
+  --widget-btn-bottom:       2rem;
+  --widget-btn-right:        2rem;
+
+  /* ── Panel ─────────────────────────────────────────────────────── */
+  --widget-panel-width:  360px;
+  --widget-panel-bg:     #111827;
+  --widget-panel-border: rgba(0, 180, 216, 0.25);
+  --widget-panel-radius: 14px;
+
+  /* ── Message bubbles ───────────────────────────────────────────── */
+  --msg-agent-bg:      rgba(255, 255, 255, 0.06);
+  --msg-agent-border:  rgba(255, 255, 255, 0.08);
+  --msg-user-gradient: linear-gradient(135deg, var(--w-blue), var(--w-accent));
+
+  /* ── Status indicators ─────────────────────────────────────────── */
+  --dot-color:          #f87171;
+  --status-online-color:#4ade80;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FLOATING HELP BUTTON
+   HTML: <button id="hermes-btn"> in every page
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#hermes-btn {
+  position:        fixed;
+  bottom:          var(--widget-btn-bottom);
+  right:           var(--widget-btn-right);
+  z-index:         9999;
+  width:           var(--widget-btn-size);
+  height:          var(--widget-btn-size);
+  border-radius:   50%;
+  background:      var(--widget-btn-gradient);
+  border:          none;
+  cursor:          pointer;
+  box-shadow:      0 4px 20px var(--widget-btn-shadow);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      transform 0.2s, box-shadow 0.2s;
+}
+
+#hermes-btn:hover {
+  transform:  scale(1.08);
+  box-shadow: 0 6px 28px var(--widget-btn-shadow-hover);
+}
+
+#hermes-btn svg {
+  width:  26px;
+  height: 26px;
+  fill:   var(--w-white);
+}
+
+/* Pulse ring animation */
+#hermes-btn::after {
+  content:       '';
+  position:      absolute;
+  inset:         -4px;
+  border-radius: 50%;
+  border:        2px solid rgba(0, 180, 216, 0.4);
+  animation:     pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NOTIFICATION DOT
+   HTML: <div id="hermes-dot"> inside the button
+   Hidden by default. hermes.js shows it after 4 seconds of inactivity.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#hermes-dot {
+  position:      absolute;
+  top:           4px;
+  right:         4px;
+  width:         10px;
+  height:        10px;
+  background:    var(--dot-color);
+  border-radius: 50%;
+  border:        2px solid var(--w-dark);
+  display:       none;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CHAT PANEL
+   HTML: <div id="hermes-panel"> in every page
+   hermes.js adds class "open" to show it.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#hermes-panel {
+  position:        fixed;
+  bottom:          6rem;
+  right:           var(--widget-btn-right);
+  z-index:         9998;
+  width:           var(--widget-panel-width);
+  max-height:      520px;
+  background:      var(--widget-panel-bg);
+  border:          1px solid var(--widget-panel-border);
+  border-radius:   var(--widget-panel-radius);
+  box-shadow:      0 20px 60px rgba(0, 0, 0, 0.6);
+  display:         flex;
+  flex-direction:  column;
+  overflow:        hidden;
+
+  /* Hidden by default */
+  transform:        scale(0.85) translateY(20px);
+  opacity:          0;
+  pointer-events:   none;
+  transition:       transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: bottom right;
+}
+
+#hermes-panel.open {
+  transform:      scale(1) translateY(0);
+  opacity:        1;
+  pointer-events: all;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PANEL HEADER
+   HTML: <div class="hw-header">
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hw-header {
+  background:    linear-gradient(135deg, var(--w-navy), var(--w-blue));
+  padding:       1rem 1.2rem;
+  display:       flex;
+  align-items:   center;
+  gap:           0.75rem;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
+  flex-shrink:   0;
+}
+
+.hw-avatar {
+  width:           38px;
+  height:          38px;
+  border-radius:   50%;
+  background:      linear-gradient(135deg, var(--w-accent), var(--w-blue));
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       1rem;
+  flex-shrink:     0;
+}
+
+.hw-title { flex: 1; min-width: 0; }
+
+.hw-title strong {
+  display:        block;
+  font-family:    var(--w-font-display);
+  font-size:      1.05rem;
+  letter-spacing: 1px;
+  color:          var(--w-white);
+}
+
+.hw-title span {
+  font-size:   0.72rem;
+  color:       rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow:    hidden;
+  text-overflow: ellipsis;
+  display:     block;
+}
+
+.hw-status {
+  width:         8px;
+  height:        8px;
+  background:    var(--status-online-color);
+  border-radius: 50%;
+  box-shadow:    0 0 6px var(--status-online-color);
+  flex-shrink:   0;
+}
+
+.hw-close {
+  background:  none;
+  border:      none;
+  cursor:      pointer;
+  color:       rgba(255, 255, 255, 0.4);
+  font-size:   1.2rem;
+  line-height: 1;
+  padding:     0 0 0 0.5rem;
+  transition:  color 0.2s;
+  flex-shrink: 0;
+}
+
+.hw-close:hover { color: var(--w-white); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MESSAGES AREA
+   HTML: <div class="hw-messages" id="hermes-messages">
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hw-messages {
+  flex:            1;
+  overflow-y:      auto;
+  padding:         1rem;
+  display:         flex;
+  flex-direction:  column;
+  gap:             0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  min-height:      0; /* prevents flex child overflow */
+}
+
+.hw-msg {
+  max-width:     85%;
+  padding:       0.65rem 0.9rem;
+  border-radius: 10px;
+  font-size:     0.84rem;
+  line-height:   1.55;
+  word-break:    break-word;  /* prevents long words overflowing bubble */
+  animation:     msgIn 0.2s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.hw-msg.agent {
+  background:                var(--msg-agent-bg);
+  border:                    1px solid var(--msg-agent-border);
+  color:                     rgba(255, 255, 255, 0.85);
+  align-self:                flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.hw-msg.user {
+  background:                 var(--msg-user-gradient);
+  color:                      var(--w-white);
+  align-self:                 flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.hw-msg.typing {
+  background: var(--msg-agent-bg);
+  border:     1px solid var(--msg-agent-border);
+  align-self: flex-start;
+  color:      rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-size:  0.8rem;
+}
+
+.hw-ticket-badge {
+  font-size:     0.7rem;
+  background:    rgba(0, 180, 216, 0.15);
+  color:         var(--w-accent);
+  border:        1px solid rgba(0, 180, 216, 0.3);
+  border-radius: 4px;
+  padding:       0.15rem 0.4rem;
+  margin-top:    0.3rem;
+  display:       inline-block;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   INPUT ROW
+   HTML: <div class="hw-input-row">
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hw-input-row {
+  display:    flex;
+  gap:        0.5rem;
+  padding:    0.75rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--w-dark2);
+  flex-shrink: 0;
+}
+
+.hw-input-row input {
+  flex:          1;
+  background:    rgba(255, 255, 255, 0.06);
+  border:        1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding:       0.6rem 0.9rem;
+  color:         var(--w-white);
+  font-family:   var(--w-font-body);
+  font-size:     0.84rem;
+  outline:       none;
+  transition:    border-color 0.2s;
+  min-width:     0;
+}
+
+.hw-input-row input::placeholder { color: rgba(255, 255, 255, 0.3); }
+.hw-input-row input:focus        { border-color: rgba(0, 180, 216, 0.5); }
+
+.hw-input-row button {
+  background:      linear-gradient(135deg, var(--w-blue), var(--w-accent));
+  border:          none;
+  border-radius:   8px;
+  width:           38px;
+  height:          38px;
+  cursor:          pointer;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  transition:      opacity 0.2s;
+}
+
+.hw-input-row button:hover    { opacity: 0.85; }
+.hw-input-row button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hw-input-row button svg {
+  width:  16px;
+  height: 16px;
+  fill:   var(--w-white);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER NOTE
+   HTML: <div class="hw-footer-note">
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.hw-footer-note {
+  text-align:  center;
+  font-size:   0.68rem;
+  color:       rgba(255, 255, 255, 0.2);
+  padding:     0.4rem 1rem 0.6rem;
+  background:  var(--w-dark2);
+  flex-shrink: 0;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE — small phones
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media (max-width: 420px) {
+  #hermes-panel { width: calc(100vw - 2rem); right: 1rem; }
+  #hermes-btn   { right: 1rem; bottom: 1rem; }
+}

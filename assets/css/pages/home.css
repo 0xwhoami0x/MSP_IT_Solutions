@@ -1,0 +1,155 @@
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  home.css — HOME PAGE                                           ║
+   ║  Loaded only by pages/home.html.                                ║
+   ║  Covers: hero, buttons, value props, team cards, CTA band,      ║
+   ║  and the overview (ap-hero) section used on this page.          ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+:root {
+  --page-bg:   #0a0f1e;
+  --page-text: #ffffff;
+  --accent:    #00b4d8;
+  --tag-color: #00b4d8;
+
+  --hero-bg-start: #0a0f1e; --hero-bg-mid: #0b1f3a; --hero-bg-end: #0d2b50;
+  --glow-top-right: rgba(0,180,216,0.12); --glow-bottom-center: rgba(21,101,192,0.15);
+
+  --tag-bg: rgba(0,180,216,0.15); --tag-border: rgba(0,180,216,0.4);
+  --tag-size: 0.78rem;
+  --title-color: #fff; --title-span-color: #00b4d8;
+  --title-size-min: 3.5rem; --title-size-max: 6rem;
+  --sub-color: rgba(255,255,255,0.65); --sub-size: 1.1rem; --sub-weight: 300;
+
+  --btn-bg: #00b4d8; --btn-text: #0a0f1e; --btn-hover-bg: #00d4f5;
+  --btn-outline-border: rgba(255,255,255,0.3); --btn-outline-text: #ffffff;
+
+  --avatar-gradient: linear-gradient(135deg, #1565c0, #00b4d8);
+}
+
+
+/* ── HERO ──────────────────────────────────────────────────────── */
+.hero {
+  min-height: calc(78vh - 70px);
+  display: flex; align-items: center; padding: 0 4rem;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-mid) 60%, var(--hero-bg-end) 100%);
+}
+.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, var(--glow-top-right) 0%, transparent 70%); pointer-events: none; }
+.hero::after  { content: ''; position: absolute; bottom: -100px; left: 30%; width: 400px; height: 400px; background: radial-gradient(circle, var(--glow-bottom-center) 0%, transparent 70%); pointer-events: none; }
+.hero-content { max-width: 720px; position: relative; z-index: 1; animation: heroFadeUp 0.9s ease both; }
+@keyframes heroFadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero-tag {
+  display: inline-block; background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--tag-color);
+  font-size: var(--tag-size); font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 0.4rem 1rem; border-radius: 2px; margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(var(--title-size-min), 7vw, var(--title-size-max));
+  line-height: 1; letter-spacing: 2px; color: var(--title-color); margin-bottom: 1.5rem;
+}
+.hero h1 span { color: var(--title-span-color); }
+.hero-sub { font-size: var(--sub-size); font-weight: var(--sub-weight); color: var(--sub-color); line-height: 1.7; max-width: 540px; margin-bottom: 2.5rem; }
+
+
+/* ── BUTTONS ───────────────────────────────────────────────────── */
+.btn {
+  display: inline-block; padding: 0.85rem 2.2rem; background: var(--btn-bg); color: var(--btn-text);
+  font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
+  text-decoration: none; border-radius: 3px; transition: background 0.2s, transform 0.2s;
+}
+.btn:hover { background: var(--btn-hover-bg); transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 1px solid var(--btn-outline-border); color: var(--btn-outline-text); margin-left: 1rem; }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+
+/* ── OVERVIEW BAND (ap-hero) ───────────────────────────────────── */
+/* Reused from approach page; only the styles needed on home are here */
+.ap-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 4rem 2rem 3rem;
+  background: linear-gradient(135deg, #0a0f1e 0%, #0b1f3a 60%, #0d2b50 100%);
+}
+.ap-hero::after {
+  content: '';
+  position: absolute;
+  width: 560px; height: 560px;
+  background: rgba(0,180,216,0.13);
+  filter: blur(120px);
+  border-radius: 50%;
+  top: -240px; right: -160px;
+  z-index: 0;
+}
+.ap-hero > * { position: relative; z-index: 1; }
+.ap-hero .section-intro { max-width: 760px; margin: 0 auto 1.25rem; }
+.ap-hero .section-intro strong { color: #fff; font-weight: 600; }
+
+
+/* ── VALUE PROPS ───────────────────────────────────────────────── */
+.home-section { padding: 4.5rem 4rem; max-width: 1080px; margin: 0 auto; }
+.home-props { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+.prop {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 2rem 1.75rem; transition: border-color 0.25s, transform 0.25s;
+}
+.prop:hover { border-color: rgba(0,180,216,0.25); transform: translateY(-4px); }
+.prop .ico {
+  width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+  border-radius: 12px; background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.2); margin-bottom: 1rem;
+}
+.prop h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.prop p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+
+
+/* ── TEAM SECTION ──────────────────────────────────────────────── */
+.home-team-section { padding: 3rem 4rem; max-width: 1080px; margin: 0 auto; }
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.team-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.25s;
+}
+.team-card:hover { border-color: rgba(0,180,216,0.25); }
+.avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--avatar-gradient);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #fff;
+}
+.team-card h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem; }
+.team-card .role { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+
+
+/* ── CTA BAND ──────────────────────────────────────────────────── */
+.home-cta {
+  text-align: center; padding: 4rem 2rem 5rem;
+  background: linear-gradient(135deg, #0b1f3a, #0d2b50);
+}
+.home-cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 1.5px; margin-bottom: 0.75rem; }
+.home-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.75rem; font-weight: 300; }
+
+
+/* ── MOBILE ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero { padding: 3rem 1.5rem; min-height: auto; padding-top: 4rem; padding-bottom: 4rem; }
+  .home-section { padding: 3rem 1.5rem; }
+  .home-team-section { padding: 2.5rem 1.25rem; }
+  .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .ap-hero { padding: 3rem 1.25rem 2rem; }
+}
