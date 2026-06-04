@@ -53,7 +53,7 @@
   --row-gap:             3rem;         /* gap between image and text columns */
   --row-text-h3-size:    1.8rem;       /* heading size */
   --row-text-h3-color:   #ffffff;      /* heading color */
-  --row-text-p-size:     1.1rem;       /* paragraph size */
+  --row-text-p-size:     1.1rem;      /* paragraph size */
   --row-text-p-color:    rgba(255,255,255,0.55);
   --row-text-p-weight:   300;
 
@@ -74,8 +74,7 @@
   --ap-border:         rgba(0,180,216,0.18);
   --ap-accent:         #00b4d8;
   --ap-radius:         12px;
-  --ap-padding:        2rem 2.5rem 2.5rem; /* top | sides | bottom — reduce to shrink card height */
-  --ap-max-width:      860px;              /* card width — reduce to shrink card width            */
+  --ap-padding:        3rem 4.0rem 3.5rem;  /* top | sides | bottom */
   --ap-title-size:     2rem;
   --ap-title-color:    #ffffff;
   --ap-body-size:      1.1rem;
@@ -177,35 +176,6 @@
   font-weight: 300;
 }
 
-/* ── Card bullet list ──
-   Replaces the paragraph inside cards with a scannable list.
-   Dot colour and text size follow the same card variables.   */
-.card-list {
-  list-style: none;
-  padding: 0; margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-.card-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: var(--card-para-size);
-  color: var(--card-para-color);
-  line-height: 1.5;
-  font-weight: 300;
-}
-.card-list li::before {
-  content: '';
-  flex-shrink: 0;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--tag-color);
-  margin-top: 0.45em;
-  opacity: 0.7;
-}
-
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ASSESSMENT SECTION
@@ -219,8 +189,7 @@
    ┃ COLOURS + SPACING are controlled by the --ap-* variables above.
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .ap-phase {
-  max-width: var(--ap-max-width);  /* ← change --ap-max-width in :root to resize */
-  margin: 0 auto;                  /* centres the card in the section             */
+  margin: 0 4rem;
   padding: var(--ap-padding);
   background: var(--ap-bg);
   border: 1px solid var(--ap-border);
@@ -264,15 +233,17 @@
   border: 1px solid var(--ap-tag-border);
   border-radius: 3px;
   padding: 0.28rem 0.8rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-/* ── Centered header zone (title + intro paragraph) ── */
+/* ── Centered header zone (title + intro paragraph) ──
+   Text is centred inside this block. The block itself is left-aligned
+   in the card but the content inside is centred via text-align.        */
 .ap-header {
   text-align: center;
-  max-width: 660px;
-  margin: 0 auto 0;
-  padding-bottom: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto 0;         /* centre the block horizontally */
+  padding-bottom: 2rem;
 }
 
 .ap-header .section-title {
@@ -296,7 +267,7 @@
 .ap-divider {
   border: none;
   border-top: 1px solid rgba(0,180,216,0.15);
-  margin: 1.25rem 0;
+  margin: 2rem 0;
 }
 
 /* ── Single-column bullet list ──
@@ -309,7 +280,7 @@
   grid-template-columns: 1fr;   /* ← single column; change to 1fr 1fr for two columns */
   gap: 0;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto;               /* centre the list under the header */
 }
 
 .ap-list li {
@@ -318,7 +289,7 @@
   gap: 0.85rem;
   font-size: var(--ap-bullet-size);
   color: var(--ap-body-color);
-  padding: 0.6rem 0;             /* ← reduce to tighten row height */
+  padding: 0.85rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   line-height: 1.55;
 }
@@ -456,7 +427,6 @@
   text-decoration: none;
   border-radius: 3px;
   transition: background 0.2s, transform 0.2s;
-  margin: 0 0.4rem;
 }
 .btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
@@ -471,8 +441,8 @@
   /* stack to 1 col on mobile */
   .services-grid { grid-template-columns: 1fr; }
 
-  /* assessment: full width on mobile */
-  .ap-phase  { max-width: 100%; margin: 0 1.25rem; padding: 1.5rem 1.25rem; }
+  /* assessment: tighten card margins on mobile */
+  .ap-phase  { margin: 0 1.25rem; padding: 2rem 1.5rem; }
   .ap-header { max-width: 100%; }
 
   /* image+text: stack vertically */

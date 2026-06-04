@@ -13,6 +13,95 @@
   <script defer src="../assets/js/nav.js?v=11"></script>
   <script defer src="../assets/js/main.js?v=11"></script>
   <script defer src="../assets/hermes/hermes.js?v=11"></script>
+
+  <!-- ═══════════════ PAGE-LOCAL STYLES (marquee + typed heading) ═══════════════ -->
+  <style>
+    /* ── Marquee banner ── */
+    .jb-marquee-section {
+      --mq-bg:         #0b1120;
+      --mq-border:     rgba(255, 255, 255, 0.07);
+      --mq-text:       rgba(255, 255, 255, 0.55);
+      --mq-text-hover: #ffffff;
+      --mq-accent:     #00b4d8;
+      width: 100%;
+      background: var(--mq-bg);
+      border-block: 1px solid var(--mq-border);
+    }
+    .jb-marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0.9rem 0;
+    }
+    .jb-marquee__edge {
+      position: absolute; top: 0; bottom: 0;
+      width: 90px; z-index: 2; pointer-events: none;
+    }
+    .jb-marquee__edge--l { left: 0;  background: linear-gradient(to right, var(--mq-bg), transparent); }
+    .jb-marquee__edge--r { right: 0; background: linear-gradient(to left,  var(--mq-bg), transparent); }
+    .jb-marquee__track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: jb-marquee-scroll 34s linear infinite;
+      will-change: transform;
+    }
+    .jb-marquee:hover .jb-marquee__track { animation-play-state: paused; }
+    @keyframes jb-marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .jb-marquee__item {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.4rem;
+      padding: 0 2.1rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .jb-marquee__text {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.01em;
+      color: var(--mq-text);
+      transition: color 0.3s ease;
+    }
+    .jb-marquee:hover .jb-marquee__text { color: var(--mq-text-hover); }
+    .jb-marquee__sep {
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: var(--mq-accent);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      opacity: 0.85;
+      box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
+    }
+
+    /* ── Typed heading (Service Cards section) ── */
+    #typed-role {
+      display: inline-block;
+      min-width: 22ch;     /* holds the line steady; bump toward 33ch for zero shift */
+      text-align: left;
+    }
+    .hero__blink {
+      display: inline-block;
+      margin-left: 2px;
+      color: #00b4d8;
+      font-weight: 300;
+      animation: hero-blink 1s step-end infinite;
+    }
+    @keyframes hero-blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .jb-marquee__track { animation-duration: 90s; }
+      .hero__blink { animation: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -30,6 +119,16 @@
   </section>
 
 
+  <!-- ═══════════════ MARQUEE BANNER (under hero) ═══════════════ -->
+  <section class="jb-marquee-section" aria-label="Security note">
+    <div class="jb-marquee" data-jb-marquee>
+      <div class="jb-marquee__edge jb-marquee__edge--l" aria-hidden="true"></div>
+      <div class="jb-marquee__edge jb-marquee__edge--r" aria-hidden="true"></div>
+      <div class="jb-marquee__track" id="jb-marquee-track"></div>
+    </div>
+  </section>
+
+
   <!-- ═══════════════════════════════════════════════════════════════
        SERVICE CARDS  (3 wide × 2 deep on desktop)
        ┃ Add or remove <div class="card service-card"> blocks freely.
@@ -38,13 +137,15 @@
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="section-tag fade-in">What We Deliver</div>
-    <h2 class="section-title fade-in">Security Services</h2>
+    <h2 class="section-title fade-in">
+      <span id="typed-role"></span><span class="hero__blink">|</span>
+    </h2>
     <p class="section-intro fade-in">
       Every security control is documented with a defined owner, a tested runbook, and a monthly review cycle. Nothing goes unmonitored and nothing goes unpatched without a tracked exception.
     </p>
- 
+
     <div class="services-grid">
- 
+
       <!-- CARD 1 — row 1, col 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128737;&#65039;</div>
@@ -57,7 +158,7 @@
           <li>Monthly threat summary in executive report</li>
         </ul>
       </div>
- 
+
       <!-- CARD 2 — row 1, col 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128190;</div>
@@ -70,7 +171,7 @@
           <li>Defined RTO &amp; RPO targets per app tier</li>
         </ul>
       </div>
- 
+
       <!-- CARD 3 — row 1, col 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128231;</div>
@@ -83,7 +184,7 @@
           <li>Click rates reported in monthly briefing</li>
         </ul>
       </div>
- 
+
       <!-- CARD 4 — row 2, col 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128100;</div>
@@ -96,7 +197,7 @@
           <li>Quarterly access reviews — orphaned accounts removed</li>
         </ul>
       </div>
- 
+
       <!-- CARD 5 — row 2, col 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128203;</div>
@@ -109,7 +210,7 @@
           <li>Quarterly CIS benchmark assessment</li>
         </ul>
       </div>
- 
+
       <!-- CARD 6 — row 2, col 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128202;</div>
@@ -121,7 +222,7 @@
           <li>Updated risk register with prioritized remediation</li>
         </ul>
       </div>
- 
+
     </div>
   </section>
 
@@ -129,28 +230,13 @@
   <!-- ═══════════════════════════════════════════════════════════════
        ASSESSMENT SECTION
        ┃ LAYOUT: tag top-left → centered title + paragraph → divider → bullet list
-       ┃
-       ┃ WHAT TO EDIT HERE:
-       ┃   • .ap-tag text       → badge label (top-left)
-       ┃   • .section-title     → main heading (centred)
-       ┃   • .ap-intro text     → paragraph under heading; use <span class="hl"> for accent
-       ┃   • <hr class="ap-divider"> → remove this line to hide the rule
-       ┃   • <li> items         → add or remove steps freely; order matters
-       ┃
-       ┃ WHAT TO EDIT IN security.css › ASSESSMENT SECTION VARIABLES:
-       ┃   • --ap-bg / --ap-border        → card background and border colour
-       ┃   • --ap-bullet-color            → dot colour and glow
-       ┃   • --ap-body-size/color         → text size and opacity
-       ┃   • .ap-list grid-template-columns → change to 1fr 1fr for two columns
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section" id="assessment">
     <div class="ap-phase fade-in">
       <div>
 
-        <!-- TAG — top-left badge; edit the text inside -->
         <div class="ap-tag">Our Process</div>
 
-        <!-- CENTERED HEADER — title and paragraph sit centred in the card -->
         <div class="ap-header">
           <h2 class="section-title">Security Assessment</h2>
           <p class="ap-intro">
@@ -158,10 +244,8 @@
           </p>
         </div>
 
-        <!-- DIVIDER — remove this element to hide the rule -->
         <hr class="ap-divider" />
 
-        <!-- STEP LIST — add or remove <li> items; each gets a bullet dot automatically -->
         <ul class="ap-list">
           <li>Review network perimeter and internal segmentation for exposure risks</li>
           <li>Assess server and service patch levels against current CVE database</li>
@@ -178,48 +262,26 @@
 
   <!-- ═══════════════════════════════════════════════════════════════
        SECURITY FIGURE — image + text row
-       ┃ WHAT TO EDIT HERE:
-       ┃   • <img src="..."> → swap the image path
-       ┃   • <h3> text       → section heading
-       ┃   • <p> blocks      → add, remove, or rewrite paragraphs freely;
-       ┃                        each <p> gets consistent spacing automatically
-       ┃   • .text-stats     → optional stat badges; remove the whole
-       ┃                        <div class="text-stats"> block to hide them,
-       ┃                        or edit the value/label pairs inside
-       ┃
-       ┃ WHAT TO EDIT IN security.css › IMAGE + TEXT ROW VARIABLES:
-       ┃   • --row-gap             → space between image and text
-       ┃   • --row-text-h3-size/color → heading appearance
-       ┃   • --row-text-p-size/color  → paragraph appearance
-       ┃   • .img-text-row.row-reverse → flip image to right side
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="img-text-row fade-in">
 
-      <!-- IMAGE SIDE — swap src to change the image -->
       <div class="img-col">
         <div class="img-wrap">
           <img src="../assets/img/security.png" alt="Security dashboard" class="img-display" lightbox="true" />
         </div>
       </div>
 
-      <!-- TEXT SIDE — edit everything inside .text-col -->
       <div class="text-col">
 
-        <!-- HEADING — edit this line -->
         <h3>Centralized Security Operations</h3>
 
-        <!-- PARAGRAPH 1 — edit or delete -->
         <p>Our Wazuh SIEM aggregates logs from all seven sites in real time. Every alert is automatically triaged, correlated against known attack patterns, and routed to the right specialist within 60 seconds of detection.</p>
 
-        <!-- PARAGRAPH 2 — edit or delete -->
         <p>Backups run nightly with 30-day local retention and 90-day offsite retention. Recovery is tested quarterly against documented RTO and RPO targets &mdash; we verify the restore, not just the job status.</p>
 
-        <!-- PARAGRAPH 3 — edit or delete -->
         <p>Monthly executive reports deliver a full threat summary, patch compliance status, phishing simulation results, and a forward-looking risk register with prioritized remediation work.</p>
 
-        <!-- STAT BADGES — optional; delete this whole block to remove them
-             Each .text-stat: first <span> = big number, second = label -->
         <div class="text-stats">
           <div class="text-stat">
             <span>60s</span>
@@ -242,8 +304,6 @@
 
   <!-- ═══════════════════════════════════════════════════════════════
        CTA BAND
-       ┃ Edit the heading, subtext, and button label/link here.
-       ┃ Button colour → security.css › CTA BAND › .btn
        ═══════════════════════════════════════════════════════════════ -->
   <section class="svc-cta fade-in">
     <h2>Let's harden your security posture</h2>
@@ -251,6 +311,94 @@
     <a href="pricing.html" class="btn">See Pricing</a>
     <a href="portal.html" class="btn">Login to Portal</a>
   </section>
+
+
+  <!-- ═══════════════ PAGE-LOCAL SCRIPTS (marquee + typed heading) ═══════════════ -->
+  <script>
+    // ── Marquee ──
+    (function initMarquee() {
+      const track = document.getElementById('jb-marquee-track');
+      if (!track) return;
+
+      const phrases = [
+        'Defense in depth across all seven sites',
+        'Every alert triaged within 60 seconds',
+        'Backups tested quarterly — not just job status',
+        'MFA enforced on every external login',
+        'Critical patches deployed within 72 hours',
+        'Logs correlated in real time, around the clock',
+        'Nothing unmonitored, nothing unpatched',
+        'Every incident documented end to end'
+      ];
+
+      const shuffled = [...phrases];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      const buildSet = (hidden) => {
+        const inner = shuffled.map(p =>
+          `<span class="jb-marquee__text">${p}</span><span class="jb-marquee__sep" aria-hidden="true"></span>`
+        ).join('');
+        return `<div class="jb-marquee__item"${hidden ? ' aria-hidden="true"' : ''}>${inner}</div>`;
+      };
+
+      track.innerHTML = buildSet(false) + buildSet(true);
+    })();
+
+    // ── Typed heading (cycles through the six card titles) ──
+    (function initTypedRole() {
+      const el = document.getElementById('typed-role');
+      if (!el) return;
+
+      const roles = [
+        'SIEM & Threat Detection',
+        'Backup & Disaster Recovery',
+        'Email Security & Phishing Defense',
+        'Identity & Access Protection',
+        'Patch Management & Compliance',
+        'Security Reporting'
+      ];
+
+      const TYPE_SPEED   = 70;    // per character while typing
+      const DELETE_SPEED = 40;    // per character while deleting
+      const HOLD_FULL    = 1600;  // pause when fully typed
+      const HOLD_EMPTY   = 400;   // pause before next phrase
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = roles[0];
+        return;
+      }
+
+      let roleIdx = 0, charIdx = 0, deleting = false;
+
+      function tick() {
+        const current = roles[roleIdx];
+
+        if (!deleting) {
+          charIdx++;
+          el.textContent = current.slice(0, charIdx);
+          if (charIdx === current.length) {
+            deleting = true;
+            return setTimeout(tick, HOLD_FULL);
+          }
+          return setTimeout(tick, TYPE_SPEED);
+        } else {
+          charIdx--;
+          el.textContent = current.slice(0, charIdx);
+          if (charIdx === 0) {
+            deleting = false;
+            roleIdx = (roleIdx + 1) % roles.length;
+            return setTimeout(tick, HOLD_EMPTY);
+          }
+          return setTimeout(tick, DELETE_SPEED);
+        }
+      }
+
+      tick();
+    })();
+  </script>
 
 
 </body>
