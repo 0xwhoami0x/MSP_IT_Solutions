@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../assets/hermes/widget.css?v=11" />
   <link rel="stylesheet" href="../assets/css/security.css?v=11" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  
+
   <script defer src="../assets/js/nav.js?v=11"></script>
   <script defer src="../assets/js/main.js?v=11"></script>
   <script defer src="../assets/hermes/hermes.js?v=11"></script>
@@ -17,98 +17,241 @@
 <body>
 
 
-  <!-- HERO -->
+  <!-- ═══════════════════════════════════════════════════════════════
+       HERO
+       ┃ Edit the tag, title, and intro paragraph below.
+       ┃ Styling → security.css › HERO
+       ═══════════════════════════════════════════════════════════════ -->
   <section class="svc-hero">
-    <div class="section-tag fade-in">Security First, Always</div>
     <h2 class="section-title fade-in">Security</h2>
     <p class="section-intro fade-in">
-      Security isn't a product you buy &mdash; it's a program you run. Our security practice builds defense in depth across your full environment: a centralized SIEM aggregates and correlates logs from all seven sites in real time, resilient backup systems protect every critical workload with tested recovery procedures, and Microsoft 365 Business Premium layers email security, phishing simulation, and identity protection into your existing productivity stack. Every alert is triaged within 60 seconds and every incident produces a documented timeline and post-mortem.
+      Security isn't a product you buy &mdash; it's a program you run. Our security practice builds defense in depth across your full environment: a centralized SIEM aggregates and correlates logs from all sites in real time, resilient backup systems protect every critical workload with tested recovery procedures, and Microsoft 365 Business Premium layers email security, phishing simulation, and identity protection into your existing productivity stack. Every alert is triaged within 60 seconds and every incident produces a documented timeline and post-mortem.
     </p>
   </section>
 
-  <!-- ASSESSMENT PHASE -->
-  <section class="ap-phase fade-in" id="assessment">
-    <div>
-      <div class="ph-num">Phase 01</div>
-      <h2>IT Security Assessment</h2>
-      <p>Every engagement begins with a comprehensive security assessment of your current environment. Our methodology covers discovery, gap analysis, and risk-ranked reporting &mdash; the result is a clear picture of your exposure and a prioritized remediation roadmap mapped to <span class="hl">business impact</span>.</p>
-      <ul class="ap-list">
-        <li>Review network perimeter and internal segmentation for exposure risks</li>
-        <li>Assess server and service patch levels against current CVE database</li>
-        <li>Audit identity and access management for privilege creep and orphaned accounts</li>
-        <li>Evaluate email security posture &mdash; SPF, DKIM, DMARC, and anti-phishing controls</li>
-        <li>Review backup systems for coverage gaps, retention policy, and tested restore capability</li>
-        <li>Analyze LAN/WAN traffic for lateral movement indicators and unencrypted data flows</li>
-      </ul>
-    </div>
-    <div class="ph-icon" aria-hidden="true">&#128269;</div>
-  </section>
 
-  <!-- SERVICE CARDS -->
+  <!-- ═══════════════════════════════════════════════════════════════
+       SERVICE CARDS  (3 wide × 2 deep on desktop)
+       ┃ Add or remove <div class="card service-card"> blocks freely.
+       ┃ Grid stays 3-wide; 6 cards = 2 full rows exactly.
+       ┃ Card layout/colours → security.css › SERVICE CARD GRID
+       ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="section-tag fade-in">What We Deliver</div>
     <h2 class="section-title fade-in">Security Services</h2>
     <p class="section-intro fade-in">
       Every security control is documented with a defined owner, a tested runbook, and a monthly review cycle. Nothing goes unmonitored and nothing goes unpatched without a tracked exception.
     </p>
-
+ 
     <div class="services-grid">
+ 
+      <!-- CARD 1 — row 1, col 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128737;&#65039;</div>
         <h3>SIEM &amp; Threat Detection</h3>
-        <p>Wazuh SIEM is deployed as the central log aggregation and correlation engine for all seven sites. Every firewall, server, endpoint, and network device ships logs to Wazuh in real time. Correlation rules fire automated alerts on known attack patterns &mdash; brute force attempts, lateral movement, privilege escalation, and data exfiltration indicators. Every alert generates a Freshdesk ticket within 60 seconds and is triaged by the on-call security specialist. Monthly threat summaries are included in your executive report.</p>
+        <ul class="card-list">
+          <li>Wazuh SIEM across all seven sites</li>
+          <li>Real-time log ingestion from every device</li>
+          <li>Automated alerts on brute force, lateral movement &amp; exfiltration</li>
+          <li>Freshdesk ticket within 60 seconds of detection</li>
+          <li>Monthly threat summary in executive report</li>
+        </ul>
       </div>
+ 
+      <!-- CARD 2 — row 1, col 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128190;</div>
         <h3>Backup &amp; Disaster Recovery</h3>
-        <p>Veeam Backup &amp; Replication protects every virtual machine with nightly full or incremental backups. Local retention runs 30 days on-site at the co-location facility for fast recovery. Offsite retention extends to 90 days at a geographically separate facility for ransomware and disaster recovery scenarios. Recovery procedures are documented per workload and tested quarterly &mdash; we verify the backup, not just the backup job. RTO and RPO targets are defined per application tier and reflected in the SLA.</p>
+        <ul class="card-list">
+          <li>Veeam nightly backups for every VM</li>
+          <li>30-day local retention at co-location</li>
+          <li>90-day offsite retention for ransomware scenarios</li>
+          <li>Quarterly tested restores — not just job status</li>
+          <li>Defined RTO &amp; RPO targets per app tier</li>
+        </ul>
       </div>
+ 
+      <!-- CARD 3 — row 1, col 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128231;</div>
         <h3>Email Security &amp; Phishing Defense</h3>
-        <p>Microsoft 365 Business Premium includes Defender for Office 365, providing advanced threat protection for email with Safe Links, Safe Attachments, and anti-phishing policies tuned to your domain. SPF, DKIM, and DMARC records are configured and monitored for all outbound domains. Simulated phishing campaigns are run quarterly to measure user susceptibility and target training to the highest-risk individuals. Results are reported in the monthly executive briefing alongside click rates and training completion.</p>
+        <ul class="card-list">
+          <li>Defender for Office 365 — Safe Links &amp; Attachments</li>
+          <li>SPF, DKIM &amp; DMARC configured and monitored</li>
+          <li>Quarterly simulated phishing campaigns</li>
+          <li>Targeted training for highest-risk users</li>
+          <li>Click rates reported in monthly briefing</li>
+        </ul>
       </div>
+ 
+      <!-- CARD 4 — row 2, col 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128100;</div>
         <h3>Identity &amp; Access Protection</h3>
-        <p>Azure AD Identity Protection monitors all user accounts for risky sign-in behavior &mdash; impossible travel, leaked credential alerts, and anomalous access patterns. Conditional access policies enforce MFA on every external authentication and block non-compliant devices from accessing corporate resources. Privileged Identity Management limits standing admin access &mdash; elevated permissions require just-in-time activation with approval and full audit logging. Quarterly access reviews identify and remove orphaned accounts and excess permissions.</p>
+        <ul class="card-list">
+          <li>Azure AD Identity Protection on all accounts</li>
+          <li>MFA enforced on every external login</li>
+          <li>Conditional access blocks non-compliant devices</li>
+          <li>Just-in-time admin activation with full audit log</li>
+          <li>Quarterly access reviews — orphaned accounts removed</li>
+        </ul>
       </div>
+ 
+      <!-- CARD 5 — row 2, col 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128203;</div>
         <h3>Patch Management &amp; Compliance</h3>
-        <p>NinjaOne enforces a defined patch policy across all 592 Windows endpoints &mdash; critical OS and application patches are deployed within 72 hours of release, standard patches roll out on a defined monthly schedule. JAMF Pro manages patch compliance for 57 MacBooks and 89 iPads on the same schedule. Patch compliance reports are generated every Monday and reviewed in the weekly operations call. Any exception requires a documented risk acceptance signed by your IT Manager. CIS benchmark compliance is assessed quarterly across all managed systems.</p>
+        <ul class="card-list">
+          <li>Critical patches deployed within 72 hours</li>
+          <li>592 Windows endpoints via NinjaOne</li>
+          <li>57 MacBooks &amp; 89 iPads via JAMF Pro</li>
+          <li>Weekly compliance report every Monday</li>
+          <li>Quarterly CIS benchmark assessment</li>
+        </ul>
       </div>
+ 
+      <!-- CARD 6 — row 2, col 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128202;</div>
         <h3>Security Reporting</h3>
-        <p>Monthly executive reports include a threat summary, vulnerability status, patch compliance rate, phishing simulation results, and any security incidents from the prior month. Every incident report includes a documented timeline, root cause analysis, and remediation steps taken. Quarterly security reviews assess your program against the current threat landscape and produce an updated risk register with prioritized remediation work for the next quarter.</p>
+        <ul class="card-list">
+          <li>Monthly executive report — threats, patches, phishing</li>
+          <li>Every incident includes timeline &amp; root cause</li>
+          <li>Quarterly program review vs. threat landscape</li>
+          <li>Updated risk register with prioritized remediation</li>
+        </ul>
+      </div>
+ 
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       ASSESSMENT SECTION
+       ┃ LAYOUT: tag top-left → centered title + paragraph → divider → bullet list
+       ┃
+       ┃ WHAT TO EDIT HERE:
+       ┃   • .ap-tag text       → badge label (top-left)
+       ┃   • .section-title     → main heading (centred)
+       ┃   • .ap-intro text     → paragraph under heading; use <span class="hl"> for accent
+       ┃   • <hr class="ap-divider"> → remove this line to hide the rule
+       ┃   • <li> items         → add or remove steps freely; order matters
+       ┃
+       ┃ WHAT TO EDIT IN security.css › ASSESSMENT SECTION VARIABLES:
+       ┃   • --ap-bg / --ap-border        → card background and border colour
+       ┃   • --ap-bullet-color            → dot colour and glow
+       ┃   • --ap-body-size/color         → text size and opacity
+       ┃   • .ap-list grid-template-columns → change to 1fr 1fr for two columns
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="assessment">
+    <div class="ap-phase fade-in">
+      <div>
+
+        <!-- TAG — top-left badge; edit the text inside -->
+        <div class="ap-tag">Our Process</div>
+
+        <!-- CENTERED HEADER — title and paragraph sit centred in the card -->
+        <div class="ap-header">
+          <h2 class="section-title">Security Assessment</h2>
+          <p class="ap-intro">
+            Every engagement begins with a comprehensive security assessment of your current environment. Our methodology covers discovery, gap analysis, and risk-ranked reporting &mdash; the result is a clear picture of your exposure and a prioritized remediation roadmap mapped to <span class="hl">business impact</span>.
+          </p>
+        </div>
+
+        <!-- DIVIDER — remove this element to hide the rule -->
+        <hr class="ap-divider" />
+
+        <!-- STEP LIST — add or remove <li> items; each gets a bullet dot automatically -->
+        <ul class="ap-list">
+          <li>Review network perimeter and internal segmentation for exposure risks</li>
+          <li>Assess server and service patch levels against current CVE database</li>
+          <li>Audit identity and access management for privilege creep and orphaned accounts</li>
+          <li>Evaluate email security posture &mdash; SPF, DKIM, DMARC, and anti-phishing controls</li>
+          <li>Review backup systems for coverage gaps, retention policy, and tested restore capability</li>
+          <li>Analyze LAN/WAN traffic for lateral movement indicators and unencrypted data flows</li>
+        </ul>
+
       </div>
     </div>
   </section>
 
-  <!-- SECURITY FIGURE -->
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECURITY FIGURE — image + text row
+       ┃ WHAT TO EDIT HERE:
+       ┃   • <img src="..."> → swap the image path
+       ┃   • <h3> text       → section heading
+       ┃   • <p> blocks      → add, remove, or rewrite paragraphs freely;
+       ┃                        each <p> gets consistent spacing automatically
+       ┃   • .text-stats     → optional stat badges; remove the whole
+       ┃                        <div class="text-stats"> block to hide them,
+       ┃                        or edit the value/label pairs inside
+       ┃
+       ┃ WHAT TO EDIT IN security.css › IMAGE + TEXT ROW VARIABLES:
+       ┃   • --row-gap             → space between image and text
+       ┃   • --row-text-h3-size/color → heading appearance
+       ┃   • --row-text-p-size/color  → paragraph appearance
+       ┃   • .img-text-row.row-reverse → flip image to right side
+       ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="img-text-row fade-in">
+
+      <!-- IMAGE SIDE — swap src to change the image -->
       <div class="img-col">
         <div class="img-wrap">
           <img src="../assets/img/security.png" alt="Security dashboard" class="img-display" lightbox="true" />
         </div>
       </div>
+
+      <!-- TEXT SIDE — edit everything inside .text-col -->
       <div class="text-col">
+
+        <!-- HEADING — edit this line -->
         <h3>Centralized Security Operations</h3>
+
+        <!-- PARAGRAPH 1 — edit or delete -->
         <p>Our Wazuh SIEM aggregates logs from all seven sites in real time. Every alert is automatically triaged, correlated against known attack patterns, and routed to the right specialist within 60 seconds of detection.</p>
+
+        <!-- PARAGRAPH 2 — edit or delete -->
         <p>Backups run nightly with 30-day local retention and 90-day offsite retention. Recovery is tested quarterly against documented RTO and RPO targets &mdash; we verify the restore, not just the job status.</p>
+
+        <!-- PARAGRAPH 3 — edit or delete -->
         <p>Monthly executive reports deliver a full threat summary, patch compliance status, phishing simulation results, and a forward-looking risk register with prioritized remediation work.</p>
-      </div>
+
+        <!-- STAT BADGES — optional; delete this whole block to remove them
+             Each .text-stat: first <span> = big number, second = label -->
+        <div class="text-stats">
+          <div class="text-stat">
+            <span>60s</span>
+            <span>Alert Triage</span>
+          </div>
+          <div class="text-stat">
+            <span>90d</span>
+            <span>Offsite Retention</span>
+          </div>
+          <div class="text-stat">
+            <span>ALL</span>
+            <span>Sites Covered</span>
+          </div>
+        </div>
+
+      </div><!-- end .text-col -->
     </div>
   </section>
 
-  <!-- CTA -->
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       CTA BAND
+       ┃ Edit the heading, subtext, and button label/link here.
+       ┃ Button colour → security.css › CTA BAND › .btn
+       ═══════════════════════════════════════════════════════════════ -->
   <section class="svc-cta fade-in">
     <h2>Let's harden your security posture</h2>
     <p>Talk to our security specialist about a layered defense program built around your environment and your compliance requirements.</p>
-    <a href="portal.html" class="btn">Get Started via Portal</a>
+    <a href="pricing.html" class="btn">See Pricing</a>
+    <a href="portal.html" class="btn">Login to Portal</a>
   </section>
+
 
 </body>
 </html>

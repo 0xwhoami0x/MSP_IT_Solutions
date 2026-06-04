@@ -1,32 +1,103 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  security.css — SECURITY PAGE — uses service cards and the image+text rows.
-   ║  Self-contained styles for this page. Edit freely; changes here  ║
-   ║  affect ONLY this page. Shared site chrome lives in nav.css;     ║
-   ║  shared section typography lives in base.css.                    ║
+   ║  security.css — SECURITY PAGE                                   ║
+   ║  Self-contained styles for this page only.                      ║
+   ║  Shared site chrome  → nav.css                                  ║
+   ║  Shared section type → base.css                                 ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE-LEVEL VARIABLES
+   ┃ Override base.css defaults for this page only.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
   --page-bg:   #0a0f1e;
-  --border:    rgba(255, 255, 255, 0.07);   /* fixed: was lime-green test value */
-  --tag-color: #00b4d8;                      /* fixed: was purple test value   */
+  --border:    rgba(255, 255, 255, 0.07);
+  --tag-color: #00b4d8;
+}
 
-  --card-min-col: 280px;
-  --card-gap:     1.5rem;
-  --card-icon-size:  1.8rem;
-  --card-title-size: 1.4rem;
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICE CARD GRID VARIABLES
+   ┃ Edit these to change how the service cards look.
+   ┃ The layout (3-wide desktop, 1-col mobile) is controlled below
+   ┃ under "SERVICE CARD GRID".
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --card-gap:         1.5rem;
+  --card-icon-size:   1.8rem;
+  --card-title-size:  1.4rem;
   --card-title-color: #ffffff;
-  --card-para-size:  0.88rem;
-  --card-para-color: rgba(255, 255, 255, 0.55);
+  --card-para-size:   1.1rem;
+  --card-para-color:  rgba(255, 255, 255, 0.55);
   --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
 }
 
-/* ── HERO ──────────────────────────────────────────────────────── */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMAGE + TEXT ROW VARIABLES
+   ┃ Edit these to control the "Centralized Security Operations"
+   ┃ block layout (the image-left / text-right row at the bottom).
+   ┃ Text content is edited in security.html under <!-- SECURITY FIGURE -->.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --img-bg:      rgba(255,255,255,0.03);
+  --img-border:  rgba(255,255,255,0.07);
+  --img-radius:  10px;
+  --img-padding: 0.75rem;
+
+  --caption-size:   0.82rem;
+  --caption-color:  rgba(255,255,255,0.4);
+  --caption-margin: 0.75rem;
+
+  --row-gap:             3rem;         /* gap between image and text columns */
+  --row-text-h3-size:    1.8rem;       /* heading size */
+  --row-text-h3-color:   #ffffff;      /* heading color */
+  --row-text-p-size:     1.1rem;       /* paragraph size */
+  --row-text-p-color:    rgba(255,255,255,0.55);
+  --row-text-p-weight:   300;
+
+  --lightbox-bg:        rgba(0,0,0,0.92);
+  --lightbox-max-w:     90vw;
+  --lightbox-max-h:     85vh;
+  --lightbox-cap-color: rgba(255,255,255,0.6);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ASSESSMENT SECTION VARIABLES
+   ┃ Edit these to change colours, spacing, and bullet styling.
+   ┃ Text content is edited in security.html under <!-- ASSESSMENT -->.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --ap-bg:             rgba(255,255,255,0.025);
+  --ap-border:         rgba(0,180,216,0.18);
+  --ap-accent:         #00b4d8;
+  --ap-radius:         12px;
+  --ap-padding:        2rem 2.5rem 2.5rem; /* top | sides | bottom — reduce to shrink card height */
+  --ap-max-width:      860px;              /* card width — reduce to shrink card width            */
+  --ap-title-size:     2rem;
+  --ap-title-color:    #ffffff;
+  --ap-body-size:      1.1rem;
+  --ap-body-color:     rgba(255,255,255,0.6);
+  --ap-bullet-color:   #00b4d8;
+  --ap-bullet-size:    1.1rem;
+  --ap-hl-color:       #00b4d8;         /* colour for <span class="hl"> */
+  --ap-tag-bg:         rgba(0,180,216,0.1);
+  --ap-tag-border:     rgba(0,180,216,0.3);
+  --ap-tag-color:      #00b4d8;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-hero {
   position: relative;
   overflow: hidden;
   padding: 4rem 2rem 3rem;
   text-align: center;
-  background: linear-gradient(135deg, #0a0f1e 0%, #0b1f3a 60%, #0d2b50 100%);
+  background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
 }
 .svc-hero::before,
 .svc-hero::after {
@@ -40,36 +111,27 @@
 .svc-hero::before { width: 600px; height: 600px; background: rgba(0,180,216,0.12); top: -260px; right: -180px; }
 .svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
+.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1300px; }
 
-.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 640px; }
 
-/* ── NETWORK DIAGRAM (responsive SVG) ──────────────────────────── */
-.netmap {
-  width: 100%;
-  max-width: 680px;
-  margin: 2.5rem auto 0;
-  display: block;
-}
-.netmap svg { width: 100%; height: auto; display: block; overflow: visible; }
-.nm-line   { stroke: rgba(0,180,216,0.28); stroke-width: 2; }
-.nm-node   { transition: transform 0.3s ease; }
-.nm-node circle { filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45)); }
-.nm-node:hover  { transform: translateY(-3px); }
-.nm-icon   { font-size: 30px; text-anchor: middle; dominant-baseline: central; }
-.nm-center-label {
-  font-family: var(--font-display);
-  fill: #fff; font-size: 19px; letter-spacing: 1px;
-  text-anchor: middle; dominant-baseline: central;
-}
-
-/* ── SERVICE CARD GRID ─────────────────────────────────────────── */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SECTION WRAPPER
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section { padding: 4rem 4rem; }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICE CARD GRID
+   ┃ LAYOUT: fixed 3 columns on desktop, 1 column on mobile.
+   ┃   • To change column count: edit repeat(3, 1fr) below.
+   ┃   • To change card appearance: edit the variables above.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-min-col), 1fr));
+  grid-template-columns: repeat(3, 1fr); /* ← change 3 to adjust column count */
   gap: var(--card-gap);
 }
+
 .card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
@@ -78,6 +140,7 @@
   transition: border-color 0.25s, transform 0.25s;
 }
 .card:hover { border-color: rgba(0, 180, 216, 0.25); transform: translateY(-4px); }
+
 .service-card { position: relative; overflow: hidden; }
 .service-card::before {
   content: '';
@@ -90,6 +153,7 @@
   transition: transform 0.3s;
 }
 .service-card:hover::before { transform: scaleX(1); }
+
 .service-icon {
   width: 50px; height: 50px;
   display: flex; align-items: center; justify-content: center;
@@ -113,7 +177,263 @@
   font-weight: 300;
 }
 
-/* ── CTA BAND ──────────────────────────────────────────────────── */
+/* ── Card bullet list ──
+   Replaces the paragraph inside cards with a scannable list.
+   Dot colour and text size follow the same card variables.   */
+.card-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.card-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--card-para-size);
+  color: var(--card-para-color);
+  line-height: 1.5;
+  font-weight: 300;
+}
+.card-list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--tag-color);
+  margin-top: 0.45em;
+  opacity: 0.7;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ASSESSMENT SECTION
+   ┃ Document-style layout:
+   ┃   .ap-tag       → top-left badge (edit text in HTML)
+   ┃   .ap-header    → centered title + paragraph zone
+   ┃   .ap-divider   → thin rule separating header from list
+   ┃   .ap-list      → single-column step list
+   ┃
+   ┃ TEXT + BULLETS are edited in security.html under <!-- ASSESSMENT -->.
+   ┃ COLOURS + SPACING are controlled by the --ap-* variables above.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ap-phase {
+  max-width: var(--ap-max-width);  /* ← change --ap-max-width in :root to resize */
+  margin: 0 auto;                  /* centres the card in the section             */
+  padding: var(--ap-padding);
+  background: var(--ap-bg);
+  border: 1px solid var(--ap-border);
+  border-radius: var(--ap-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+/* accent line on left edge */
+.ap-phase::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #00b4d8, #1565c0);
+}
+
+/* top-right ambient glow */
+.ap-phase::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
+  border-radius: 50%;
+  top: -200px; right: -180px;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+.ap-phase > div { position: relative; z-index: 1; }
+
+/* ── Tag badge — top-left, stays left-aligned ── */
+.ap-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ap-tag-color);
+  background: var(--ap-tag-bg);
+  border: 1px solid var(--ap-tag-border);
+  border-radius: 3px;
+  padding: 0.28rem 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Centered header zone (title + intro paragraph) ── */
+.ap-header {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto 0;
+  padding-bottom: 1.25rem;
+}
+
+.ap-header .section-title {
+  font-size: var(--ap-title-size);
+  color: var(--ap-title-color);
+  margin-bottom: 1rem;
+}
+
+.ap-intro {
+  font-size: var(--ap-body-size);
+  color: var(--ap-body-color);
+  line-height: 1.7;
+  font-weight: 300;
+  margin: 0;
+}
+
+.ap-intro .hl { color: var(--ap-hl-color); font-weight: 500; }
+
+/* ── Divider rule between header and list ──
+   Remove this element in HTML to hide the line.                        */
+.ap-divider {
+  border: none;
+  border-top: 1px solid rgba(0,180,216,0.15);
+  margin: 1.25rem 0;
+}
+
+/* ── Single-column bullet list ──
+   Each li gets a glowing dot + subtle bottom border to feel like rows.
+   To go back to 2 columns: change grid-template-columns to 1fr 1fr.   */
+.ap-list {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;   /* ← single column; change to 1fr 1fr for two columns */
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ap-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: var(--ap-bullet-size);
+  color: var(--ap-body-color);
+  padding: 0.6rem 0;             /* ← reduce to tighten row height */
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.55;
+}
+
+/* custom bullet dot */
+.ap-list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ap-bullet-color);
+  margin-top: 0.42em;
+  box-shadow: 0 0 6px rgba(0,180,216,0.5);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMAGE + TEXT ROW
+   ┃ Used by the "Centralized Security Operations" block.
+   ┃ TEXT content lives in security.html under <!-- SECURITY FIGURE -->.
+   ┃ SPACING + COLOURS are controlled by the --row-* variables above.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.img-wrap {
+  background: var(--img-bg);
+  border: 1px solid var(--img-border);
+  border-radius: var(--img-radius);
+  padding: var(--img-padding);
+  overflow: visible;
+  transition: border-color 0.25s;
+}
+.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
+
+.img-display {
+  width: 100%; height: auto; display: block;
+  border-radius: calc(var(--img-radius) - var(--img-padding));
+  transition: transform 0.3s ease;
+}
+.img-wrap:hover .img-display { transform: scale(1.015); }
+
+.img-text-row {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap);
+}
+.img-text-row.row-reverse { flex-direction: row-reverse; }
+
+.img-col { flex: 1; min-width: 0; }
+.img-col .img-display { width: 100%; height: auto; object-fit: initial; }
+
+.text-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Heading (e.g. "Centralized Security Operations") ──
+   Edit text in security.html. Edit size/colour here.    */
+.text-col h3 {
+  font-family: var(--font-display);
+  font-size: var(--row-text-h3-size);
+  color: var(--row-text-h3-color);
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+/* ── Body paragraphs ──
+   Add / remove <p> tags in security.html freely.
+   Spacing + colour are controlled by --row-text-p-* variables. */
+.text-col p {
+  font-size: var(--row-text-p-size);
+  color: var(--row-text-p-color);
+  font-weight: var(--row-text-p-weight);
+  line-height: 1.7;
+}
+
+/* ── Stat badges (optional) ──
+   Add <div class="text-stat"><span>value</span><span>label</span></div>
+   inside .text-col in the HTML to get a highlighted metric chip.    */
+.text-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.text-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,180,216,0.08);
+  border: 1px solid rgba(0,180,216,0.2);
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  min-width: 80px;
+}
+.text-stat span:first-child {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #00b4d8;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.text-stat span:last-child {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA BAND
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-cta {
   text-align: center;
   padding: 3.5rem 2rem 4.5rem;
@@ -136,87 +456,26 @@
   text-decoration: none;
   border-radius: 3px;
   transition: background 0.2s, transform 0.2s;
+  margin: 0 0.4rem;
 }
 .btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE OVERRIDES
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
-  .svc-hero      { padding: 3rem 1.25rem 2rem; }
-  .section       { padding: 2.5rem 1.25rem; }
+  .svc-hero { padding: 3rem 1.25rem 2rem; }
+  .section  { padding: 2.5rem 1.25rem; }
+
+  /* stack to 1 col on mobile */
   .services-grid { grid-template-columns: 1fr; }
-  .nm-icon       { font-size: 26px; }
-  .nm-center-label { font-size: 16px; }
-}
 
-/* ── IMAGE / DISPLAY LAYOUT BLOCKS ──────────────────────────────── */
+  /* assessment: full width on mobile */
+  .ap-phase  { max-width: 100%; margin: 0 1.25rem; padding: 1.5rem 1.25rem; }
+  .ap-header { max-width: 100%; }
 
-/* ── VARIABLES ───────────────────────────────────────────────────── */
-:root {
-  /* image container */
-  --img-bg: rgba(255,255,255,0.03); --img-border: rgba(255,255,255,0.07);
-  --img-radius: 10px; --img-padding: 0.75rem;
-
-  /* caption */
-  --caption-size: 0.82rem; --caption-color: rgba(255,255,255,0.4); --caption-margin: 0.75rem;
-
-  /* image + text row */
-  --row-gap: 3rem;
-  --row-text-h3-size: 1.4rem; --row-text-h3-color: #fff;
-  --row-text-p-size: 0.92rem; --row-text-p-color: rgba(255,255,255,0.55); --row-text-p-weight: 300;
-
-  /* card grid */
-  --card-grid-gap: 1.5rem; --card-min-col: 260px;
-  --card-bg: rgba(255,255,255,0.03); --card-border: rgba(255,255,255,0.07);
-  --card-radius: 8px; --card-padding: 1.5rem;
-  --card-h3-size: 1.2rem; --card-h3-color: #fff;
-  --card-p-size: 0.86rem; --card-p-color: rgba(255,255,255,0.55);
-
-  /* lightbox */
-  --lightbox-bg: rgba(0,0,0,0.92); --lightbox-max-w: 90vw; --lightbox-max-h: 85vh;
-  --lightbox-cap-color: rgba(255,255,255,0.6);
-}
-
-/* ── SHARED IMAGE CONTAINER ──────────────────────────────────────── */
-.img-wrap {
-  background: var(--img-bg); border: 1px solid var(--img-border);
-  border-radius: var(--img-radius); padding: var(--img-padding);
-  overflow: visible; transition: border-color 0.25s;
-}
-.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
-.img-display {
-  width: 100%; height: auto; display: block;
-  border-radius: calc(var(--img-radius) - var(--img-padding));
-  transition: transform 0.3s ease;
-}
-.img-wrap:hover .img-display { transform: scale(1.015); }
-
-/* ── A. SINGLE IMAGE ─────────────────────────────────────────────── */
-.img-block { width: 100%; }
-.img-block .img-wrap { padding: var(--img-padding); }
-.img-block .img-display { width: 100%; height: auto; object-fit: initial; }
-
-/* ── B. IMAGE + CAPTION ──────────────────────────────────────────── */
-.img-captioned { display: flex; flex-direction: column; gap: var(--caption-margin); }
-.img-caption { font-size: var(--caption-size); color: var(--caption-color); text-align: center; font-style: italic; line-height: 1.5; }
-
-/* ── C/D. IMAGE + TEXT ROW (+ reverse) ───────────────────────────── */
-.img-text-row { display: flex; align-items: center; gap: var(--row-gap); }
-.img-text-row.row-reverse { flex-direction: row-reverse; }
-.img-col { flex: 1; min-width: 0; }
-.img-col .img-display { width: 100%; height: auto; object-fit: initial; }
-.text-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
-.text-col h3 { font-family: var(--font-display); font-size: var(--row-text-h3-size); color: var(--row-text-h3-color); letter-spacing: 1px; line-height: 1.1; }
-.text-col p { font-size: var(--row-text-p-size); color: var(--row-text-p-color); font-weight: var(--row-text-p-weight); line-height: 1.7; }
-
-/* ── F. IMAGE CARD GRID ──────────────────────────────────────────── */
-.img-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--card-min-col), 1fr)); gap: var(--card-grid-gap); }
-.img-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); padding: var(--card-padding); display: flex; flex-direction: column; gap: 1rem; transition: border-color 0.25s, transform 0.25s; }
-.img-card:hover { border-color: rgba(0,180,216,0.3); transform: translateY(-4px); }
-.img-card .img-wrap { height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.img-card .img-display { width: 100%; height: 100%; object-fit: contain; }
-.img-card h3 { font-family: var(--font-display); font-size: var(--card-h3-size); color: var(--card-h3-color); letter-spacing: 0.5px; }
-.img-card p { font-size: var(--card-p-size); color: var(--card-p-color); line-height: 1.65; }
-
-/* ── MOBILE ──────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .img-text-row, .img-text-row.row-reverse { flex-direction: column; }
+  /* image+text: stack vertically */
+  .img-text-row,
+  .img-text-row.row-reverse { flex-direction: column; }
 }
