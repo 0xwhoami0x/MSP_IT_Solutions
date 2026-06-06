@@ -16,78 +16,6 @@
   --tag-color: #00b4d8;
 }
 
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SERVICE CARD GRID VARIABLES
-   ┃ Edit these to change how the service cards look.
-   ┃ The layout (3-wide desktop, 1-col mobile) is controlled below
-   ┃ under "SERVICE CARD GRID".
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --card-gap:         1.5rem;
-  --card-icon-size:   1.8rem;
-  --card-title-size:  1.4rem;
-  --card-title-color: #ffffff;
-  --card-para-size:   1.1rem;
-  --card-para-color:  rgba(255, 255, 255, 0.55);
-  --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   IMAGE + TEXT ROW VARIABLES
-   ┃ Edit these to control the "Centralized Security Operations"
-   ┃ block layout (the image-left / text-right row at the bottom).
-   ┃ Text content is edited in security.html under <!-- SECURITY FIGURE -->.
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --img-bg:      rgba(255,255,255,0.03);
-  --img-border:  rgba(255,255,255,0.07);
-  --img-radius:  10px;
-  --img-padding: 0.75rem;
-
-  --caption-size:   0.82rem;
-  --caption-color:  rgba(255,255,255,0.4);
-  --caption-margin: 0.75rem;
-
-  --row-gap:             3rem;         /* gap between image and text columns */
-  --row-text-h3-size:    1.8rem;       /* heading size */
-  --row-text-h3-color:   #ffffff;      /* heading color */
-  --row-text-p-size:     1.1rem;      /* paragraph size */
-  --row-text-p-color:    rgba(255,255,255,0.55);
-  --row-text-p-weight:   300;
-
-  --lightbox-bg:        rgba(0,0,0,0.92);
-  --lightbox-max-w:     90vw;
-  --lightbox-max-h:     85vh;
-  --lightbox-cap-color: rgba(255,255,255,0.6);
-}
-
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ASSESSMENT SECTION VARIABLES
-   ┃ Edit these to change colours, spacing, and bullet styling.
-   ┃ Text content is edited in security.html under <!-- ASSESSMENT -->.
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --ap-bg:             rgba(255,255,255,0.025);
-  --ap-border:         rgba(0,180,216,0.18);
-  --ap-accent:         #00b4d8;
-  --ap-radius:         12px;
-  --ap-padding:        3rem 4.0rem 3.5rem;  /* top | sides | bottom */
-  --ap-title-size:     2rem;
-  --ap-title-color:    #ffffff;
-  --ap-body-size:      1.1rem;
-  --ap-body-color:     rgba(255,255,255,0.6);
-  --ap-bullet-color:   #00b4d8;
-  --ap-bullet-size:    1.1rem;
-  --ap-hl-color:       #00b4d8;         /* colour for <span class="hl"> */
-  --ap-tag-bg:         rgba(0,180,216,0.1);
-  --ap-tag-border:     rgba(0,180,216,0.3);
-  --ap-tag-color:      #00b4d8;
-}
-
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HERO
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -110,14 +38,28 @@
 .svc-hero::before { width: 600px; height: 600px; background: rgba(0,180,216,0.12); top: -260px; right: -180px; }
 .svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
-.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1300px; }
+.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
+
+
+/* SECTION WRAPPER */
+.section { padding: 4rem 4rem; }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SECTION WRAPPER
+   SERVICE CARD GRID VARIABLES
+   ┃ Edit these to change how the service cards look.
+   ┃ The layout (3-wide desktop, 1-col mobile) is controlled below
+   ┃ under "SERVICE CARD GRID".
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.section { padding: 4rem 4rem; }
-
+:root {
+  --card-gap:         1.5rem;
+  --card-icon-size:   2.5rem;
+  --card-title-size:  1.8rem;
+  --card-title-color: #ffffff;
+  --card-para-size:   1.3rem;
+  --card-para-color:  rgb(250, 249, 249);
+  --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SERVICE CARD GRID
@@ -175,7 +117,37 @@
   line-height: 1.65;
   font-weight: 300;
 }
+.service-card .card-list li {
+  font-size: var(--card-para-size); /* This pulls the 1.1rem size from your :root automatically */
+  color: var(--card-para-color);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 0.5rem; 
+}
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ASSESSMENT SECTION VARIABLES
+   ┃ Edit these to change colours, spacing, and bullet styling.
+   ┃ Text content is edited in security.html under <!-- ASSESSMENT -->.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --ap-bg:             rgba(255,255,255,0.025);
+  --ap-border:         rgba(0,180,216,0.18);
+  --ap-accent:         #00b4d8;
+  --ap-radius:         12px;
+  --ap-padding:        3rem 4.0rem 3.5rem;  /* top | sides | bottom */
+  --ap-title-size:     3rem;
+  --ap-title-color:    #ffffff;
+  --ap-body-size:      1.3rem;
+  --ap-body-color:     rgba(255,255,255,0.6);
+  --ap-bullet-color:   #00b4d8;
+  --ap-bullet-size:    1.3rem;
+  --ap-hl-color:       #00b4d8;         /* colour for <span class="hl"> */
+  --ap-tag-bg:         rgba(0,180,216,0.1);
+  --ap-tag-border:     rgba(0,180,216,0.3);
+  --ap-tag-color:      #00b4d8;
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ASSESSMENT SECTION
@@ -224,7 +196,7 @@
 /* ── Tag badge — top-left, stays left-aligned ── */
 .ap-tag {
   display: inline-block;
-  font-size: 0.72rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -241,9 +213,9 @@
    in the card but the content inside is centred via text-align.        */
 .ap-header {
   text-align: center;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto 0;         /* centre the block horizontally */
-  padding-bottom: 2rem;
+  padding-bottom: 1.25rem;
 }
 
 .ap-header .section-title {
@@ -279,7 +251,7 @@
   display: grid;
   grid-template-columns: 1fr;   /* ← single column; change to 1fr 1fr for two columns */
   gap: 0;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;               /* centre the list under the header */
 }
 
@@ -306,6 +278,38 @@
 }
 
 
+
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMAGE + TEXT ROW VARIABLES
+   ┃ Edit these to control the "Centralized Security Operations"
+   ┃ block layout (the image-left / text-right row at the bottom).
+   ┃ Text content is edited in security.html under <!-- SECURITY FIGURE -->.
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+:root {
+  --img-bg:      rgba(255,255,255,0.03);
+  --img-border:  rgba(255,255,255,0.07);
+  --img-radius:  10px;
+  --img-padding: 0.75rem;
+
+  --caption-size:   0.82rem;
+  --caption-color:  rgba(255,255,255,0.4);
+  --caption-margin: 0.75rem;
+
+  --row-gap:             3rem;         /* gap between image and text columns */
+  --row-text-h3-size:    3.2rem;       /* heading size */
+  --row-text-h3-color:   #ffffff;      /* heading color */
+  --row-text-p-size:     1.3rem;      /* paragraph size */
+  --row-text-p-color:    rgba(255,255,255,0.55);
+  --row-text-p-weight:   300;
+
+  --lightbox-bg:        rgba(0,0,0,0.92);
+  --lightbox-max-w:     90vw;
+  --lightbox-max-h:     85vh;
+  --lightbox-cap-color: rgba(255,255,255,0.6);
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    IMAGE + TEXT ROW
    ┃ Used by the "Centralized Security Operations" block.
@@ -320,7 +324,7 @@
   overflow: visible;
   transition: border-color 0.25s;
 }
-.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
+.img-wrap:hover { border-color: rgb(45, 236, 236); }
 
 .img-display {
   width: 100%; height: auto; display: block;
@@ -394,7 +398,7 @@
   line-height: 1;
 }
 .text-stat span:last-child {
-  font-size: 0.72rem;
+  font-size: 1.0rem;
   color: rgba(255,255,255,0.45);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -420,7 +424,7 @@
   display: inline-block;
   padding: 0.85rem 2.2rem;
   background: #00b4d8;
-  color: #0a0f1e;
+  color: #f6f6f8;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.5px;

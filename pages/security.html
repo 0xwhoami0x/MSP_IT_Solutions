@@ -61,7 +61,7 @@
     }
     .jb-marquee__text {
       font-family: var(--font-display);
-      font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+      font-size: clamp(1.5rem, 1.5vw, 1.05rem);
       font-weight: 400;
       font-style: italic;
       letter-spacing: 0.01em;
@@ -114,7 +114,7 @@
   <section class="svc-hero">
     <h2 class="section-title fade-in">Security</h2>
     <p class="section-intro fade-in">
-      Security isn't a product you buy &mdash; it's a program you run. Our security practice builds defense in depth across your full environment: a centralized SIEM aggregates and correlates logs from all sites in real time, resilient backup systems protect every critical workload with tested recovery procedures, and Microsoft 365 Business Premium layers email security, phishing simulation, and identity protection into your existing productivity stack. Every alert is triaged within 60 seconds and every incident produces a documented timeline and post-mortem.
+      Security isn't a product you buy, it's a program you run. Our security practice builds defense in depth across your environment. We deliver 24/7 monitoring, real-time threat detection, tested backup &amp; recovery, and monthly reporting that translates technical details into business impact.
     </p>
   </section>
 
@@ -307,9 +307,7 @@
        ═══════════════════════════════════════════════════════════════ -->
   <section class="svc-cta fade-in">
     <h2>Let's harden your security posture</h2>
-    <p>Talk to our security specialist about a layered defense program built around your environment and your compliance requirements.</p>
     <a href="pricing.html" class="btn">See Pricing</a>
-    <a href="portal.html" class="btn">Login to Portal</a>
   </section>
 
 
@@ -321,13 +319,12 @@
       if (!track) return;
 
       const phrases = [
-        'Defense in depth across all seven sites',
-        'Every alert triaged within 60 seconds',
-        'Backups tested quarterly — not just job status',
-        'MFA enforced on every external login',
+        'Defense in depth across all sites',
+        'Backups tested quarterly',
         'Critical patches deployed within 72 hours',
-        'Logs correlated in real time, around the clock',
         'Nothing unmonitored, nothing unpatched',
+        'Every alert triaged',
+        'MFA enforced',
         'Every incident documented end to end'
       ];
 
@@ -361,8 +358,8 @@
         'Security Reporting'
       ];
 
-      const TYPE_SPEED   = 70;    // per character while typing
-      const DELETE_SPEED = 40;    // per character while deleting
+      const TYPE_SPEED   = 10;    // per character while typing
+      const DELETE_SPEED = 25;    // per character while deleting
       const HOLD_FULL    = 1600;  // pause when fully typed
       const HOLD_EMPTY   = 400;   // pause before next phrase
 
@@ -399,7 +396,6 @@
       tick();
     })();
   </script>
-
 
 </body>
 </html>

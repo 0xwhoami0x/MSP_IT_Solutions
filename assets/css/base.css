@@ -15,7 +15,7 @@
   --border: rgba(255, 255, 255, 0.07);
 
   /* Section Tag (small uppercase label) */
-  --tag-size:  1.25rem;
+  --tag-size:  1.8rem;
   --tag-color: #00b4d8;
 
   /* Section Title */
@@ -24,7 +24,7 @@
   --title-color:    #ffffff;
 
   /* Section Paragraph */
-  --intro-size:   1.25rem;
+  --intro-size:   1.4rem;
   --intro-color:  rgba(255, 255, 255, 0.55);
   --intro-weight: 300;
 }
@@ -67,7 +67,7 @@ body {
   font-weight:   var(--intro-weight);
   color:         var(--intro-color);
   line-height:   1.7;
-  max-width:     580px;
+  max-width:     1250px;
   margin-bottom: 2rem;
 }
 
