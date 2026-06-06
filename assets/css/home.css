@@ -74,24 +74,16 @@
 
 
 /* ── OVERVIEW BAND (ap-hero) ───────────────────────────────────── */
-/* Reused from approach page; only the styles needed on home are here */
 .ap-hero {
   position: relative;
   overflow: hidden;
   text-align: center;
   padding: 4rem 2rem 3rem;
-  background: linear-gradient(135deg, #0a0f1e 0%, #0b1f3a 60%, #0d2b50 100%);
+  
+  /* Starts light at the top (0%), fades to dark at the center (50%) */
+  background: linear-gradient(to bottom, #09213f 0%, #0a0f1e 50%, #0a0f1e 100%);
 }
-.ap-hero::after {
-  content: '';
-  position: absolute;
-  width: 560px; height: 560px;
-  background: rgba(0,180,216,0.13);
-  filter: blur(120px);
-  border-radius: 50%;
-  top: -240px; right: -160px;
-  z-index: 0;
-}
+
 .ap-hero > * { position: relative; z-index: 1; }
 .ap-hero .section-intro { max-width: 1000px; margin: 0 auto 1.25rem; }
 .ap-hero .section-intro strong { color: #fff; font-weight: 600; }
@@ -148,7 +140,7 @@
 /* ── CTA BAND ──────────────────────────────────────────────────── */
 .home-cta {
   text-align: center; padding: 4rem 2rem 5rem;
-  background: linear-gradient(135deg, #0b1f3a, #0d2b50);
+  background: #0a0f1e;
 }
 .home-cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 1.5px; margin-bottom: 0.75rem; }
 .home-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.75rem; font-weight: 300; }
