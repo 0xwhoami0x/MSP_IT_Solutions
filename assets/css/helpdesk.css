@@ -18,6 +18,31 @@
   --card-para-size:  0.88rem;
   --card-para-color: rgba(255, 255, 255, 0.55);
   --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
+
+    /* SLA Table */
+  --table-font-size: 0.9rem;
+  --th-bg:           rgba(0, 180, 216, 0.1);
+  --th-border:       rgba(0, 180, 216, 0.3);
+  --th-color:        #00b4d8;
+  --td-border:       rgba(255, 255, 255, 0.05);
+  --td-color:        rgba(255, 255, 255, 0.75);
+  --row-hover-bg:    rgba(255, 255, 255, 0.03);
+
+  /* SLA Badges */
+  --badge-red-bg:      rgba(239, 68, 68, 0.15);
+  --badge-red-text:    #f87171;
+  --badge-orange-bg:   rgba(249, 115, 22, 0.15);
+  --badge-orange-text: #fb923c;
+  --badge-yellow-bg:   rgba(234, 179, 8, 0.15);
+  --badge-yellow-text: #facc15;
+  --badge-green-bg:    rgba(34, 197, 94, 0.15);
+  --badge-green-text:  #4ade80;
+
+  /* KPI Cards */
+  --kpi-value-size:  2.4rem;
+  --kpi-value-color: #00b4d8;
+  --kpi-label-size:  0.8rem;
+  --kpi-label-color: rgba(255, 255, 255, 0.55);
 }
 
 /* ── HERO ──────────────────────────────────────────────────────── */
@@ -41,7 +66,7 @@
 .svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
 
-.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 640px; }
+.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
 
 /* ── NETWORK DIAGRAM (responsive SVG) ──────────────────────────── */
 .netmap {
@@ -268,11 +293,133 @@
 .hd-stack .workflow-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.4rem; }
 .hd-stack .workflow-desc { font-size: 0.8rem; color: var(--s-muted); line-height: 1.55; }
 .hd-stack .workflow-desc .arrow { color: var(--s-primary); font-weight: 600; margin: 0 2px; }
+
+
+
+
+
+
+
+/* ── SLA TABLE ─────────────────────────────────────────────────── */
+.sla-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  font-size: var(--table-font-size); 
+}
+
+.sla-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  background: var(--th-bg);
+  border-bottom: 1px solid var(--th-border);
+  color: var(--th-color);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sla-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--td-border);
+  color: var(--td-color);
+}
+
+.sla-table tr:hover td { background: var(--row-hover-bg); }
+
+/* Priority Badges */
+.badge { 
+  display: inline-block; 
+  padding: 0.2rem 0.7rem; 
+  border-radius: 20px; 
+  font-size: 0.75rem; 
+  font-weight: 600; 
+}
+.badge-red    { background: var(--badge-red-bg);    color: var(--badge-red-text); }
+.badge-orange { background: var(--badge-orange-bg); color: var(--badge-orange-text); }
+.badge-yellow { background: var(--badge-yellow-bg); color: var(--badge-yellow-text); }
+.badge-green  { background: var(--badge-green-bg);  color: var(--badge-green-text); }
+
+/* ── KPI CARDS ─────────────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.kpi-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: var(--kpi-value-size);
+  color: var(--kpi-value-color);
+  letter-spacing: 1px;
+}
+
+.kpi-label { 
+  font-size: var(--kpi-label-size); 
+  color: var(--kpi-label-color); 
+  margin-top: 0.3rem; 
+}
+
+
+
+
 @media (max-width: 640px) {
   .hd-stack { padding: 1rem 1.25rem 2.5rem; }
   .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-grid        { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .kpi-value       { font-size: 1.8rem; }
+  /* SLA table → stacked cards */
+  .sla-table, .sla-table thead, .sla-table tbody,
+  .sla-table tr, .sla-table th, .sla-table td { display: block; }
+  .sla-table thead { display: none; }
+
+  
+  .sla-table tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+  }
+  
+  .sla-table td {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+    white-space: normal;
+  }
+  
+  .sla-table td:last-child { border-bottom: none; }
+  
+  .sla-table td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    width: 7rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--th-color);
+    opacity: 0.7;
+    padding-top: 0.1rem;
+  }
 }
 @media (max-width: 380px) {
   .hd-stack .tool-grid, .hd-stack .workflow-grid { grid-template-columns: 1fr; }
+
+
+
 }
   
