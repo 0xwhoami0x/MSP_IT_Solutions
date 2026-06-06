@@ -15,10 +15,10 @@
   --glow-top-right: rgba(0,180,216,0.12); --glow-bottom-center: rgba(21,101,192,0.15);
 
   --tag-bg: rgba(0,180,216,0.15); --tag-border: rgba(0,180,216,0.4);
-  --tag-size: 1.8rem;
+  --tag-size: 1.6rem;
   --title-color: #fff; --title-span-color: #00b4d8;
   --title-size-min: 3.5rem; --title-size-max: 6rem;
-  --sub-color: rgba(255,255,255,0.65); --sub-size: 1.1rem; --sub-weight: 300;
+  --sub-color: rgba(255,255,255,0.65); --sub-size: 1.3rem; --sub-weight: 300;
 
   --btn-bg: #00b4d8; --btn-text: #0a0f1e; --btn-hover-bg: #00d4f5;
   --btn-outline-border: rgba(255,255,255,0.3); --btn-outline-text: #ffffff;
@@ -82,11 +82,11 @@
 }
 .prop:hover { border-color: rgba(0,180,216,0.25); transform: translateY(-4px); }
 .prop .ico {
-  width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+  width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 2.0rem;
   border-radius: 12px; background: rgba(0,180,216,0.1); border: 1px solid rgba(0,180,216,0.2); margin-bottom: 1rem;
 }
-.prop h3 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
-.prop p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+.prop h3 { font-family: var(--font-display); font-size: 1.50rem; letter-spacing: 1px; margin-bottom: 0.5rem; }
+.prop p { font-size: 1.25rem; color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
 
 
 /* ── TEAM SECTION ──────────────────────────────────────────────── */
@@ -114,11 +114,11 @@
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 1rem;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #fff;
 }
-.team-card h4 { font-size: 0.95rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem; }
-.team-card .role { font-size: 0.8rem; font-weight: 500; color: var(--accent); }
+.team-card h4 { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem; }
+.team-card .role { font-size: 1rem; font-weight: 500; color: var(--accent); }
 
 
 /* ── CTA BAND ──────────────────────────────────────────────────── */
@@ -127,7 +127,6 @@
   background: #0a0f1e;
 }
 .home-cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 1.5px; margin-bottom: 0.75rem; }
-.home-cta p { color: rgba(255,255,255,0.6); margin-bottom: 1.75rem; font-weight: 300; }
 
 
 /* ── MOBILE ────────────────────────────────────────────────────── */
