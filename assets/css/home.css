@@ -15,7 +15,7 @@
   --glow-top-right: rgba(0,180,216,0.12); --glow-bottom-center: rgba(21,101,192,0.15);
 
   --tag-bg: rgba(0,180,216,0.15); --tag-border: rgba(0,180,216,0.4);
-  --tag-size: 0.78rem;
+  --tag-size: 1.25rem;
   --title-color: #fff; --title-span-color: #00b4d8;
   --title-size-min: 3.5rem; --title-size-max: 6rem;
   --sub-color: rgba(255,255,255,0.65); --sub-size: 1.1rem; --sub-weight: 300;
@@ -73,24 +73,8 @@
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
 
 
-/* ── OVERVIEW BAND (ap-hero) ───────────────────────────────────── */
-.ap-hero {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 4rem 2rem 3rem;
-  
-  /* Starts light at the top (0%), fades to dark at the center (50%) */
-  background: linear-gradient(to bottom, #09213f 0%, #0a0f1e 50%, #0a0f1e 100%);
-}
-
-.ap-hero > * { position: relative; z-index: 1; }
-.ap-hero .section-intro { max-width: 1000px; margin: 0 auto 1.25rem; }
-.ap-hero .section-intro strong { color: #fff; font-weight: 600; }
-
-
 /* ── VALUE PROPS ───────────────────────────────────────────────── */
-.home-section { padding: 4.5rem 4rem; max-width: 1080px; margin: 0 auto; }
+.home-section { padding: 4.5rem 4rem; max-width: 1275px; margin: 0 auto; }
 .home-props { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .prop {
   background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
@@ -106,7 +90,7 @@
 
 
 /* ── TEAM SECTION ──────────────────────────────────────────────── */
-.home-team-section { padding: 3rem 4rem; max-width: 1080px; margin: 0 auto; }
+.home-team-section { padding: 3rem 4rem; max-width: 1275px; margin: 0 auto; }
 
 .team-grid {
   display: grid;

@@ -1,18 +1,3 @@
-/* ╔══════════════════════════════════════════════════════════════════╗
-   ║  base.css — SHARED PAGE FOUNDATION                              ║
-   ║  Loaded on every CONTENT page (not helpdesk — it has its own).  ║
-   ║                                                                 ║
-   ║  This file centralizes everything that used to be copy-pasted   ║
-   ║  into every page stylesheet:                                    ║
-   ║    • shared :root variables (fonts + section type scale)        ║
-   ║    • <body> base styling                                        ║
-   ║    • .section-tag / .section-title / .section-intro             ║
-   ║    • .fade-in scroll animation                                  ║
-   ║                                                                 ║
-   ║  Each page CSS now only needs its OWN :root overrides           ║
-   ║  (--page-bg, --tag-color, etc.) and its own components.         ║
-   ╚══════════════════════════════════════════════════════════════════╝ */
-
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    1. SHARED VARIABLES — defaults; pages override per-page values

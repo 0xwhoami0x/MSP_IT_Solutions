@@ -1,10 +1,3 @@
-/* ╔══════════════════════════════════════════════════════════════════╗
-   ║  network.css — NETWORK PAGE — uses the SVG topology map, service cards, and image card grid.
-   ║  Self-contained styles for this page. Edit freely; changes here  ║
-   ║  affect ONLY this page. Shared site chrome lives in nav.css;     ║
-   ║  shared section typography lives in base.css.                    ║
-   ╚══════════════════════════════════════════════════════════════════╝ */
-
 :root {
   --page-bg:   #0a0f1e;
   --border:    rgba(255, 255, 255, 0.07);   /* fixed: was lime-green test value */
@@ -19,6 +12,7 @@
   --card-para-color: rgba(255, 255, 255, 0.55);
   --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
 }
+
 
 /* ── HERO ──────────────────────────────────────────────────────── */
 .svc-hero {
@@ -41,26 +35,9 @@
 .svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
 
-.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 640px; }
+.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
 
-/* ── NETWORK DIAGRAM (responsive SVG) ──────────────────────────── */
-.netmap {
-  width: 100%;
-  max-width: 680px;
-  margin: 2.5rem auto 0;
-  display: block;
-}
-.netmap svg { width: 100%; height: auto; display: block; overflow: visible; }
-.nm-line   { stroke: rgba(0,180,216,0.28); stroke-width: 2; }
-.nm-node   { transition: transform 0.3s ease; }
-.nm-node circle { filter: drop-shadow(0 8px 18px rgba(0,0,0,0.45)); }
-.nm-node:hover  { transform: translateY(-3px); }
-.nm-icon   { font-size: 30px; text-anchor: middle; dominant-baseline: central; }
-.nm-center-label {
-  font-family: var(--font-display);
-  fill: #fff; font-size: 19px; letter-spacing: 1px;
-  text-anchor: middle; dominant-baseline: central;
-}
+
 
 /* ── SERVICE CARD GRID ─────────────────────────────────────────── */
 .section { padding: 4rem 4rem; }
@@ -113,6 +90,74 @@
   font-weight: 300;
 }
 
+
+
+/* IMAGE + TEXT ROW VARIABLES */
+:root {
+  --img-bg:      rgba(255,255,255,0.03);
+  --img-border:  rgba(255,255,255,0.07);
+  --img-radius:  10px;
+  --img-padding: 0.75rem;
+
+  --caption-size:   0.82rem;
+  --caption-color:  rgba(255,255,255,0.4);
+  --caption-margin: 0.75rem;
+
+  --row-gap:             3rem;         /* gap between image and text columns */
+  --row-text-h3-size:    1.8rem;       /* heading size */
+  --row-text-h3-color:   #ffffff;      /* heading color */
+  --row-text-p-size:     1.1rem;      /* paragraph size */
+  --row-text-p-color:    rgba(255,255,255,0.55);
+  --row-text-p-weight:   300;
+
+}
+
+
+/* IMAGE + TEXT ROW */
+.img-wrap {
+  background: var(--img-bg);
+  border: 1px solid var(--img-border);
+  border-radius: var(--img-radius);
+  padding: var(--img-padding);
+  overflow: visible;
+  transition: border-color 0.25s;
+}
+.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
+
+.img-display {
+  width: 100%; height: auto; display: block;
+  border-radius: calc(var(--img-radius) - var(--img-padding));
+  transition: transform 0.3s ease;
+}
+.img-wrap:hover .img-display { transform: scale(1.015); }
+
+.img-text-row {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap);
+}
+.img-text-row.row-reverse { flex-direction: row-reverse; }
+
+.img-col { flex: 1; min-width: 0; }
+.img-col .img-display { width: 100%; height: auto; object-fit: initial; }
+
+.text-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Body paragraphs ── */
+.text-col p {
+  font-size: var(--row-text-p-size);
+  color: var(--row-text-p-color);
+  font-weight: var(--row-text-p-weight);
+  line-height: 1.7;
+}
+
+
 /* ── CTA BAND ──────────────────────────────────────────────────── */
 .svc-cta {
   text-align: center;
@@ -139,84 +184,13 @@
 }
 .btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
+
+
+/* ── MOBILE ──────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .svc-hero      { padding: 3rem 1.25rem 2rem; }
   .section       { padding: 2.5rem 1.25rem; }
   .services-grid { grid-template-columns: 1fr; }
-  .nm-icon       { font-size: 26px; }
-  .nm-center-label { font-size: 16px; }
-}
-
-/* ── IMAGE / DISPLAY LAYOUT BLOCKS ──────────────────────────────── */
-
-/* ── VARIABLES ───────────────────────────────────────────────────── */
-:root {
-  /* image container */
-  --img-bg: rgba(255,255,255,0.03); --img-border: rgba(255,255,255,0.07);
-  --img-radius: 10px; --img-padding: 0.75rem;
-
-  /* caption */
-  --caption-size: 0.82rem; --caption-color: rgba(255,255,255,0.4); --caption-margin: 0.75rem;
-
-  /* image + text row */
-  --row-gap: 3rem;
-  --row-text-h3-size: 1.4rem; --row-text-h3-color: #fff;
-  --row-text-p-size: 0.92rem; --row-text-p-color: rgba(255,255,255,0.55); --row-text-p-weight: 300;
-
-  /* card grid */
-  --card-grid-gap: 1.5rem; --card-min-col: 260px;
-  --card-bg: rgba(255,255,255,0.03); --card-border: rgba(255,255,255,0.07);
-  --card-radius: 8px; --card-padding: 1.5rem;
-  --card-h3-size: 1.2rem; --card-h3-color: #fff;
-  --card-p-size: 0.86rem; --card-p-color: rgba(255,255,255,0.55);
-
-  /* lightbox */
-  --lightbox-bg: rgba(0,0,0,0.92); --lightbox-max-w: 90vw; --lightbox-max-h: 85vh;
-  --lightbox-cap-color: rgba(255,255,255,0.6);
-}
-
-/* ── SHARED IMAGE CONTAINER ──────────────────────────────────────── */
-.img-wrap {
-  background: var(--img-bg); border: 1px solid var(--img-border);
-  border-radius: var(--img-radius); padding: var(--img-padding);
-  overflow: visible; transition: border-color 0.25s;
-}
-.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
-.img-display {
-  width: 100%; height: auto; display: block;
-  border-radius: calc(var(--img-radius) - var(--img-padding));
-  transition: transform 0.3s ease;
-}
-.img-wrap:hover .img-display { transform: scale(1.015); }
-
-/* ── A. SINGLE IMAGE ─────────────────────────────────────────────── */
-.img-block { width: 100%; }
-.img-block .img-wrap { padding: var(--img-padding); }
-.img-block .img-display { width: 100%; height: auto; object-fit: initial; }
-
-/* ── B. IMAGE + CAPTION ──────────────────────────────────────────── */
-.img-captioned { display: flex; flex-direction: column; gap: var(--caption-margin); }
-.img-caption { font-size: var(--caption-size); color: var(--caption-color); text-align: center; font-style: italic; line-height: 1.5; }
-
-/* ── C/D. IMAGE + TEXT ROW (+ reverse) ───────────────────────────── */
-.img-text-row { display: flex; align-items: center; gap: var(--row-gap); }
-.img-text-row.row-reverse { flex-direction: row-reverse; }
-.img-col { flex: 1; min-width: 0; }
-.img-col .img-display { width: 100%; height: auto; object-fit: initial; }
-.text-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
-.text-col h3 { font-family: var(--font-display); font-size: var(--row-text-h3-size); color: var(--row-text-h3-color); letter-spacing: 1px; line-height: 1.1; }
-.text-col p { font-size: var(--row-text-p-size); color: var(--row-text-p-color); font-weight: var(--row-text-p-weight); line-height: 1.7; }
-
-/* ── F. IMAGE CARD GRID ──────────────────────────────────────────── */
-.img-card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(var(--card-min-col), 1fr)); gap: var(--card-grid-gap); }
-.img-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--card-radius); padding: var(--card-padding); display: flex; flex-direction: column; gap: 1rem; transition: border-color 0.25s, transform 0.25s; }
-.img-card:hover { border-color: rgba(0,180,216,0.3); transform: translateY(-4px); }
-.img-card .img-wrap { height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.img-card .img-display { width: 100%; height: 100%; object-fit: contain; }
-.img-card h3 { font-family: var(--font-display); font-size: var(--card-h3-size); color: var(--card-h3-color); letter-spacing: 0.5px; }
-.img-card p { font-size: var(--card-p-size); color: var(--card-p-color); line-height: 1.65; }
-
-/* ── MOBILE ──────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
-  .img-text-row, .img-text-row.row-reverse { flex-direction: column; }
+  .img-text-row,
+  .img-text-row.row-reverse { flex-direction: column; }
 }

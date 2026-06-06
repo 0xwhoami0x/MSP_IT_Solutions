@@ -25,3 +25,25 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+
+      <div class="img-card-grid fade-in">
+      <div class="img-card">
+        <div class="img-wrap"><img src="../assets/img/f.png" alt="Network rack" class="img-display" lightbox="true" /></div>
+        <h3>Network Rack</h3>
+        <p>Cisco Catalyst 9200 switches and ISR 8300 routers at every site, racked and cabled to a documented baseline.</p>
+      </div>
+      <div class="img-card">
+        <div class="img-wrap"><img src="../assets/img/f.png" alt="NOC dashboard" class="img-display" lightbox="true" /></div>
+        <h3>NOC Dashboard</h3>
+        <p>PRTG monitors all seven sites in real time. Every threshold breach auto-creates a Freshdesk ticket within 60 seconds.</p>
+      </div>
+    </div>
+  </section>
+
+
+
