@@ -1,0 +1,27 @@
+  <!-- VALUE PROPS -->
+  <section class="home-section">
+    <div class="section-tag fade-in">Why MSP IT Solutions</div>
+    <h2 class="section-title fade-in">What Sets Us Apart</h2>
+    <div class="home-props">
+      <div class="prop fade-in">
+        <div class="ico">&#128737;&#65039;</div>
+        <h3>Security First</h3>
+        <p>SIEM, MFA, and CIS-hardened systems are built into every engagement from day one &mdash; not bolted on after the fact. Every alert is triaged and correlated within 60 seconds across all sites.</p>
+      </div>
+      <div class="prop fade-in">
+        <div class="ico">&#127760;</div>
+        <h3>Multi-Site Ready</h3>
+        <p>Consistent standards, centralized monitoring, and unified support across all seven of your locations. One team. One platform. One source of truth for every site.</p>
+      </div>
+      <div class="prop fade-in">
+        <div class="ico">&#129302;</div>
+        <h3>AI-Assisted Help Desk</h3>
+        <p>Our Hermes AI agent triages, routes, and resolves common requests in seconds, day or night. Users submit via portal, SMS, or pop-up widget &mdash; Hermes handles the rest automatically.</p>
+      </div>
+      <div class="prop fade-in">
+        <div class="ico">&#128202;</div>
+        <h3>SLA-Backed Performance</h3>
+        <p>Measurable response times with monthly executive reporting on SLA compliance and CSAT scores. P1 critical incidents receive a 15-minute response, 24/7 including holidays.</p>
+      </div>
+    </div>
+  </section>
