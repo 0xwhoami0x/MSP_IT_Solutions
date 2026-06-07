@@ -1,5 +1,5 @@
 /* ============================================================
-   main.js — Shared page behavior (loaded with `defer` on every page)
+   main.js — Shared page behavior  v4
      1. Scroll fade-in animations  (class="fade-in")
      2. Active nav-link highlight
      3. Lightbox for images marked  lightbox="true"
@@ -9,10 +9,12 @@
   'use strict';
 
   /* ── 1. Scroll fade-in animations ───────────────────────────
-     Elements with class="fade-in" animate in when they enter the
-     viewport. CSS handles the transition; this adds "visible" and
-     then unobserves so references aren't kept alive. */
+     FIXED: threshold lowered to 0.05 so tall elements on mobile
+     (assessment block, service cards) reliably trigger even when
+     they fill most of the viewport. Elements above the fold on
+     load get "visible" immediately without waiting for scroll. */
   var fadeEls = document.querySelectorAll('.fade-in');
+
   if (fadeEls.length && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
@@ -21,15 +23,27 @@
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
-    fadeEls.forEach(function (el) { observer.observe(el); });
+    }, {
+      threshold:  0.05,   /* was 0.1 — lower fires sooner on tall blocks */
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    fadeEls.forEach(function (el) {
+      /* If element is already above the fold on load, mark visible now */
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
+    });
   } else {
+    /* Fallback: no IntersectionObserver — just show everything */
     fadeEls.forEach(function (el) { el.classList.add('visible'); });
   }
 
   /* ── 2. Active nav-link highlight ───────────────────────────
-     Adds class="active" to the header link matching the current URL.
-     (Header links live in <nav><ul>…; footer links aren't in a <ul>.) */
+     Adds class="active" to the header link matching current URL. */
   var currentPath = window.location.pathname.replace(/\/$/, '');
   document.querySelectorAll('nav ul a').forEach(function (link) {
     try {
@@ -39,11 +53,9 @@
   });
 
   /* ── 3. Lightbox ────────────────────────────────────────────
-     Any <img lightbox="true"> opens in a fullscreen overlay.
-     Markup, styles, and behavior are injected once, here, so the
-     lightbox works on any page without per-page CSS. */
+     Any <img lightbox="true"> opens in a fullscreen overlay. */
   (function lightbox() {
-    if (document.getElementById('lightbox')) return; // already mounted
+    if (document.getElementById('lightbox')) return;
 
     var style = document.createElement('style');
     style.textContent =

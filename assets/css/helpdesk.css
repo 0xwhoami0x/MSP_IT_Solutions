@@ -1,5 +1,5 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  helpdesk.css — HELPDESK PAGE                                   ║
+   ║  helpdesk.css — HELPDESK PAGE  v4                               ║
    ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
@@ -10,139 +10,193 @@
   --s-text:      #e6ecf8;
   --s-muted:     #8c97b3;
   --s-primary:   #00b4d8;
-  --font-ui:     'Inter', system-ui, sans-serif;
+  --font-ui:     'DM Sans', system-ui, sans-serif;   /* aligned with base */
 }
-
-/* Helpdesk uses tighter hero/section padding */
-.svc-hero { padding: 3rem 3rem; }
-.section  { padding: 3rem 3rem; }
 
 
 /* ── HELP DESK SERVICES ─────────────────────────────────────────── */
 .hd-stack {
-  max-width: var(--section-max-w);
-  margin: 0 auto;
-  padding: 3rem 3rem;
-  font-family: var(--font-ui);
-  text-align: center;
-  box-sizing: border-box;
-  overflow-x: hidden;
+  max-width:    var(--section-max-w);
+  margin:       0 auto;
+  padding:      3rem 4rem;
+  font-family:  var(--font-ui);
+  text-align:   center;
+  box-sizing:   border-box;
+  overflow-x:   hidden;
 }
 
 .hd-head { margin-bottom: 2rem; }
-.hd-head h3 { font-family: var(--font-display); letter-spacing: 1px; font-size: 3rem; color: #fff; margin-bottom: 1rem; }
-.hd-head p { font-size: 1.3rem; color: var(--s-muted); max-width: 1000px; margin: 0 auto; }
+.hd-head h3 {
+  font-family:    var(--font-display);
+  letter-spacing: 1px;
+  font-size:      clamp(1.6rem, 2.5vw, 3rem);
+  color:          #fff;
+  margin-bottom:  1rem;
+}
+.hd-head p {
+  font-size:  clamp(0.95rem, 1.2vw, 1.25rem);
+  color:      var(--s-muted);
+  max-width:  1000px;
+  margin:     0 auto;
+}
 
 
 /* ── TOOL GRID ──────────────────────────────────────────────────── */
 .tool-grid {
-  display: grid;
+  display:               grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  margin-bottom: 3rem;
-  text-align: left;
+  gap:                   1rem;
+  margin-bottom:         3rem;
+  text-align:            left;
 }
 .tool-card {
-  background: var(--s-surface); border: 1px solid var(--s-border);
-  border-radius: 0.75rem; padding: 1.5rem; transition: transform 180ms, border-color 180ms;
-  min-width: 0;
+  background:    var(--s-surface);
+  border:        1px solid var(--s-border);
+  border-radius: 0.75rem;
+  padding:       1.5rem;
+  transition:    transform 180ms, border-color 180ms;
+  min-width:     0;
 }
 .tool-card:hover { transform: translateY(-2px); border-color: var(--s-primary); }
+
 .tool-icon {
-  width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
-  border-radius: 0.5rem; margin-bottom: 1rem; font-size: 1.3rem; background: var(--s-surface-2);
+  width: 42px; height: 42px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  border-radius:   0.5rem;
+  margin-bottom:   1rem;
+  font-size:       1.3rem;
+  background:      var(--s-surface-2);
 }
-.tool-card h4 { font-size: 1.3rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.3rem; }
-.tool-product { font-size: 0.9rem; font-weight: 600; color: var(--s-primary); margin-bottom: 0.5rem; }
-.tool-desc { font-size: 0.9rem; color: var(--s-muted); line-height: 1.5; }
+.tool-card h4    { font-size: var(--card-title-size); font-weight: 600; color: var(--s-text); margin: 0 0 0.3rem; }
+.tool-product    { font-size: 0.8rem; font-weight: 600; color: var(--s-primary); margin-bottom: 0.5rem; }
+.tool-desc       { font-size: var(--card-para-size); color: var(--s-muted); line-height: 1.5; }
 
 
 /* ── WORKFLOW ───────────────────────────────────────────────────── */
 .workflow-label {
-  text-align: center; font-size: 1.1rem; font-weight: 600; color: var(--s-muted);
-  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem;
+  text-align:     center;
+  font-size:      clamp(0.8rem, 1vw, 1.1rem);
+  font-weight:    600;
+  color:          var(--s-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom:  2rem;
 }
 .workflow-grid {
-  display: grid;
+  display:               grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  margin-bottom: .25rem;
-  text-align: left;
+  gap:                   1rem;
+  margin-bottom:         .25rem;
+  text-align:            left;
 }
 .workflow-card {
-  background: var(--s-surface); border: 1px solid var(--s-border);
-  border-radius: 0.75rem; padding: 1.5rem; min-width: 0;
+  background:    var(--s-surface);
+  border:        1px solid var(--s-border);
+  border-radius: 0.75rem;
+  padding:       1.5rem;
+  min-width:     0;
 }
 .workflow-step {
-  width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
-  font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
+  width: 30px; height: 30px;
+  border-radius:   50%;
+  background:      var(--s-primary);
+  color:           #06121b;
+  font-size:       0.85rem;
+  font-weight:     700;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  margin-bottom:   0.75rem;
 }
-.workflow-card h4 { font-size: 1.3rem; font-weight: 600; color: var(--s-text); margin: 0 0 0.4rem; }
-.workflow-desc { font-size: 0.9rem; color: var(--s-muted); line-height: 1.55; }
+.workflow-card h4   { font-size: var(--card-title-size); font-weight: 600; color: var(--s-text); margin: 0 0 0.4rem; }
+.workflow-desc      { font-size: var(--card-para-size); color: var(--s-muted); line-height: 1.55; }
 .workflow-desc .arrow { color: var(--s-primary); font-weight: 600; margin: 0 2px; }
 
 
 /* ── SLA TABLE & KPI ────────────────────────────────────────────── */
 .sla-table {
-  width: 100%; border-collapse: collapse; font-size: 1rem;
-  background: rgba(255,255,255,0.02); border-radius: 8px; overflow: hidden;
+  width:            100%;
+  border-collapse:  collapse;
+  font-size:        clamp(0.85rem, 1vw, 1rem);
+  background:       rgba(255,255,255,0.02);
+  border-radius:    8px;
+  overflow:         hidden;
 }
 .sla-table th {
-  text-align: left; padding: 1rem 1.5rem; background: rgba(0, 180, 216, 0.1);
-  border-bottom: 1px solid rgba(0, 180, 216, 0.3); color: #00b4d8;
-  font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+  text-align:    left;
+  padding:       1rem 1.5rem;
+  background:    rgba(0, 180, 216, 0.1);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.3);
+  color:         #00b4d8;
+  font-size:     0.85rem;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
 }
-.sla-table td { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; }
+.sla-table td {
+  padding:       1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color:         #fff;
+}
 
-.badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-.badge-red    { background: rgba(239, 68, 68, 0.15); color: #f87171; }
-.badge-orange { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
-.badge-yellow { background: rgba(234, 179, 8, 0.15); color: #facc15; }
-.badge-green  { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+.badge         { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+.badge-red     { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.badge-orange  { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
+.badge-yellow  { background: rgba(234, 179, 8, 0.15);  color: #facc15; }
+.badge-green   { background: rgba(34, 197, 94, 0.15);  color: #4ade80; }
 
 .kpi-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem; margin-top: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:                   1.5rem;
+  margin-top:            3rem;
+  max-width:             900px;
+  margin-left:           auto;
+  margin-right:          auto;
 }
 .kpi-card {
-  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-  border-radius: 8px; padding: 1.5rem; text-align: center;
+  background:    rgba(255, 255, 255, 0.03);
+  border:        1px solid var(--border);
+  border-radius: 8px;
+  padding:       1.5rem;
+  text-align:    center;
 }
-.kpi-value { font-family: var(--font-display); font-size: 2.8rem; color: #00b4d8; }
+.kpi-value {
+  font-family: var(--font-display);
+  font-size:   clamp(2rem, 3vw, 2.8rem);
+  color:       #00b4d8;
+}
 
 
-/* ── RESPONSIVE (helpdesk-specific only) ────────────────────────── */
+/* ── RESPONSIVE ─────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .tool-grid             { grid-template-columns: repeat(3, 1fr); }
-  .workflow-grid         { grid-template-columns: repeat(3, 1fr); }
-  .hd-head h3            { font-size: 2.4rem; }
-  .hd-head p             { font-size: 1.15rem; }
+  .hd-stack         { padding: 2.5rem 2.5rem; }
+  .tool-grid        { grid-template-columns: repeat(3, 1fr); }
+  .workflow-grid    { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 768px) {
-  .hd-stack                      { padding: 2rem 1.25rem; }
-  .hd-head h3                    { font-size: 1.6rem; }
-  .hd-head p                     { font-size: 0.95rem; }
-  .tool-grid, .workflow-grid     { grid-template-columns: 1fr 1fr; }
-  .tool-card h4, .workflow-card h4 { font-size: 1.15rem; }
-  .tool-desc, .workflow-desc     { font-size: 0.85rem; }
-  .kpi-grid                      { grid-template-columns: 1fr 1fr; }
-  .kpi-value                     { font-size: 2.2rem; }
+@media (max-width: 767px) {
+  .hd-stack                       { padding: 2rem 1.25rem; }
+  .tool-grid, .workflow-grid      { grid-template-columns: 1fr 1fr; }
+  .kpi-grid                       { grid-template-columns: 1fr 1fr; }
 
+  /* Stack SLA table on mobile */
   .sla-table, .sla-table thead, .sla-table tbody,
   .sla-table tr, .sla-table th, .sla-table td { display: block; }
   .sla-table thead { display: none; }
   .sla-table tbody tr {
-    background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-    border-radius: 8px; margin-bottom: 1rem; padding: 0.5rem 0;
+    background:    rgba(255, 255, 255, 0.03);
+    border:        1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding:       0.5rem 0;
   }
   .sla-table td { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.55rem 1rem; }
 }
 
-@media (max-width: 480px) {
-  .hd-stack                        { padding: 1.5rem 1rem; }
-  .tool-grid, .workflow-grid       { grid-template-columns: 1fr; }
-  .kpi-grid                        { grid-template-columns: 1fr; }
-  .hd-head h3                      { font-size: 1.4rem; }
-  .hd-head p                       { font-size: 0.9rem; }
+@media (max-width: 479px) {
+  .hd-stack                       { padding: 1.5rem 1rem; }
+  .tool-grid, .workflow-grid      { grid-template-columns: 1fr; }
+  .kpi-grid                       { grid-template-columns: 1fr; }
 }

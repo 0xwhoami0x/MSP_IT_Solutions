@@ -1,16 +1,24 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  cloud.css — CLOUD PAGE                                         ║
+   ║  cloud.css — CLOUD PAGE  v5                                     ║
    ║  Only overrides & page-specific styles. Shared → base.css       ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
-:root {
-  --card-title-size: 1.8rem;
-  --card-para-size:  1.3rem;
-}
-
-/* Cloud uses a 2x2 card grid instead of the default 3-column */
+/* Cloud uses a 2×2 card grid */
 .services-grid {
   grid-template-columns: repeat(2, 1fr);
   max-width: 1150px;
   margin: 0 auto;
+}
+
+/* ── RESPONSIVE — matches helpdesk pattern ─────────────────────── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 479px) {
+  .services-grid { grid-template-columns: 1fr; }
 }

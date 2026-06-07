@@ -136,10 +136,17 @@
   .transition-card h3 { font-size: 1.2rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .pricing-grid      { grid-template-columns: 1fr; }
   .price             { font-size: 2rem; }
   .price-note        { font-size: 0.95rem; }
   .transition-grid   { grid-template-columns: 1fr; }
   .transition-card h3 { font-size: 1.1rem; }
 }
+/* v4 alignment: use clamp for pricing sizes */
+.pricing-card h3  { font-size: clamp(1.2rem, 1.5vw, 1.55rem); }
+.price            { font-size: clamp(2rem, 3.5vw, 3rem); }
+.tier-desc        { font-size: clamp(0.9rem, 1.1vw, 1.2rem); }
+.pricing-card ul li { font-size: clamp(0.9rem, 1.1vw, 1.1rem); }
+.transition-card h3 { font-size: clamp(1.1rem, 1.3vw, 1.35rem); }
+.transition-card p  { font-size: clamp(0.85rem, 0.95vw, 0.92rem); }
