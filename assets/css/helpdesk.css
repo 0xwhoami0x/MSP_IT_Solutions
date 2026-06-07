@@ -51,6 +51,8 @@
   padding: 3rem 3rem;
   font-family: var(--font-ui);
   text-align: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .hd-head { margin-bottom: 2rem; }
@@ -60,7 +62,7 @@
 /* ── 2x5 TOOL GRID ── */
 .tool-grid {
   display: grid; 
-  grid-template-columns: repeat(5, 1fr); /* Force 5 columns */
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem; 
   margin-bottom: 3rem; 
   text-align: left;
@@ -68,6 +70,7 @@
 .tool-card {
   background: var(--s-surface); border: 1px solid var(--s-border);
   border-radius: 0.75rem; padding: 1.5rem; transition: transform 180ms, border-color 180ms;
+  min-width: 0;
 }
 .tool-card:hover { transform: translateY(-2px); border-color: var(--s-primary); }
 .tool-icon {
@@ -85,13 +88,17 @@
 }
 .workflow-grid {
   display: grid; 
-  grid-template-columns: repeat(5, 1fr); /* Force 5 columns */
+  grid-template-columns: repeat(5, 1fr);
   gap: 1rem; 
   margin-bottom: .25rem; 
   text-align: left;
 }
 
-.workflow-card { background: var(--s-surface); border: 1px solid var(--s-border); border-radius: 0.75rem; padding: 1.5rem; }
+.workflow-card {
+  background: var(--s-surface); border: 1px solid var(--s-border);
+  border-radius: 0.75rem; padding: 1.5rem;
+  min-width: 0;
+}
 .workflow-step {
   width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
   font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;
@@ -158,16 +165,36 @@
 .btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
 
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE ───────────────────────────────────────────────── */
+
+/* Tablet */
 @media (max-width: 1024px) {
-  .tool-grid { grid-template-columns: repeat(3, 1fr); }
+  .tool-grid     { grid-template-columns: repeat(3, 1fr); }
+  .workflow-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* Large phone / small tablet */
 @media (max-width: 768px) {
   .svc-hero, .section, .hd-stack { padding: 3rem 1.5rem; }
-  .tool-grid, .workflow-grid { grid-template-columns: 1fr 1fr; }
-  .kpi-grid { grid-template-columns: 1fr 1fr; }
-  .sla-table, .sla-table thead, .sla-table tbody, .sla-table tr, .sla-table th, .sla-table td { display: block; }
+  .tool-grid, .workflow-grid     { grid-template-columns: 1fr 1fr; }
+  .kpi-grid                      { grid-template-columns: 1fr 1fr; }
+
+  .sla-table, .sla-table thead, .sla-table tbody,
+  .sla-table tr, .sla-table th, .sla-table td { display: block; }
   .sla-table thead { display: none; }
-  .sla-table tbody tr { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; padding: 0.5rem 0; }
+  .sla-table tbody tr {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 1rem; padding: 0.5rem 0;
+  }
   .sla-table td { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.55rem 1rem; }
+}
+
+/* Small phone — single column */
+@media (max-width: 480px) {
+  .svc-hero, .section, .hd-stack { padding: 2rem 1rem; }
+  .tool-grid, .workflow-grid     { grid-template-columns: 1fr; }
+  .kpi-grid                      { grid-template-columns: 1fr; }
+  .tool-card h4, .workflow-card h4 { font-size: 1.15rem; }
+  .hd-head p                     { font-size: 1.1rem; }
+  .kpi-value                     { font-size: 2.2rem; }
 }
