@@ -409,7 +409,7 @@
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .neo-dossier {
   display: grid;
-  grid-template-columns: 200px 1fr; 
+  grid-template-columns: 200px 1fr;
   gap: 3rem;
   padding: 4rem;
   background: #060a15;
@@ -419,7 +419,7 @@
 
 .neo-photo {
   width: 200px;
-  height: 200px; 
+  height: 200px;
   background: #0b1120;
   border: 2px solid rgba(0, 180, 216, 0.5);
   border-radius: 4px;
@@ -438,7 +438,7 @@
 
 .neo-content h2 {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 2.8rem; /* Increased for high impact */
+  font-size: 2.8rem;
   text-transform: uppercase;
   color: #00b4d8;
   margin-bottom: 0.5rem;
@@ -447,9 +447,10 @@
 
 .neo-meta {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem; /* Increased for clarity */
+  font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(0, 180, 216, 0.2);
@@ -457,13 +458,12 @@
 }
 
 .neo-content p {
-  font-size: 1.5rem; /* Increased for easy reading */
+  font-size: 1.5rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
 }
 
-/* Updated List Styling */
 .ap-list-2 {
   list-style: none;
   padding: 0;
@@ -478,32 +478,29 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 1.5rem;
   border-radius: 6px;
-  font-size: 1.3rem; /* Increased list text */
+  font-size: 1.3rem;
 }
 
 .ap-list-2 li strong {
   display: block;
   color: #00b4d8;
-  font-size: 1.4rem; /* Increased bullet titles */
+  font-size: 1.4rem;
   margin-bottom: 0.75rem;
   font-family: var(--font-display);
   text-transform: uppercase;
 }
 
-@media (max-width: 900px) {
-  .neo-dossier { grid-template-columns: 1fr; }
-  .neo-content h2 { font-size: 2rem; }
-}
+
 /* ── NEO Inner Marquee ── */
 .neo-marquee-wrap {
   grid-column: 1 / -1;
-  grid-row: 1;              /* force first row */
+  grid-row: 1;
   background: rgba(0, 180, 216, 0.05);
   border: 1px solid rgba(0, 180, 216, 0.15);
   border-radius: 6px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 1rem;      /* was margin-top */
+  margin-bottom: 1rem;
 }
 .neo-marquee-wrap::before,
 .neo-marquee-wrap::after {
@@ -552,7 +549,6 @@
 }
 
 
-
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CTA BAND
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -589,31 +585,34 @@
    RESPONSIVE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* Tablet */
+/* ── Tablet ── */
 @media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid     { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Large phone / small tablet */
+/* ── Phone — everything stacks ── */
 @media (max-width: 768px) {
-  .svc-hero          { padding: 4rem 1.5rem; }
-  .section           { padding: 3rem 1.5rem; }
+  .svc-hero          { padding: 3.5rem 1.25rem; }
+  .section           { padding: 2.5rem 1.25rem; }
   .services-grid     { grid-template-columns: 1fr; }
-  .ap-phase          { padding: 2rem 1.5rem; }
+  .ap-phase          { padding: 2rem 1.25rem; }
   .ap-header         { max-width: 100%; }
-  .ap-list           { margin-left: 0.5rem; }
-  .img-text-row      { padding: 2rem 1.5rem; }
-  .text-col h3       { font-size: 2.4rem; }
-}
-
-/* Small phone */
-@media (max-width: 480px) {
-  .svc-hero          { padding: 3rem 1rem; }
-  .section           { padding: 2rem 1rem; }
-  .ap-phase          { padding: 1.5rem 1rem; }
   .ap-header .section-title { font-size: 2.2rem; }
-  .img-text-row      { padding: 1.5rem 1rem; gap: 2rem; }
+  .ap-list           { margin-left: 0.5rem; }
+  .img-text-row      { padding: 1.5rem; gap: 2rem; }
   .text-col h3       { font-size: 2rem; }
   .text-stat span:first-child { font-size: 1.3rem; }
   .text-stat span:last-child  { font-size: 0.85rem; }
+
+  /* NEO */
+  .neo-dossier       { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; }
+  .neo-photo         { width: 130px; height: 130px; justify-self: center; }
+  .neo-content h2    { font-size: 1.6rem; letter-spacing: 1.5px; }
+  .neo-meta          { font-size: 0.9rem; }
+  .neo-content p     { font-size: 1.1rem; }
+  .ap-list-2         { grid-template-columns: 1fr; gap: 1rem; }
+  .ap-list-2 li      { padding: 1.1rem; font-size: 1.05rem; }
+  .ap-list-2 li strong { font-size: 1.1rem; }
+  .neo-marquee-wrap::before,
+  .neo-marquee-wrap::after { width: 30px; }
 }
