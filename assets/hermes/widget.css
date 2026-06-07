@@ -1,16 +1,14 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  widget.css — HERMES AI CHAT WIDGET                             ║
+   ║  widget.css — NEO AI CHAT WIDGET                                ║
    ║  Loaded on every page. Fully self-contained — no dependencies   ║
    ║  on any page CSS file. All variables defined here.              ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   WIDGET VARIABLES — all widget colors/sizes live here.
-   Edit these to restyle the widget without touching any page CSS.
+   WIDGET VARIABLES
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* ── Widget-owned color tokens (not shared with page CSS) ───────── */
   --w-accent:      #00b4d8;
   --w-blue:        #1565c0;
   --w-navy:        #0b1f3a;
@@ -20,7 +18,6 @@
   --w-font-body:   'DM Sans', sans-serif;
   --w-font-display:'Bebas Neue', sans-serif;
 
-  /* ── Floating button ───────────────────────────────────────────── */
   --widget-btn-size:         58px;
   --widget-btn-gradient:     linear-gradient(135deg, var(--w-blue), var(--w-accent));
   --widget-btn-shadow:       rgba(0, 180, 216, 0.45);
@@ -28,18 +25,15 @@
   --widget-btn-bottom:       2rem;
   --widget-btn-right:        2rem;
 
-  /* ── Panel ─────────────────────────────────────────────────────── */
   --widget-panel-width:  360px;
   --widget-panel-bg:     #111827;
   --widget-panel-border: rgba(0, 180, 216, 0.25);
   --widget-panel-radius: 14px;
 
-  /* ── Message bubbles ───────────────────────────────────────────── */
   --msg-agent-bg:      rgba(255, 255, 255, 0.06);
   --msg-agent-border:  rgba(255, 255, 255, 0.08);
   --msg-user-gradient: linear-gradient(135deg, var(--w-blue), var(--w-accent));
 
-  /* ── Status indicators ─────────────────────────────────────────── */
   --dot-color:          #f87171;
   --status-online-color:#4ade80;
 }
@@ -47,9 +41,8 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FLOATING HELP BUTTON
-   HTML: <button id="hermes-btn"> in every page
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#hermes-btn {
+#neo-btn {
   position:        fixed;
   bottom:          var(--widget-btn-bottom);
   right:           var(--widget-btn-right);
@@ -67,19 +60,18 @@
   transition:      transform 0.2s, box-shadow 0.2s;
 }
 
-#hermes-btn:hover {
+#neo-btn:hover {
   transform:  scale(1.08);
   box-shadow: 0 6px 28px var(--widget-btn-shadow-hover);
 }
 
-#hermes-btn svg {
+#neo-btn svg {
   width:  26px;
   height: 26px;
   fill:   var(--w-white);
 }
 
-/* Pulse ring animation */
-#hermes-btn::after {
+#neo-btn::after {
   content:       '';
   position:      absolute;
   inset:         -4px;
@@ -96,10 +88,8 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    NOTIFICATION DOT
-   HTML: <div id="hermes-dot"> inside the button
-   Hidden by default. hermes.js shows it after 4 seconds of inactivity.
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#hermes-dot {
+#neo-dot {
   position:      absolute;
   top:           4px;
   right:         4px;
@@ -114,10 +104,8 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CHAT PANEL
-   HTML: <div id="hermes-panel"> in every page
-   hermes.js adds class "open" to show it.
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-#hermes-panel {
+#neo-panel {
   position:        fixed;
   bottom:          6rem;
   right:           var(--widget-btn-right);
@@ -132,7 +120,6 @@
   flex-direction:  column;
   overflow:        hidden;
 
-  /* Hidden by default */
   transform:        scale(0.85) translateY(20px);
   opacity:          0;
   pointer-events:   none;
@@ -140,7 +127,7 @@
   transform-origin: bottom right;
 }
 
-#hermes-panel.open {
+#neo-panel.open {
   transform:      scale(1) translateY(0);
   opacity:        1;
   pointer-events: all;
@@ -149,7 +136,6 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    PANEL HEADER
-   HTML: <div class="hw-header">
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hw-header {
   background:    linear-gradient(135deg, var(--w-navy), var(--w-blue));
@@ -171,6 +157,13 @@
   justify-content: center;
   font-size:       1rem;
   flex-shrink:     0;
+  overflow:        hidden;
+}
+
+.hw-avatar img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
 }
 
 .hw-title { flex: 1; min-width: 0; }
@@ -218,7 +211,6 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    MESSAGES AREA
-   HTML: <div class="hw-messages" id="hermes-messages">
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hw-messages {
   flex:            1;
@@ -229,7 +221,7 @@
   gap:             0.75rem;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  min-height:      0; /* prevents flex child overflow */
+  min-height:      0;
 }
 
 .hw-msg {
@@ -238,7 +230,7 @@
   border-radius: 10px;
   font-size:     0.84rem;
   line-height:   1.55;
-  word-break:    break-word;  /* prevents long words overflowing bubble */
+  word-break:    break-word;
   animation:     msgIn 0.2s ease;
 }
 
@@ -285,7 +277,6 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    INPUT ROW
-   HTML: <div class="hw-input-row">
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hw-input-row {
   display:    flex;
@@ -339,7 +330,6 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    FOOTER NOTE
-   HTML: <div class="hw-footer-note">
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hw-footer-note {
   text-align:  center;
@@ -352,9 +342,9 @@
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MOBILE — small phones
+   MOBILE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 420px) {
-  #hermes-panel { width: calc(100vw - 2rem); right: 1rem; }
-  #hermes-btn   { right: 1rem; bottom: 1rem; }
+  #neo-panel { width: calc(100vw - 2rem); right: 1rem; }
+  #neo-btn   { right: 1rem; bottom: 1rem; }
 }
