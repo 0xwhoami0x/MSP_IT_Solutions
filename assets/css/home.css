@@ -1,22 +1,15 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
    ║  home.css — HOME PAGE                                           ║
-   ║  Loaded only by pages/home.html.                                ║
-   ║  Covers: hero, buttons, value props, team cards, CTA band,      ║
-   ║  and the overview (ap-hero) section used on this page.          ║
+   ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
 :root {
-  --page-bg:   #0a0f1e;
-  --page-text: #ffffff;
-  --accent:    #00b4d8;
-  --tag-color: #00b4d8;
-
   --hero-bg-start: #0a0f1e; --hero-bg-mid: #0b1f3a; --hero-bg-end: #0d2b50;
   --glow-top-right: rgba(0,180,216,0.12); --glow-bottom-center: rgba(21,101,192,0.15);
 
   --tag-bg: rgba(0,180,216,0.15); --tag-border: rgba(0,180,216,0.4);
   --tag-size: 1.6rem;
-  --title-color: #fff; --title-span-color: #00b4d8;
+  --title-span-color: #00b4d8;
   --title-size-min: 3.5rem; --title-size-max: 6rem;
   --sub-color: rgba(255,255,255,0.65); --sub-size: 1.3rem; --sub-weight: 300;
 
@@ -27,22 +20,19 @@
 }
 
 
-/* ── HERO ──────────────────────────────────────────────────────── */
+/* ── HOME HERO (different from svc-hero) ───────────────────────── */
 .hero {
   min-height: calc(78vh - 70px);
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   padding: 0 4rem;
-  position: relative; 
+  position: relative;
   overflow: hidden;
   justify-content: center;
-  
-  /* Consolidated background with the corrected relative file path */
-  background: 
-      linear-gradient(rgba(10, 15, 30, 0.85), rgba(13, 43, 80, 0.7)), 
-      url('../img/msp.png') center/cover no-repeat; 
+  background:
+    linear-gradient(rgba(10, 15, 30, 0.85), rgba(13, 43, 80, 0.7)),
+    url('../img/msp.png') center/cover no-repeat;
 }
-
 
 .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, var(--glow-top-right) 0%, transparent 70%); pointer-events: none; }
 .hero::after  { content: ''; position: absolute; bottom: -100px; left: 30%; width: 400px; height: 400px; background: radial-gradient(circle, var(--glow-bottom-center) 0%, transparent 70%); pointer-events: none; }
@@ -62,13 +52,12 @@
 .hero-sub { font-size: var(--sub-size); font-weight: var(--sub-weight); color: var(--sub-color); line-height: 1.7; max-width: 540px; margin: 0 auto 2.5rem; }
 
 
-/* ── BUTTONS ───────────────────────────────────────────────────── */
+/* ── HOME BUTTONS (override base .btn for dark text) ───────────── */
 .btn {
-  display: inline-block; padding: 0.85rem 2.2rem; background: var(--btn-bg); color: var(--btn-text);
-  font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;
-  text-decoration: none; border-radius: 3px; transition: background 0.2s, transform 0.2s;
+  background: var(--btn-bg); color: var(--btn-text);
+  font-family: var(--font-body);
 }
-.btn:hover { background: var(--btn-hover-bg); transform: translateY(-2px); }
+.btn:hover { background: var(--btn-hover-bg); }
 .btn-outline { background: transparent; border: 1px solid var(--btn-outline-border); color: var(--btn-outline-text); margin-left: 1rem; }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
 
@@ -92,46 +81,31 @@
 /* ── TEAM SECTION ──────────────────────────────────────────────── */
 .home-team-section { padding: 3rem 4rem; max-width: 1275px; margin: 0 auto; }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
 .team-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 8px;
-  padding: 1.75rem 1.5rem;
-  text-align: center;
-  transition: border-color 0.25s;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px; padding: 1.75rem 1.5rem; text-align: center; transition: border-color 0.25s;
 }
 .team-card:hover { border-color: rgba(0,180,216,0.25); }
 .avatar {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--avatar-gradient);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1rem;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: #fff;
+  width: 56px; height: 56px; border-radius: 50%; background: var(--avatar-gradient);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+  font-family: var(--font-display); font-size: 1.5rem; color: #fff;
 }
 .team-card h4 { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem; }
 .team-card .role { font-size: 1rem; font-weight: 500; color: var(--accent); }
 
 
-/* ── CTA BAND ──────────────────────────────────────────────────── */
+/* ── HOME CTA ──────────────────────────────────────────────────── */
 .home-cta {
-  text-align: center; padding: 4rem 2rem 5rem;
-  background: #0a0f1e;
+  text-align: center; padding: 4rem 2rem 5rem; background: #0a0f1e;
 }
 .home-cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: 1.5px; margin-bottom: 0.75rem; }
 
 
-/* ── MOBILE ────────────────────────────────────────────────────── */
+/* ── RESPONSIVE (home-specific only) ───────────────────────────── */
 @media (max-width: 768px) {
-  .hero { padding: 3rem 1.5rem; min-height: auto; padding-top: 4rem; padding-bottom: 4rem; }
+  .hero { padding: 4rem 1.5rem; min-height: auto; }
   .home-section { padding: 3rem 1.5rem; }
   .home-team-section { padding: 2.5rem 1.25rem; }
   .btn-outline { margin-left: 0; margin-top: 0.75rem; }

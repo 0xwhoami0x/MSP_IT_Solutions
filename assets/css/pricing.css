@@ -1,16 +1,9 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
    ║  pricing.css — PRICING PAGE                                     ║
-   ║  Covers: Pricing Cards, SLA Table, KPI Grid, Transition Grid    ║
+   ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
 :root {
-  /* Global Page / Shared */
-  --page-bg:   #0a0f1e;
-  --accent:    #00b4d8;
-  --border:    rgba(255, 255, 255, 0.07);
-  --tag-color: #00b4d8;
-
-  /* Pricing Cards */
   --pricing-gap:       2rem;
   --pricing-max-width: 1250px;
   --card-padding:      2.5rem;
@@ -25,46 +18,16 @@
   --price-color:       #00b4d8;
   --price-note-size:   1.1rem;
   --price-note-color:  rgba(255, 255, 255, 0.4);
-  
-  /* Shared Lists (Pricing & Transition) */
-  --list-size:        1.1rem; 
-  --list-color:       rgba(255, 255, 255, 0.6);
-  --list-check-color: #00b4d8;
-  --arrow-color:      #00b4d8;
-
-  /* Transition Cards */
-  --trans-card-min:   260px;
-  --trans-title-size: 1.3rem;
-  --trans-para-size:  0.86rem;
-}
-
-body { background: var(--page-bg); }
-
-/* ── SECTION WRAPPER (Matched to Home Spacing) ── */
-.section { 
-  padding: 4.5rem 4rem; 
-  max-width: 1275px; 
-  margin: 0 auto; 
-}
-
-/* ── CENTERS MAIN HEADERS ── */
-.section > .section-tag,
-.section > .section-title {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block; 
-}
-
-.section > .section-intro {
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-  display: block; 
+  --list-size:         1.1rem;
+  --list-color:        rgba(255, 255, 255, 0.6);
+  --list-check-color:  #00b4d8;
+  --arrow-color:       #00b4d8;
+  --trans-title-size:  1.3rem;
+  --trans-para-size:   0.86rem;
 }
 
 
-/* ── PRICING CARD GRID ─────────────────────────────────────────── */
+/* ── PRICING CARD GRID ──────────────────────────────────────────── */
 .pricing-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -79,12 +42,12 @@ body { background: var(--page-bg); }
   border-radius: var(--card-radius);
   padding: var(--card-padding);
   position: relative;
-  text-align: left; /* Keeps card titles and text aligned left */
+  text-align: left;
 }
 
-.pricing-card.featured { 
-  border-color: var(--featured-border); 
-  background: var(--featured-bg); 
+.pricing-card.featured {
+  border-color: var(--featured-border);
+  background: var(--featured-bg);
 }
 
 .pricing-card.featured::before {
@@ -108,11 +71,7 @@ body { background: var(--page-bg); }
   margin-bottom: 0.25rem;
 }
 
-.pricing-card .tier-desc { 
-  font-size: var(--card-desc-size); 
-  color: var(--card-desc-color); 
-  margin-bottom: 1rem; 
-}
+.pricing-card .tier-desc { font-size: var(--card-desc-size); color: var(--card-desc-color); margin-bottom: 1rem; }
 
 .price {
   font-family: var(--font-display);
@@ -123,41 +82,19 @@ body { background: var(--page-bg); }
   margin-bottom: 0.3rem;
 }
 
-.price-note { 
-  font-size: var(--price-note-size); 
-  color: var(--price-note-color); 
-  margin-bottom: 1.5rem; 
-}
+.price-note { font-size: var(--price-note-size); color: var(--price-note-color); margin-bottom: 1.5rem; }
 
-.pricing-card ul { 
-  list-style: none; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 0.6rem; 
-  padding: 0;
-}
+.pricing-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; padding: 0; }
+.pricing-card ul li { font-size: var(--list-size); color: var(--list-color); padding-left: 1.2rem; position: relative; }
+.pricing-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--list-check-color); font-size: 1.25rem; }
 
-.pricing-card ul li { 
-  font-size: var(--list-size); 
-  color: var(--list-color); 
-  padding-left: 1.2rem; 
-  position: relative; 
-}
 
-.pricing-card ul li::before { 
-  content: '✓'; 
-  position: absolute; 
-  left: 0; 
-  color: var(--list-check-color); 
-  font-size: 1.25rem; 
-}
-
-/* ── TRANSITION CARD GRID ──────────────────────────────────────── */
+/* ── TRANSITION CARD GRID ───────────────────────────────────────── */
 .transition-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Forces exactly a 2x2 grid */
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--pricing-gap);
-  max-width: var(--pricing-max-width); /* Matches pricing card width */
+  max-width: var(--pricing-max-width);
   margin: 0 auto;
 }
 
@@ -167,9 +104,8 @@ body { background: var(--page-bg); }
   border-radius: 8px;
   padding: 2rem;
   transition: border-color 0.25s;
-  text-align: left; /* Forces titles and descriptions to stay left */
+  text-align: left;
 }
-
 .transition-card:hover { border-color: rgba(0, 180, 216, 0.25); }
 
 .transition-card h3 {
@@ -188,63 +124,14 @@ body { background: var(--page-bg); }
   margin-bottom: 1rem;
 }
 
-.transition-card ul { 
-  list-style: none; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 0.5rem; 
-  padding: 0;
-}
-
-.transition-card ul li {
-  font-size: var(--list-size);
-  color: var(--list-color);
-  padding-left: 1.2rem;
-  position: relative;
-  line-height: 1.5;
-}
-
-.transition-card ul li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--arrow-color);
-  font-size: 0.85rem;
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CTA BAND
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.svc-cta {
-  text-align: center;
-  padding: 3.5rem 2rem 4.5rem;
-}
-.svc-cta h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 1.5px;
-  margin-bottom: 0.75rem;
-}
-.svc-cta p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; font-weight: 300; }
-.btn {
-  display: inline-block;
-  padding: 0.85rem 2.2rem;
-  background: #00b4d8;
-  color: #f6f6f8;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn:hover { background: #2ecbe9; transform: translateY(-2px); }
+.transition-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; padding: 0; }
+.transition-card ul li { font-size: var(--list-size); color: var(--list-color); padding-left: 1.2rem; position: relative; line-height: 1.5; }
+.transition-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--arrow-color); font-size: 0.85rem; }
 
 
-/* ── MOBILE OVERRIDES ──────────────────────────────────────────── */
+/* ── RESPONSIVE (pricing-specific only) ─────────────────────────── */
 @media (max-width: 768px) {
-  .section         { padding: 3rem 1.5rem; }
   .pricing-grid    { grid-template-columns: 1fr; }
   .price           { font-size: 2.2rem; }
-  .transition-grid { grid-template-columns: 1fr; } /* Auto-stacks to 1 column on phones */
+  .transition-grid { grid-template-columns: 1fr; }
 }

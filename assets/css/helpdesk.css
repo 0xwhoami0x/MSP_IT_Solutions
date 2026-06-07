@@ -1,53 +1,27 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
    ║  helpdesk.css — HELPDESK PAGE                                   ║
+   ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
 :root {
-  --page-bg:   #0a0f1e;
-  --border:    rgba(255, 255, 255, 0.07);
-  --tag-color: #00b4d8;
-  --section-max-w: 1275px;
-  /* Helpdesk Specifics */
-  --s-surface: #121a2e;
+  --s-surface:   #121a2e;
   --s-surface-2: #1a2238;
-  --s-border: #243049;
-  --s-text: #e6ecf8;
-  --s-muted: #8c97b3;
-  --s-primary: #00b4d8;
-  --font-ui: 'Inter', system-ui, sans-serif;
+  --s-border:    #243049;
+  --s-text:      #e6ecf8;
+  --s-muted:     #8c97b3;
+  --s-primary:   #00b4d8;
+  --font-ui:     'Inter', system-ui, sans-serif;
 }
 
-/* ── HERO ──────────────────────────────────────────────────────── */
-.svc-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 3rem 3rem; 
-  text-align: center;
-  background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
-}
-.svc-hero > * { position: relative; z-index: 1; }
-.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
+/* Helpdesk uses tighter hero/section padding */
+.svc-hero { padding: 3rem 3rem; }
+.section  { padding: 3rem 3rem; }
 
-/* ── SECTION WRAPPER ── */
-.section { 
-  padding: 3rem 3rem; 
-  max-width: var(--section-max-w); 
-  margin: 0 auto; 
-}
 
-.section > .section-tag,
-.section > .section-title,
-.section > .section-intro {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block; 
-}
-
-/* ── Help Desk Services ── */
+/* ── HELP DESK SERVICES ─────────────────────────────────────────── */
 .hd-stack {
-  max-width: var(--section-max-w); 
-  margin: 0 auto; 
+  max-width: var(--section-max-w);
+  margin: 0 auto;
   padding: 3rem 3rem;
   font-family: var(--font-ui);
   text-align: center;
@@ -59,12 +33,13 @@
 .hd-head h3 { font-family: var(--font-display); letter-spacing: 1px; font-size: 3rem; color: #fff; margin-bottom: 1rem; }
 .hd-head p { font-size: 1.3rem; color: var(--s-muted); max-width: 1000px; margin: 0 auto; }
 
-/* ── 2x5 TOOL GRID ── */
+
+/* ── TOOL GRID ──────────────────────────────────────────────────── */
 .tool-grid {
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem; 
-  margin-bottom: 3rem; 
+  gap: 1rem;
+  margin-bottom: 3rem;
   text-align: left;
 }
 .tool-card {
@@ -81,23 +56,22 @@
 .tool-product { font-size: 0.9rem; font-weight: 600; color: var(--s-primary); margin-bottom: 0.5rem; }
 .tool-desc { font-size: 0.9rem; color: var(--s-muted); line-height: 1.5; }
 
-/* ── WORKFLOW ── */
+
+/* ── WORKFLOW ───────────────────────────────────────────────────── */
 .workflow-label {
   text-align: center; font-size: 1.1rem; font-weight: 600; color: var(--s-muted);
   letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem;
 }
 .workflow-grid {
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem; 
-  margin-bottom: .25rem; 
+  gap: 1rem;
+  margin-bottom: .25rem;
   text-align: left;
 }
-
 .workflow-card {
   background: var(--s-surface); border: 1px solid var(--s-border);
-  border-radius: 0.75rem; padding: 1.5rem;
-  min-width: 0;
+  border-radius: 0.75rem; padding: 1.5rem; min-width: 0;
 }
 .workflow-step {
   width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
@@ -107,8 +81,9 @@
 .workflow-desc { font-size: 0.9rem; color: var(--s-muted); line-height: 1.55; }
 .workflow-desc .arrow { color: var(--s-primary); font-weight: 600; margin: 0 2px; }
 
-/* ── SLA TABLE & KPI ─────────────────────────────────────────── */
-.sla-table { 
+
+/* ── SLA TABLE & KPI ────────────────────────────────────────────── */
+.sla-table {
   width: 100%; border-collapse: collapse; font-size: 1rem;
   background: rgba(255,255,255,0.02); border-radius: 8px; overflow: hidden;
 }
@@ -119,7 +94,6 @@
 }
 .sla-table td { padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #fff; }
 
-/* Badges */
 .badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
 .badge-red    { background: rgba(239, 68, 68, 0.15); color: #f87171; }
 .badge-orange { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
@@ -136,46 +110,15 @@
 }
 .kpi-value { font-family: var(--font-display); font-size: 2.8rem; color: #00b4d8; }
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   CTA BAND
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.svc-cta {
-  text-align: center;
-  padding: 3.5rem 2rem 4.5rem;
-}
-.svc-cta h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 1.5px;
-  margin-bottom: 0.75rem;
-}
-.svc-cta p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; font-weight: 300; }
-.btn {
-  display: inline-block;
-  padding: 0.85rem 2.2rem;
-  background: #00b4d8;
-  color: #f6f6f8;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  border-radius: 3px;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
-
-/* ── RESPONSIVE ───────────────────────────────────────────────── */
-
-/* Tablet */
+/* ── RESPONSIVE (helpdesk-specific only) ────────────────────────── */
 @media (max-width: 1024px) {
   .tool-grid     { grid-template-columns: repeat(3, 1fr); }
   .workflow-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Large phone / small tablet */
 @media (max-width: 768px) {
-  .svc-hero, .section, .hd-stack { padding: 3rem 1.5rem; }
+  .hd-stack                      { padding: 2.5rem 1.25rem; }
   .tool-grid, .workflow-grid     { grid-template-columns: 1fr 1fr; }
   .kpi-grid                      { grid-template-columns: 1fr 1fr; }
 
@@ -189,12 +132,11 @@
   .sla-table td { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.55rem 1rem; }
 }
 
-/* Small phone — single column */
 @media (max-width: 480px) {
-  .svc-hero, .section, .hd-stack { padding: 2rem 1rem; }
-  .tool-grid, .workflow-grid     { grid-template-columns: 1fr; }
-  .kpi-grid                      { grid-template-columns: 1fr; }
+  .hd-stack                        { padding: 2rem 1rem; }
+  .tool-grid, .workflow-grid       { grid-template-columns: 1fr; }
+  .kpi-grid                        { grid-template-columns: 1fr; }
   .tool-card h4, .workflow-card h4 { font-size: 1.15rem; }
-  .hd-head p                     { font-size: 1.1rem; }
-  .kpi-value                     { font-size: 2.2rem; }
+  .hd-head p                       { font-size: 1.1rem; }
+  .kpi-value                       { font-size: 2.2rem; }
 }

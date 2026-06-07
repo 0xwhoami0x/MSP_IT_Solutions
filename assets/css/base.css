@@ -1,37 +1,65 @@
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  base.css — SHARED FOUNDATION                                   ║
+   ║  Loaded on EVERY page. Contains all shared layout, typography,  ║
+   ║  components, and responsive rules. Page CSS files only add      ║
+   ║  what's unique to that page.                                    ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   1. SHARED VARIABLES — defaults; pages override per-page values
+   1. SHARED VARIABLES
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  /* Fonts (identical on every page) */
+  /* Fonts */
   --font-display: 'Bebas Neue', sans-serif;
   --font-body:    'DM Sans', sans-serif;
 
-  /* Page background / text — pages override --page-bg as needed */
-  --page-bg:   #0a0f1e;
-  --page-text: #ffffff;
+  /* Page */
+  --page-bg:      #0a0f1e;
+  --page-text:    #ffffff;
+  --border:       rgba(255, 255, 255, 0.07);
+  --accent:       #00b4d8;
+  --section-max-w: 1275px;
 
-  /* Default card border — pages may override */
-  --border: rgba(255, 255, 255, 0.07);
-
-  /* Section Tag (small uppercase label) */
-  --tag-size:  1.8rem;
-  --tag-color: #00b4d8;
+  /* Section Tag */
+  --tag-size:     1.8rem;
+  --tag-color:    #00b4d8;
 
   /* Section Title */
   --title-size-min: 2.2rem;
   --title-size-max: 3.2rem;
   --title-color:    #ffffff;
 
-  /* Section Paragraph */
+  /* Section Intro */
   --intro-size:   1.4rem;
   --intro-color:  rgba(255, 255, 255, 0.55);
   --intro-weight: 300;
+
+  /* Service Cards */
+  --card-gap:          1.5rem;
+  --card-icon-size:    2.5rem;
+  --card-title-size:   1.6rem;
+  --card-title-color:  #ffffff;
+  --card-para-size:    1.1rem;
+  --card-para-color:   rgb(250, 249, 249);
+  --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
+
+  /* Image + Text Row */
+  --img-bg:            rgba(255, 255, 255, 0.03);
+  --img-border:        rgba(255, 255, 255, 0.07);
+  --img-radius:        10px;
+  --img-padding:       0.75rem;
+  --row-gap:           3rem;
+  --row-text-h3-size:  3.2rem;
+  --row-text-h3-color: #ffffff;
+  --row-text-p-size:   1.3rem;
+  --row-text-p-color:  rgba(255, 255, 255, 0.55);
+  --row-text-p-weight: 300;
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   2. PAGE BACKGROUND  (HTML: <body>)
+   2. BODY
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 body {
   font-family: var(--font-body);
@@ -42,8 +70,6 @@ body {
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    3. SECTION TYPE — tag / title / intro
-   ┃ NOTE: .section padding stays in each PAGE file (it differs
-   ┃       per page). Only the type styles are shared here.
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section-tag {
   font-size:      var(--tag-size);
@@ -73,7 +99,280 @@ body {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   4. SCROLL ANIMATION  (add class="fade-in"; main.js adds "visible")
+   4. SERVICE-PAGE HERO
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.svc-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 4rem;
+  text-align: center;
+  background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
+}
+.svc-hero::before,
+.svc-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+.svc-hero::before { width: 600px; height: 600px; background: rgba(0, 180, 216, 0.12); top: -260px; right: -180px; }
+.svc-hero::after  { width: 520px; height: 520px; background: rgba(21, 101, 192, 0.16); bottom: -260px; left: -120px; }
+.svc-hero > * { position: relative; z-index: 1; }
+.svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. SECTION WRAPPER
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section {
+  padding: 4.5rem 4rem;
+  max-width: var(--section-max-w);
+  margin: 0 auto;
+}
+
+.section > .section-tag,
+.section > .section-title {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.section > .section-intro {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   6. SERVICE CARD GRID
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--card-gap);
+  text-align: left;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  min-width: 0;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.card:hover { border-color: rgba(0, 180, 216, 0.25); transform: translateY(-4px); }
+
+.service-card { position: relative; overflow: hidden; }
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-bar-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--card-icon-size);
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  margin-bottom: 1.1rem;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--card-title-size);
+  letter-spacing: 1px;
+  color: var(--card-title-color);
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  font-size: var(--card-para-size);
+  color: var(--card-para-color);
+  line-height: 1.65;
+  font-weight: 300;
+  margin: 0;
+}
+
+.service-card .card-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.service-card .card-list li {
+  font-size: var(--card-para-size);
+  color: var(--card-para-color);
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.service-card .card-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #00b4d8;
+  box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   7. IMAGE + TEXT ROW
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.img-wrap {
+  background: var(--img-bg);
+  border: 1px solid var(--img-border);
+  border-radius: var(--img-radius);
+  padding: var(--img-padding);
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+.img-wrap:hover { border-color: rgb(45, 236, 236); }
+
+.img-display {
+  width: 100%; height: auto; display: block;
+  border-radius: calc(var(--img-radius) - var(--img-padding));
+  transition: transform 0.3s ease;
+}
+.img-wrap:hover .img-display { transform: scale(1.015); }
+
+.img-text-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--row-gap);
+  max-width: 1150px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 3rem;
+}
+
+.img-text-row.row-reverse { flex-direction: column; }
+
+.img-col { width: 100%; min-width: 0; }
+.img-col .img-display { width: 100%; height: auto; object-fit: initial; border-radius: 8px; }
+
+.text-col {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.text-col h3 {
+  font-family: var(--font-display);
+  font-size: var(--row-text-h3-size);
+  color: var(--row-text-h3-color);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.text-col p {
+  font-size: var(--row-text-p-size);
+  color: var(--row-text-p-color);
+  font-weight: var(--row-text-p-weight);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   8. STAT BADGES
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.text-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.text-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  min-width: 80px;
+}
+
+.text-stat span:first-child {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #00b4d8;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.text-stat span:last-child {
+  font-size: 1.0rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   9. CTA BAND + BUTTON
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.svc-cta {
+  text-align: center;
+  padding: 3.5rem 2rem 4.5rem;
+}
+
+.svc-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
+}
+
+.svc-cta p { color: rgba(255, 255, 255, 0.55); margin-bottom: 1.75rem; font-weight: 300; }
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: #00b4d8;
+  color: #f6f6f8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn:hover { background: #2ecbe9; transform: translateY(-2px); }
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   10. SCROLL ANIMATION
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .fade-in {
   opacity:    0;
@@ -88,11 +387,26 @@ body {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   5. SHARED MOBILE TYPE OVERRIDES  (screen width ≤ 768px)
-   ┃ Identical on every page, so centralized here.
-   ┃ (.section padding override stays in each page file.)
+   11. RESPONSIVE — two breakpoints, all shared components
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Phone ── */
 @media (max-width: 768px) {
-  .section-title { font-size: 2rem; }
-  .section-intro { font-size: 0.95rem; max-width: 100%; }
+  /* Layout */
+  .svc-hero              { padding: 3.5rem 1.25rem; }
+  .section               { padding: 2.5rem 1.25rem; }
+  .services-grid         { grid-template-columns: 1fr; }
+  .img-text-row          { padding: 1.5rem; gap: 2rem; }
+
+  /* Typography */
+  .section-title         { font-size: 2rem; }
+  .section-intro         { font-size: 1.1rem; max-width: 100%; }
+  .text-col h3           { font-size: 2rem; }
+  .text-stat span:first-child { font-size: 1.3rem; }
+  .text-stat span:last-child  { font-size: 0.85rem; }
 }
