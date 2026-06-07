@@ -5,14 +5,56 @@
    ║  Shared section type → base.css                                 ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
+
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   PAGE-LEVEL VARIABLES
+   ALL VARIABLES
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  --page-bg:   #0a0f1e;
-  --border:    rgba(255, 255, 255, 0.07);
-  --tag-color: #00b4d8;
+  /* Page */
+  --page-bg:            #0a0f1e;
+  --border:             rgba(255, 255, 255, 0.07);
+  --tag-color:          #00b4d8;
+  --section-max-w:      1275px;
+
+  /* Service Cards */
+  --card-gap:           1.5rem;
+  --card-icon-size:     2.5rem;
+  --card-title-size:    1.8rem;
+  --card-title-color:   #ffffff;
+  --card-para-size:     1.3rem;
+  --card-para-color:    rgb(250, 249, 249);
+  --card-bar-gradient:  linear-gradient(90deg, #00b4d8, #1565c0);
+
+  /* Assessment */
+  --ap-bg:              rgba(255, 255, 255, 0.025);
+  --ap-border:          rgba(0, 180, 216, 0.18);
+  --ap-accent:          #00b4d8;
+  --ap-radius:          12px;
+  --ap-padding:         3rem 4rem 3.5rem;
+  --ap-title-size:      3rem;
+  --ap-title-color:     #ffffff;
+  --ap-body-size:       1.3rem;
+  --ap-body-color:      rgba(255, 255, 255, 0.6);
+  --ap-bullet-color:    #00b4d8;
+  --ap-bullet-size:     1.3rem;
+  --ap-hl-color:        #00b4d8;
+  --ap-tag-bg:          rgba(0, 180, 216, 0.1);
+  --ap-tag-border:      rgba(0, 180, 216, 0.3);
+  --ap-tag-color:       #00b4d8;
+
+  /* Image + Text Row */
+  --img-bg:             rgba(255, 255, 255, 0.03);
+  --img-border:         rgba(255, 255, 255, 0.07);
+  --img-radius:         10px;
+  --img-padding:        0.75rem;
+  --row-gap:            3rem;
+  --row-text-h3-size:   3.2rem;
+  --row-text-h3-color:  #ffffff;
+  --row-text-p-size:    1.3rem;
+  --row-text-p-color:   rgba(255, 255, 255, 0.55);
+  --row-text-p-weight:  300;
 }
+
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    HERO
@@ -20,7 +62,7 @@
 .svc-hero {
   position: relative;
   overflow: hidden;
-  padding: 5rem 4rem; 
+  padding: 5rem 4rem;
   text-align: center;
   background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
 }
@@ -33,51 +75,39 @@
   z-index: 0;
   pointer-events: none;
 }
-.svc-hero::before { width: 600px; height: 600px; background: rgba(0,180,216,0.12); top: -260px; right: -180px; }
-.svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
+.svc-hero::before { width: 600px; height: 600px; background: rgba(0, 180, 216, 0.12); top: -260px; right: -180px; }
+.svc-hero::after  { width: 520px; height: 520px; background: rgba(21, 101, 192, 0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
 .svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
 
 
-/* ── SECTION WRAPPER (Matched to Home Spacing) ── */
-.section { 
-  padding: 4.5rem 4rem; 
-  max-width: 1275px; 
-  margin: 0 auto; 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SECTION WRAPPER
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section {
+  padding: 4.5rem 4rem;
+  max-width: var(--section-max-w);
+  margin: 0 auto;
 }
 
-/* Centers tags, titles, and paragraphs at the top of standard sections */
 .section > .section-tag,
 .section > .section-title,
 .section > .section-intro {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  display: block; 
+  display: block;
 }
 
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SERVICE CARD GRID VARIABLES
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --card-gap:         1.5rem;
-  --card-icon-size:   2.5rem;
-  --card-title-size:  1.8rem;
-  --card-title-color: #ffffff;
-  --card-para-size:   1.3rem;
-  --card-para-color:  rgb(250, 249, 249);
-  --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
-}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SERVICE CARD GRID
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--card-gap);
-  text-align: left; 
+  text-align: left;
 }
 
 .card {
@@ -85,6 +115,7 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 2rem;
+  min-width: 0;
   transition: border-color 0.25s, transform 0.25s;
 }
 .card:hover { border-color: rgba(0, 180, 216, 0.25); transform: translateY(-4px); }
@@ -107,10 +138,11 @@
   display: flex; align-items: center; justify-content: center;
   font-size: var(--card-icon-size);
   border-radius: 12px;
-  background: rgba(0,180,216,0.1);
-  border: 1px solid rgba(0,180,216,0.2);
+  background: rgba(0, 180, 216, 0.1);
+  border: 1px solid rgba(0, 180, 216, 0.2);
   margin-bottom: 1.1rem;
 }
+
 .service-card h3 {
   font-family: var(--font-display);
   font-size: var(--card-title-size);
@@ -118,23 +150,26 @@
   color: var(--card-title-color);
   margin-bottom: 0.75rem;
 }
+
 .service-card p {
   font-size: var(--card-para-size);
   color: var(--card-para-color);
   line-height: 1.65;
   font-weight: 300;
 }
+
 .service-card .card-list {
   padding: 0;
   margin: 0;
-  list-style: none; 
+  list-style: none;
 }
+
 .service-card .card-list li {
   font-size: var(--card-para-size);
   color: var(--card-para-color);
   line-height: 1.65;
   font-weight: 300;
-  margin-bottom: 0.5rem; 
+  margin-bottom: 0.5rem;
   padding-left: 1rem;
   position: relative;
 }
@@ -147,36 +182,15 @@
   width: 5px; height: 5px;
   border-radius: 50%;
   background: #00b4d8;
-  box-shadow: 0 0 5px rgba(0,180,216,0.5);
+  box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
 }
 
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   ASSESSMENT SECTION VARIABLES
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --ap-bg:             rgba(255,255,255,0.025);
-  --ap-border:         rgba(0,180,216,0.18);
-  --ap-accent:         #00b4d8;
-  --ap-radius:         12px;
-  --ap-padding:        3rem 4.0rem 3.5rem; 
-  --ap-title-size:     3rem;
-  --ap-title-color:    #ffffff;
-  --ap-body-size:      1.3rem;
-  --ap-body-color:     rgba(255,255,255,0.6);
-  --ap-bullet-color:   #00b4d8;
-  --ap-bullet-size:    1.3rem;
-  --ap-hl-color:       #00b4d8;         
-  --ap-tag-bg:         rgba(0,180,216,0.1);
-  --ap-tag-border:     rgba(0,180,216,0.3);
-  --ap-tag-color:      #00b4d8;
-}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ASSESSMENT SECTION
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .ap-phase {
-  margin: 0; 
+  margin: 0;
   padding: var(--ap-padding);
   background: var(--ap-bg);
   border: 1px solid var(--ap-border);
@@ -204,10 +218,10 @@
   filter: blur(80px);
 }
 
-.ap-phase > div { 
-  position: relative; 
-  z-index: 1; 
-  text-align: left; 
+.ap-phase > div {
+  position: relative;
+  z-index: 1;
+  text-align: left;
 }
 
 .ap-tag {
@@ -225,9 +239,9 @@
 }
 
 .ap-header {
-  text-align: left; 
+  text-align: left;
   max-width: 1000px;
-  margin: 0; 
+  margin: 0;
   padding-bottom: 1.25rem;
 }
 
@@ -249,19 +263,19 @@
 
 .ap-divider {
   border: none;
-  border-top: 1px solid rgba(0,180,216,0.15);
+  border-top: 1px solid rgba(0, 180, 216, 0.15);
   margin: 2rem 0;
 }
 
 .ap-list {
   list-style: none;
-  padding: 0; 
+  padding: 0;
   display: grid;
-  grid-template-columns: 1fr;   
+  grid-template-columns: 1fr;
   gap: 0;
   max-width: 900px;
-  margin: 0 0 0 1.5rem; 
-  text-align: left;     
+  margin: 0 0 0 1.5rem;
+  text-align: left;
 }
 
 .ap-list li {
@@ -271,7 +285,7 @@
   font-size: var(--ap-bullet-size);
   color: var(--ap-body-color);
   padding: 0.85rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   line-height: 1.55;
 }
 
@@ -282,26 +296,9 @@
   border-radius: 50%;
   background: var(--ap-bullet-color);
   margin-top: 0.42em;
-  box-shadow: 0 0 6px rgba(0,180,216,0.5);
+  box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
 }
 
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   IMAGE + TEXT ROW VARIABLES
-   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-:root {
-  --img-bg:      rgba(255,255,255,0.03);
-  --img-border:  rgba(255,255,255,0.07);
-  --img-radius:  10px;
-  --img-padding: 0.75rem;
-
-  --row-gap:             3rem;         
-  --row-text-h3-size:    3.2rem;       
-  --row-text-h3-color:   #ffffff;      
-  --row-text-p-size:     1.3rem;      
-  --row-text-p-color:    rgba(255,255,255,0.55);
-  --row-text-p-weight:   300;
-}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    IMAGE + TEXT ROW (Stacked Vertical Layout)
@@ -311,7 +308,7 @@
   border: 1px solid var(--img-border);
   border-radius: var(--img-radius);
   padding: var(--img-padding);
-  overflow: visible;
+  overflow: hidden;
   transition: border-color 0.25s;
 }
 .img-wrap:hover { border-color: rgb(45, 236, 236); }
@@ -323,26 +320,22 @@
 }
 .img-wrap:hover .img-display { transform: scale(1.015); }
 
-/* Stacked Layout with Card Styling */
 .img-text-row {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: var(--row-gap);
-  max-width: 1150px;      
+  max-width: 1150px;
   margin: 0 auto;
-  
-  /* Added Card Styling */
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 3rem; /* Extra padding for the container */
+  padding: 3rem;
 }
 
-.img-text-row.row-reverse { flex-direction: column; } 
+.img-text-row.row-reverse { flex-direction: column; }
 
 .img-col { width: 100%; min-width: 0; }
-/* Ensures the image doesn't get squashed against the card edges */
 .img-col .img-display { width: 100%; height: auto; object-fit: initial; }
 
 .text-col {
@@ -351,7 +344,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  text-align: left; 
+  text-align: left;
 }
 
 .text-col h3 {
@@ -370,24 +363,26 @@
   margin: 0;
 }
 
-/* ── Centered Stat badges ── */
+/* ── Stat badges ── */
 .text-stats {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 1.5rem;
-  justify-content: center; 
+  justify-content: center;
 }
+
 .text-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(0,180,216,0.08);
-  border: 1px solid rgba(0,180,216,0.2);
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
   border-radius: 8px;
   padding: 0.6rem 1.1rem;
   min-width: 80px;
 }
+
 .text-stat span:first-child {
   font-family: var(--font-display);
   font-size: 1.6rem;
@@ -395,9 +390,10 @@
   letter-spacing: 1px;
   line-height: 1;
 }
+
 .text-stat span:last-child {
   font-size: 1.0rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 0.25rem;
@@ -411,13 +407,16 @@
   text-align: center;
   padding: 3.5rem 2rem 4.5rem;
 }
+
 .svc-cta h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: 1.5px;
   margin-bottom: 0.75rem;
 }
-.svc-cta p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; font-weight: 300; }
+
+.svc-cta p { color: rgba(255, 255, 255, 0.55); margin-bottom: 1.75rem; font-weight: 300; }
+
 .btn {
   display: inline-block;
   padding: 0.85rem 2.2rem;
@@ -434,17 +433,34 @@
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   MOBILE OVERRIDES
+   RESPONSIVE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Large phone / small tablet */
 @media (max-width: 768px) {
-  .svc-hero { padding: 4rem 1.5rem; } 
-  .section  { padding: 3rem 1.5rem; } 
+  .svc-hero          { padding: 4rem 1.5rem; }
+  .section           { padding: 3rem 1.5rem; }
+  .services-grid     { grid-template-columns: 1fr; }
+  .ap-phase          { padding: 2rem 1.5rem; }
+  .ap-header         { max-width: 100%; }
+  .ap-list           { margin-left: 0.5rem; }
+  .img-text-row      { padding: 2rem 1.5rem; }
+  .text-col h3       { font-size: 2.4rem; }
+}
 
-  .services-grid { grid-template-columns: 1fr; }
-
-  .ap-phase  { padding: 2rem 1.5rem; }
-  .ap-header { max-width: 100%; }
-  .ap-list { margin-left: 0.5rem; } 
-
-  .img-text-row { flex-direction: column; }
+/* Small phone */
+@media (max-width: 480px) {
+  .svc-hero          { padding: 3rem 1rem; }
+  .section           { padding: 2rem 1rem; }
+  .ap-phase          { padding: 1.5rem 1rem; }
+  .ap-header .section-title { font-size: 2.2rem; }
+  .img-text-row      { padding: 1.5rem 1rem; gap: 2rem; }
+  .text-col h3       { font-size: 2rem; }
+  .text-stat span:first-child { font-size: 1.3rem; }
+  .text-stat span:last-child  { font-size: 0.85rem; }
 }

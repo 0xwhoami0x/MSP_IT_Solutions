@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security — MSP IT Solutions</title>
-  <link rel="stylesheet" href="../assets/css/nav.css?v=11" />
-  <link rel="stylesheet" href="../assets/css/base.css?v=11" />
-  <link rel="stylesheet" href="../assets/hermes/widget.css?v=11" />
-  <link rel="stylesheet" href="../assets/css/security.css?v=11" />
+  <link rel="stylesheet" href="../assets/css/nav.css?v=12" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=12" />
+  <link rel="stylesheet" href="../assets/hermes/widget.css?v=12" />
+  <link rel="stylesheet" href="../assets/css/security.css?v=12" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <script defer src="../assets/js/nav.js?v=11"></script>
-  <script defer src="../assets/js/main.js?v=11"></script>
-  <script defer src="../assets/hermes/hermes.js?v=11"></script>
+  <script defer src="../assets/js/nav.js?v=12"></script>
+  <script defer src="../assets/js/main.js?v=12"></script>
+  <script defer src="../assets/hermes/hermes.js?v=12"></script>
 
   <!-- ═══════════════ PAGE-LOCAL STYLES (marquee + typed heading) ═══════════════ -->
   <style>
@@ -61,7 +61,7 @@
     }
     .jb-marquee__text {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 1.5vw, 1.05rem);
+      font-size: clamp(1.05rem, 1.5vw, 1.5rem);
       font-weight: 400;
       font-style: italic;
       letter-spacing: 0.01em;
@@ -82,7 +82,7 @@
     /* ── Typed heading (Service Cards section) ── */
     #typed-role {
       display: inline-block;
-      min-width: 22ch;     /* holds the line steady; bump toward 33ch for zero shift */
+      min-width: 22ch;
       text-align: left;
     }
     .hero__blink {
@@ -108,8 +108,6 @@
 
   <!-- ═══════════════════════════════════════════════════════════════
        HERO
-       ┃ Edit the tag, title, and intro paragraph below.
-       ┃ Styling → security.css › HERO
        ═══════════════════════════════════════════════════════════════ -->
   <section class="svc-hero">
     <h2 class="section-title fade-in">Security</h2>
@@ -119,7 +117,7 @@
   </section>
 
 
-  <!-- ═══════════════ MARQUEE BANNER (under hero) ═══════════════ -->
+  <!-- ═══════════════ MARQUEE BANNER ═══════════════ -->
   <section class="jb-marquee-section" aria-label="Security note">
     <div class="jb-marquee" data-jb-marquee>
       <div class="jb-marquee__edge jb-marquee__edge--l" aria-hidden="true"></div>
@@ -131,9 +129,6 @@
 
   <!-- ═══════════════════════════════════════════════════════════════
        SERVICE CARDS  (3 wide × 2 deep on desktop)
-       ┃ Add or remove <div class="card service-card"> blocks freely.
-       ┃ Grid stays 3-wide; 6 cards = 2 full rows exactly.
-       ┃ Card layout/colours → security.css › SERVICE CARD GRID
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="section-tag fade-in">What We Deliver</div>
@@ -146,7 +141,7 @@
 
     <div class="services-grid">
 
-      <!-- CARD 1 — row 1, col 1 -->
+      <!-- CARD 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128737;&#65039;</div>
         <h3>SIEM &amp; Threat Detection</h3>
@@ -159,7 +154,7 @@
         </ul>
       </div>
 
-      <!-- CARD 2 — row 1, col 2 -->
+      <!-- CARD 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128190;</div>
         <h3>Backup &amp; Disaster Recovery</h3>
@@ -171,7 +166,7 @@
         </ul>
       </div>
 
-      <!-- CARD 3 — row 1, col 3 -->
+      <!-- CARD 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128231;</div>
         <h3>Email Security &amp; Phishing Defense</h3>
@@ -183,7 +178,7 @@
         </ul>
       </div>
 
-      <!-- CARD 4 — row 2, col 1 -->
+      <!-- CARD 4 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128100;</div>
         <h3>Identity &amp; Access Protection</h3>
@@ -196,7 +191,7 @@
         </ul>
       </div>
 
-      <!-- CARD 5 — row 2, col 2 -->
+      <!-- CARD 5 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128203;</div>
         <h3>Patch Management &amp; Compliance</h3>
@@ -209,7 +204,7 @@
         </ul>
       </div>
 
-      <!-- CARD 6 — row 2, col 3 -->
+      <!-- CARD 6 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128202;</div>
         <h3>Security Reporting</h3>
@@ -227,7 +222,6 @@
 
   <!-- ═══════════════════════════════════════════════════════════════
        ASSESSMENT SECTION
-       ┃ LAYOUT: tag top-left → centered title + paragraph → divider → bullet list
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section" id="assessment">
     <div class="ap-phase fade-in">
@@ -295,7 +289,7 @@
           </div>
         </div>
 
-      </div><!-- end .text-col -->
+      </div>
     </div>
   </section>
 
@@ -342,7 +336,7 @@
       track.innerHTML = buildSet(false) + buildSet(true);
     })();
 
-    // ── Typed heading (cycles through the six card titles) ──
+    // ── Typed heading ──
     (function initTypedRole() {
       const el = document.getElementById('typed-role');
       if (!el) return;
@@ -356,10 +350,10 @@
         'Security Reporting'
       ];
 
-      const TYPE_SPEED   = 10;    // per character while typing
-      const DELETE_SPEED = 25;    // per character while deleting
-      const HOLD_FULL    = 1600;  // pause when fully typed
-      const HOLD_EMPTY   = 400;   // pause before next phrase
+      const TYPE_SPEED   = 10;
+      const DELETE_SPEED = 25;
+      const HOLD_FULL    = 1600;
+      const HOLD_EMPTY   = 400;
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         el.textContent = roles[0];
