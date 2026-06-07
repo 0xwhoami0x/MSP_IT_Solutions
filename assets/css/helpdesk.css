@@ -113,14 +113,21 @@
 
 /* ── RESPONSIVE (helpdesk-specific only) ────────────────────────── */
 @media (max-width: 1024px) {
-  .tool-grid     { grid-template-columns: repeat(3, 1fr); }
-  .workflow-grid { grid-template-columns: repeat(3, 1fr); }
+  .tool-grid             { grid-template-columns: repeat(3, 1fr); }
+  .workflow-grid         { grid-template-columns: repeat(3, 1fr); }
+  .hd-head h3            { font-size: 2.4rem; }
+  .hd-head p             { font-size: 1.15rem; }
 }
 
 @media (max-width: 768px) {
-  .hd-stack                      { padding: 2.5rem 1.25rem; }
+  .hd-stack                      { padding: 2rem 1.25rem; }
+  .hd-head h3                    { font-size: 1.6rem; }
+  .hd-head p                     { font-size: 0.95rem; }
   .tool-grid, .workflow-grid     { grid-template-columns: 1fr 1fr; }
+  .tool-card h4, .workflow-card h4 { font-size: 1.15rem; }
+  .tool-desc, .workflow-desc     { font-size: 0.85rem; }
   .kpi-grid                      { grid-template-columns: 1fr 1fr; }
+  .kpi-value                     { font-size: 2.2rem; }
 
   .sla-table, .sla-table thead, .sla-table tbody,
   .sla-table tr, .sla-table th, .sla-table td { display: block; }
@@ -133,10 +140,9 @@
 }
 
 @media (max-width: 480px) {
-  .hd-stack                        { padding: 2rem 1rem; }
+  .hd-stack                        { padding: 1.5rem 1rem; }
   .tool-grid, .workflow-grid       { grid-template-columns: 1fr; }
   .kpi-grid                        { grid-template-columns: 1fr; }
-  .tool-card h4, .workflow-card h4 { font-size: 1.15rem; }
-  .hd-head p                       { font-size: 1.1rem; }
-  .kpi-value                       { font-size: 2.2rem; }
+  .hd-head h3                      { font-size: 1.4rem; }
+  .hd-head p                       { font-size: 0.9rem; }
 }

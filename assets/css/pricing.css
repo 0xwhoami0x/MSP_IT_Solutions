@@ -130,8 +130,16 @@
 
 
 /* ── RESPONSIVE (pricing-specific only) ─────────────────────────── */
+@media (max-width: 1024px) {
+  .pricing-card h3   { font-size: 1.35rem; }
+  .price             { font-size: 2.6rem; }
+  .transition-card h3 { font-size: 1.2rem; }
+}
+
 @media (max-width: 768px) {
-  .pricing-grid    { grid-template-columns: 1fr; }
-  .price           { font-size: 2.2rem; }
-  .transition-grid { grid-template-columns: 1fr; }
+  .pricing-grid      { grid-template-columns: 1fr; }
+  .price             { font-size: 2rem; }
+  .price-note        { font-size: 0.95rem; }
+  .transition-grid   { grid-template-columns: 1fr; }
+  .transition-card h3 { font-size: 1.1rem; }
 }

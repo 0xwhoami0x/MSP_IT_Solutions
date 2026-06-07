@@ -387,26 +387,44 @@ body {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   11. RESPONSIVE — two breakpoints, all shared components
+   11. RESPONSIVE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* ── Tablet ── */
+/* ── Tablet (≤ 1024px) ── */
 @media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid         { grid-template-columns: repeat(2, 1fr); }
+  .svc-hero              { padding: 4rem 2.5rem; }
+  .section               { padding: 3.5rem 2.5rem; }
+
+  /* Scale type down one notch */
+  .section-tag           { font-size: 1.4rem; }
+  .section-title         { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+  .section-intro         { font-size: 1.2rem; }
+  .text-col h3           { font-size: 2.4rem; }
+  .service-card h3       { font-size: 1.4rem; }
+  .service-card .card-list li { font-size: 1rem; }
+  .svc-cta h2            { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
 }
 
-/* ── Phone ── */
+/* ── Phone (≤ 768px) ── */
 @media (max-width: 768px) {
   /* Layout */
-  .svc-hero              { padding: 3.5rem 1.25rem; }
-  .section               { padding: 2.5rem 1.25rem; }
+  .svc-hero              { padding: 2.5rem 1.25rem; }
+  .section               { padding: 2rem 1.25rem; }
   .services-grid         { grid-template-columns: 1fr; }
-  .img-text-row          { padding: 1.5rem; gap: 2rem; }
+  .img-text-row          { padding: 1.25rem; gap: 1.5rem; }
 
-  /* Typography */
-  .section-title         { font-size: 2rem; }
-  .section-intro         { font-size: 1.1rem; max-width: 100%; }
-  .text-col h3           { font-size: 2rem; }
+  /* Typography — compact for small screens */
+  .section-tag           { font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+  .section-title         { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .section-intro         { font-size: 1rem; max-width: 100%; margin-bottom: 1.25rem; }
+  .text-col h3           { font-size: 1.6rem; }
+  .text-col p            { font-size: 1rem; }
+  .service-card h3       { font-size: 1.25rem; }
+  .service-card p,
+  .service-card .card-list li { font-size: 0.95rem; }
+  .svc-cta h2            { font-size: 1.6rem; }
+  .svc-cta p             { font-size: 0.95rem; }
   .text-stat span:first-child { font-size: 1.3rem; }
-  .text-stat span:last-child  { font-size: 0.85rem; }
+  .text-stat span:last-child  { font-size: 0.8rem; }
 }

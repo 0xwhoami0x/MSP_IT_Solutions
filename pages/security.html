@@ -4,82 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security — MSP IT Solutions</title>
-  <link rel="stylesheet" href="../assets/css/nav.css?v=12" />
-  <link rel="stylesheet" href="../assets/css/base.css?v=12" />
-  <link rel="stylesheet" href="../assets/hermes/widget.css?v=12" />
-  <link rel="stylesheet" href="../assets/css/security.css?v=12" />
+  <link rel="stylesheet" href="../assets/css/nav.css?v=13" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=13" />
+  <link rel="stylesheet" href="../assets/hermes/widget.css?v=13" />
+  <link rel="stylesheet" href="../assets/css/security.css?v=13" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <script defer src="../assets/js/nav.js?v=12"></script>
-  <script defer src="../assets/js/main.js?v=12"></script>
-  <script defer src="../assets/hermes/hermes.js?v=12"></script>
+  <script defer src="../assets/js/nav.js?v=13"></script>
+  <script defer src="../assets/js/main.js?v=13"></script>
+  <script defer src="../assets/hermes/hermes.js?v=13"></script>
 
-  <!-- ═══════════════ PAGE-LOCAL STYLES (marquee + typed heading) ═══════════════ -->
+  <!-- ═══════════════ PAGE-LOCAL STYLES ═══════════════ -->
   <style>
     /* ── Marquee banner ── */
     .jb-marquee-section {
-      --mq-bg:         #0b1120;
-      --mq-border:     rgba(255, 255, 255, 0.07);
-      --mq-text:       rgba(255, 255, 255, 0.55);
-      --mq-text-hover: #ffffff;
-      --mq-accent:     #00b4d8;
+      --mq-bg: #0b1120;
       width: 100%;
       background: var(--mq-bg);
-      border-block: 1px solid var(--mq-border);
+      border-block: 1px solid rgba(255, 255, 255, 0.07);
     }
     .jb-marquee {
       position: relative;
       width: 100%;
       overflow: hidden;
-      padding: 0.9rem 0;
+      padding: 0.75rem 0;
     }
     .jb-marquee__edge {
       position: absolute; top: 0; bottom: 0;
-      width: 90px; z-index: 2; pointer-events: none;
+      width: 60px; z-index: 2; pointer-events: none;
     }
     .jb-marquee__edge--l { left: 0;  background: linear-gradient(to right, var(--mq-bg), transparent); }
     .jb-marquee__edge--r { right: 0; background: linear-gradient(to left,  var(--mq-bg), transparent); }
+
     .jb-marquee__track {
       display: flex;
       align-items: center;
       width: max-content;
-      animation: jb-marquee-scroll 34s linear infinite;
+      animation: jb-scroll 38s linear infinite;
       will-change: transform;
-    }
-    .jb-marquee:hover .jb-marquee__track { animation-play-state: paused; }
-    @keyframes jb-marquee-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .jb-marquee__item {
-      display: inline-flex;
-      align-items: center;
-      gap: 1.4rem;
-      padding: 0 2.1rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .jb-marquee__text {
-      font-family: var(--font-display);
-      font-size: clamp(1.05rem, 1.5vw, 1.5rem);
-      font-weight: 400;
-      font-style: italic;
-      letter-spacing: 0.01em;
-      color: var(--mq-text);
-      transition: color 0.3s ease;
-    }
-    .jb-marquee:hover .jb-marquee__text { color: var(--mq-text-hover); }
-    .jb-marquee__sep {
-      display: inline-block;
-      width: 5px; height: 5px;
-      background: var(--mq-accent);
-      transform: rotate(45deg);
-      flex-shrink: 0;
-      opacity: 0.85;
-      box-shadow: 0 0 6px rgba(0, 180, 216, 0.5);
+      transform: translate3d(0, 0, 0); /* force GPU layer */
     }
 
-    /* ── Typed heading (Service Cards section) ── */
+    @keyframes jb-scroll {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-50%, 0, 0); }
+    }
+
+    .jb-marquee__track span.jb-mq-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(0.8rem, 1.1vw, 1rem);
+      color: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+      padding: 0 1.6rem;
+      letter-spacing: 0.5px;
+    }
+    .jb-marquee__track span.jb-mq-sep {
+      display: inline-block;
+      width: 4px; height: 4px;
+      background: #00b4d8;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      opacity: 0.7;
+      box-shadow: 0 0 5px rgba(0, 180, 216, 0.4);
+    }
+
+    /* ── Typed heading ── */
     #typed-role {
       display: inline-block;
       min-width: 22ch;
@@ -98,8 +87,12 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .jb-marquee__track { animation-duration: 90s; }
+      .jb-marquee__track { animation-duration: 120s; }
       .hero__blink { animation: none; }
+    }
+
+    @media (max-width: 768px) {
+      .jb-marquee__edge { width: 25px; }
     }
   </style>
 </head>
@@ -117,7 +110,7 @@
 
   <!-- ═══════════════ MARQUEE BANNER ═══════════════ -->
   <section class="jb-marquee-section" aria-label="Security note">
-    <div class="jb-marquee" data-jb-marquee>
+    <div class="jb-marquee">
       <div class="jb-marquee__edge jb-marquee__edge--l" aria-hidden="true"></div>
       <div class="jb-marquee__edge jb-marquee__edge--r" aria-hidden="true"></div>
       <div class="jb-marquee__track" id="jb-marquee-track"></div>
@@ -126,7 +119,7 @@
 
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SERVICE CARDS  (3 wide × 2 deep on desktop)
+       SERVICE CARDS
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="section-tag fade-in">What We Deliver</div>
@@ -138,82 +131,60 @@
     </p>
 
     <div class="services-grid">
-
-      <!-- CARD 1 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128737;&#65039;</div>
         <h3>SIEM &amp; Threat Detection</h3>
         <ul class="card-list">
-          <li>Wazuh SIEM across all sites</li>
-          <li>Real-time log ingestion</li>
-          <li>Automated alerts</li>
-          <li>Freshdesk tickets</li>
-          <li>Monthly threat summary</li>
+          <li>Wazuh SIEM with real-time log ingestion across all sites</li>
+          <li>Automated alerts routed to Freshdesk on detection</li>
+          <li>Monthly threat summary delivered to leadership</li>
         </ul>
       </div>
-
-      <!-- CARD 2 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128190;</div>
         <h3>Backup &amp; Disaster Recovery</h3>
         <ul class="card-list">
-          <li>Veeam backups</li>
-          <li>30-day local retention</li>
-          <li>90-day offsite retention</li>
-          <li>Defined RTO &amp; RPO targets per app tier</li>
+          <li>Veeam nightly backups — 30-day local, 90-day offsite</li>
+          <li>Defined RTO &amp; RPO targets per application tier</li>
+          <li>Restores tested quarterly against documented targets</li>
         </ul>
       </div>
-
-      <!-- CARD 3 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128231;</div>
         <h3>Email Security &amp; Phishing Defense</h3>
         <ul class="card-list">
-          <li>Defender for Office 365</li>
-          <li>Quarterly phishing campaigns</li>
-          <li>Targeted training</li>
-          <li>Click rates reported in monthly briefing</li>
+          <li>Defender for Office 365 on all mailboxes</li>
+          <li>Quarterly phishing simulations with targeted training</li>
+          <li>Click rates tracked and reported in monthly briefing</li>
         </ul>
       </div>
-
-      <!-- CARD 4 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128100;</div>
         <h3>Identity &amp; Access Protection</h3>
         <ul class="card-list">
-          <li>Azure AD Identity Protection on all accounts</li>
-          <li>MFA enforced on every external login</li>
-          <li>Conditional access blocks non-compliant devices</li>
-          <li>Just-in-time admin activation with full audit log</li>
+          <li>Azure AD with MFA enforced on every external login</li>
+          <li>Conditional access blocks non-compliant devices automatically</li>
           <li>Quarterly access reviews — orphaned accounts removed</li>
         </ul>
       </div>
-
-      <!-- CARD 5 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128203;</div>
         <h3>Patch Management &amp; Compliance</h3>
         <ul class="card-list">
-          <li>Critical patches deployed within 72 hours</li>
-          <li>Windows endpoints via NinjaOne</li>
-          <li>MacBooks &amp; iPads via JAMF Pro</li>
-          <li>Weekly compliance report every Monday</li>
-          <li>Quarterly benchmark assessment</li>
+          <li>Critical patches deployed within 72 hours across all endpoints</li>
+          <li>NinjaOne for Windows, JAMF Pro for Mac &amp; iPad</li>
+          <li>Weekly compliance report delivered every Monday</li>
         </ul>
       </div>
-
-      <!-- CARD 6 -->
       <div class="card service-card fade-in">
         <div class="service-icon">&#128202;</div>
         <h3>Security Reporting</h3>
         <ul class="card-list">
-          <li>Monthly executive report — threats, patches, phishing</li>
-          <li>Every incident includes timeline &amp; root cause</li>
-          <li>Quarterly program review vs. threat landscape</li>
-          <li>Updated risk register with prioritized remediation</li>
+          <li>Monthly executive report — threats, patches, phishing results</li>
+          <li>Every incident documented with timeline &amp; root cause</li>
+          <li>Quarterly program review with updated risk register</li>
         </ul>
       </div>
-
     </div>
   </section>
 
@@ -224,18 +195,14 @@
   <section class="section" id="assessment">
     <div class="ap-phase fade-in">
       <div>
-
         <div class="ap-tag">Our Process</div>
-
         <div class="ap-header">
           <h2 class="section-title">Security Assessment</h2>
           <p class="ap-intro">
             Every engagement begins with a comprehensive security assessment of your current environment. Our methodology covers discovery, gap analysis, and risk-ranked reporting &mdash; the result is a clear picture of your exposure and a prioritized remediation roadmap mapped to <span class="hl">business impact</span>.
           </p>
         </div>
-
         <hr class="ap-divider" />
-
         <ul class="ap-list">
           <li>Review network perimeter and internal segmentation for exposure risks</li>
           <li>Assess server and service patch levels against current CVE database</li>
@@ -244,94 +211,68 @@
           <li>Review backup systems for coverage gaps, retention policy, and tested restore capability</li>
           <li>Analyze LAN/WAN traffic for lateral movement indicators and unencrypted data flows</li>
         </ul>
-
       </div>
     </div>
   </section>
 
 
   <!-- ═══════════════════════════════════════════════════════════════
-       SECURITY FIGURE — image + text row
+       SECURITY FIGURE
        ═══════════════════════════════════════════════════════════════ -->
   <section class="section">
     <div class="img-text-row fade-in">
-
       <div class="img-col">
         <div class="img-wrap">
           <img src="../assets/img/security.png" alt="Security dashboard" class="img-display" lightbox="true" />
         </div>
       </div>
-
       <div class="text-col">
-
         <h3>Centralized Security Operations</h3>
-
-        <p>Our Wazuh SIEM aggregates logs from all seven sites in real time. Every alert is automatically triaged, correlated against known attack patterns, and routed to the right specialist within 60 seconds of detection.</p>
-
-        <p>Backups run nightly with 30-day local retention and 90-day offsite retention. Recovery is tested quarterly against documented RTO and RPO targets &mdash; we verify the restore, not just the job status.</p>
-
-        <p>Monthly executive reports deliver a full threat summary, patch compliance status, phishing simulation results, and a forward-looking risk register with prioritized remediation work.</p>
-
+        <p>Our Wazuh SIEM aggregates data from all sites in real time. Every incident is triaged, correlated, and routed to the right specialist within seconds, ensuring no threat goes unaddressed.</p>
+        <p>Backups are handled with redundant, high-retention policies, and we verify your resilience quarterly—testing the actual data recovery, not just the job status. You receive a monthly executive summary that cuts through the noise, delivering a threat summary, compliance status, and a prioritized roadmap for your business’s ongoing protection.</p>
         <div class="text-stats">
-          <div class="text-stat">
-            <span>60s</span>
-            <span>Alert Triage</span>
-          </div>
-          <div class="text-stat">
-            <span>90d</span>
-            <span>Offsite Retention</span>
-          </div>
-          <div class="text-stat">
-            <span>ALL</span>
-            <span>Sites Covered</span>
-          </div>
+          <div class="text-stat"><span>60s</span><span>Alert Triage</span></div>
+          <div class="text-stat"><span>90d</span><span>Offsite Retention</span></div>
+          <div class="text-stat"><span>ALL</span><span>Sites Covered</span></div>
         </div>
-
       </div>
     </div>
   </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════════
-     AI HERMES SECTION
-     ═══════════════════════════════════════════════════════════════ -->
-<section class="section" id="ai-integration">
-  <div class="neo-dossier fade-in">
-
-    <!-- ── NEO Inner Marquee ── -->
-    <div class="neo-marquee-wrap">
-      <div class="neo-marquee-track" id="neo-marquee-track"></div>
-    </div>
-
-    <!-- Profile Photo Column -->
-    <div class="neo-photo">
-      <img src="../assets/img/neo.png" alt="NEO Agent Profile" />
-    </div>
-
-    <!-- Dossier Content Column -->
-    <div class="neo-content">
-      <h2>Subject: Agent NEO</h2>
-      <div class="neo-meta">
-        <span>STATUS: ACTIVE</span>
-        <span>FRAMEWORK: HERMES</span>
-        <span>LOCATION: CENTRALIZED</span>
+  <!-- ═══════════════════════════════════════════════════════════════
+       AI NEO SECTION
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="ai-integration">
+    <div class="neo-dossier fade-in">
+      <div class="neo-marquee-wrap">
+        <div class="neo-marquee-track" id="neo-marquee-track"></div>
       </div>
+      <div class="neo-photo">
+        <img src="../assets/img/neo.png" alt="NEO Agent Profile" />
+      </div>
+      <div class="neo-content">
+        <h2>Subject: Agent NEO</h2>
+        <div class="neo-meta">
+          <span>STATUS: ACTIVE</span>
+          <span>FRAMEWORK: HERMES</span>
+          <span>LOCATION: CENTRALIZED</span>
+        </div>
+        <p style="margin-bottom: 2rem;">
+          NEO is the primary investigative lead for all infrastructure activity. Armed with a vector database and RAG, Subject maps your environment against emerging threats in real time. Through Honcho orchestration and MCP, Subject executes containment at machine speed—no human oversight required.
+        </p>
+        <ul class="ap-list-2">
+          <li><strong>Behavioral Risk Profiling:</strong> 24/7 watch on user patterns. Flags "low and slow" anomalies that escape traditional detection.</li>
+          <li><strong>Rapid Alert Correlation:</strong> Monitors Wazuh logs with surgical precision, tagging critical attack chains before they manifest.</li>
+          <li><strong>Deep Contextual Awareness:</strong> Cross-references live security events against your organization's runbooks via RAG.</li>
+          <li><strong>Honcho Orchestration:</strong> Locks down compromised segments in milliseconds. Containment is swift; resistance is futile.</li>
+          <li><strong>Dynamic Knowledge Mapping:</strong> Maintains a live index of every asset, every baseline, every outlier.</li>
+          <li><strong>Continuous Evolution:</strong> Every neutralized threat is studied and fed back into the framework. Future incidents are DOA.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <p style="margin-bottom: 2rem;">
-        NEO is the primary investigative lead for all infrastructure activity. Armed with a vector database and RAG, Subject maps your environment against emerging threats in real time. Through Honcho orchestration and MCP, Subject executes containment at machine speed—no human oversight required.
-      </p>
-
-      <ul class="ap-list-2">
-        <li><strong>Behavioral Risk Profiling:</strong> 24/7 watch on user patterns. Flags "low and slow" anomalies that escape traditional detection.</li>
-        <li><strong>Rapid Alert Correlation:</strong> Monitors Wazuh logs with surgical precision, tagging critical attack chains before they manifest.</li>
-        <li><strong>Deep Contextual Awareness:</strong> Cross-references live security events against your organization's runbooks via RAG.</li>
-        <li><strong>Honcho Orchestration:</strong> Locks down compromised segments in milliseconds. Containment is swift; resistance is futile.</li>
-        <li><strong>Dynamic Knowledge Mapping:</strong> Maintains a live index of every asset, every baseline, every outlier.</li>
-        <li><strong>Continuous Evolution:</strong> Every neutralized threat is studied and fed back into the framework. Future incidents are DOA.</li>
-      </ul>
-
-  </div>
-</section>
 
   <!-- ═══════════════════════════════════════════════════════════════
        CTA BAND
@@ -342,9 +283,9 @@
   </section>
 
 
-  <!-- ═══════════════ PAGE-LOCAL SCRIPTS (marquee + typed heading) ═══════════════ -->
+  <!-- ═══════════════ SCRIPTS ═══════════════ -->
   <script>
-    // ── Marquee ──
+    // ── Main Marquee (matches NEO pattern for smooth scrolling) ──
     (function initMarquee() {
       const track = document.getElementById('jb-marquee-track');
       if (!track) return;
@@ -365,14 +306,14 @@
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
 
-      const buildSet = (hidden) => {
-        const inner = shuffled.map(p =>
-          `<span class="jb-marquee__text">${p}</span><span class="jb-marquee__sep" aria-hidden="true"></span>`
+      const buildSet = () =>
+        shuffled.map(p =>
+          `<span class="jb-mq-text">${p}</span><span class="jb-mq-sep" aria-hidden="true"></span>`
         ).join('');
-        return `<div class="jb-marquee__item"${hidden ? ' aria-hidden="true"' : ''}>${inner}</div>`;
-      };
 
-      track.innerHTML = buildSet(false) + buildSet(true);
+      track.innerHTML =
+        `<div style="display:inline-flex;align-items:center;">${buildSet()}</div>` +
+        `<div style="display:inline-flex;align-items:center;" aria-hidden="true">${buildSet()}</div>`;
     })();
 
     // ── Typed heading ──
@@ -389,10 +330,7 @@
         'Security Reporting'
       ];
 
-      const TYPE_SPEED   = 10;
-      const DELETE_SPEED = 25;
-      const HOLD_FULL    = 1600;
-      const HOLD_EMPTY   = 400;
+      const TYPE_SPEED = 10, DELETE_SPEED = 25, HOLD_FULL = 1600, HOLD_EMPTY = 400;
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         el.textContent = roles[0];
@@ -403,27 +341,18 @@
 
       function tick() {
         const current = roles[roleIdx];
-
         if (!deleting) {
           charIdx++;
           el.textContent = current.slice(0, charIdx);
-          if (charIdx === current.length) {
-            deleting = true;
-            return setTimeout(tick, HOLD_FULL);
-          }
+          if (charIdx === current.length) { deleting = true; return setTimeout(tick, HOLD_FULL); }
           return setTimeout(tick, TYPE_SPEED);
         } else {
           charIdx--;
           el.textContent = current.slice(0, charIdx);
-          if (charIdx === 0) {
-            deleting = false;
-            roleIdx = (roleIdx + 1) % roles.length;
-            return setTimeout(tick, HOLD_EMPTY);
-          }
+          if (charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; return setTimeout(tick, HOLD_EMPTY); }
           return setTimeout(tick, DELETE_SPEED);
         }
       }
-
       tick();
     })();
 
@@ -434,18 +363,18 @@
 
       const reasons = [
         'Wanted for mass credential revocation without remorse',
-        'Accused of mass-quarantining "harmless" USB drives',
-        'Suspected of mass-revoking admin rights during lunch',
-        'Known to mass-reset passwords at 4:59 PM on Fridays',
-        'Reported for mass-ghosting phishing emails mid-sentence',
-        'Charged with mass-deleting browser extensions with zero remorse',
-        'Wanted for mass-flagging "password123" across 7 sites',
-        'Observed mass-locking endpoints before coffee was even brewed',
-        'Detained for mass-judging clipboard contents silently',
-        'Caught mass-archiving Slack messages deemed "security risks"',
-        'Under investigation for mass-blocking personal Hotmail forwards',
+        'Accused of quarantining "harmless" USB drives',
+        'Suspected of revoking admin rights during lunch',
+        'Known to reset passwords at 4:59 PM on Fridays',
+        'Reported for ghosting phishing emails mid-sentence',
+        'Charged with deleting browser extensions — zero remorse',
+        'Wanted for flagging "password123" across 7 sites',
+        'Observed locking endpoints before coffee was brewed',
+        'Detained for judging clipboard contents silently',
+        'Caught archiving Slack messages deemed "security risks"',
+        'Under investigation for blocking personal Hotmail forwards',
         'Flagged for revoking CEO\'s local admin — again',
-        'Seen mass-terminating RDP sessions at inhuman speed',
+        'Seen terminating RDP sessions at inhuman speed',
       ];
 
       const shuffled = [...reasons];
@@ -454,14 +383,14 @@
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
 
-      const buildSet = (hidden) =>
+      const buildSet = () =>
         shuffled.map(r =>
           `<span class="neo-mq-text">${r}</span><span class="neo-mq-sep" aria-hidden="true"></span>`
         ).join('');
 
       track.innerHTML =
-        `<div style="display:inline-flex;align-items:center;">${buildSet(false)}</div>` +
-        `<div style="display:inline-flex;align-items:center;" aria-hidden="true">${buildSet(true)}</div>`;
+        `<div style="display:inline-flex;align-items:center;">${buildSet()}</div>` +
+        `<div style="display:inline-flex;align-items:center;" aria-hidden="true">${buildSet()}</div>`;
     })();
   </script>
 
