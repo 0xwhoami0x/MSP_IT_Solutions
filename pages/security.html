@@ -292,6 +292,47 @@
   </section>
 
 
+<!-- ═══════════════════════════════════════════════════════════════
+     AI HERMES SECTION
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="section" id="ai-integration">
+  <div class="neo-dossier fade-in">
+
+    <!-- ── NEO Inner Marquee ── -->
+    <div class="neo-marquee-wrap">
+      <div class="neo-marquee-track" id="neo-marquee-track"></div>
+    </div>
+
+    <!-- Profile Photo Column -->
+    <div class="neo-photo">
+      <img src="../assets/img/neo.png" alt="NEO Agent Profile" />
+    </div>
+
+    <!-- Dossier Content Column -->
+    <div class="neo-content">
+      <h2>Subject: Agent NEO</h2>
+      <div class="neo-meta">
+        <span>STATUS: ACTIVE</span>
+        <span>FRAMEWORK: HERMES</span>
+        <span>LOCATION: CENTRALIZED</span>
+      </div>
+
+      <p style="margin-bottom: 2rem;">
+        NEO is the primary investigative lead for all infrastructure activity. Armed with a vector database and RAG, Subject maps your environment against emerging threats in real time. Through Honcho orchestration and MCP, Subject executes containment at machine speed—no human oversight required.
+      </p>
+
+      <ul class="ap-list-2">
+        <li><strong>Behavioral Risk Profiling:</strong> 24/7 watch on user patterns. Flags "low and slow" anomalies that escape traditional detection.</li>
+        <li><strong>Rapid Alert Correlation:</strong> Monitors Wazuh logs with surgical precision, tagging critical attack chains before they manifest.</li>
+        <li><strong>Deep Contextual Awareness:</strong> Cross-references live security events against your organization's runbooks via RAG.</li>
+        <li><strong>Honcho Orchestration:</strong> Locks down compromised segments in milliseconds. Containment is swift; resistance is futile.</li>
+        <li><strong>Dynamic Knowledge Mapping:</strong> Maintains a live index of every asset, every baseline, every outlier.</li>
+        <li><strong>Continuous Evolution:</strong> Every neutralized threat is studied and fed back into the framework. Future incidents are DOA.</li>
+      </ul>
+
+  </div>
+</section>
+
   <!-- ═══════════════════════════════════════════════════════════════
        CTA BAND
        ═══════════════════════════════════════════════════════════════ -->
@@ -384,6 +425,43 @@
       }
 
       tick();
+    })();
+
+    // ── NEO Inner Marquee ──
+    (function initNeoMarquee() {
+      const track = document.getElementById('neo-marquee-track');
+      if (!track) return;
+
+      const reasons = [
+        'Wanted for mass credential revocation without remorse',
+        'Accused of mass-quarantining "harmless" USB drives',
+        'Suspected of mass-revoking admin rights during lunch',
+        'Known to mass-reset passwords at 4:59 PM on Fridays',
+        'Reported for mass-ghosting phishing emails mid-sentence',
+        'Charged with mass-deleting browser extensions with zero remorse',
+        'Wanted for mass-flagging "password123" across 7 sites',
+        'Observed mass-locking endpoints before coffee was even brewed',
+        'Detained for mass-judging clipboard contents silently',
+        'Caught mass-archiving Slack messages deemed "security risks"',
+        'Under investigation for mass-blocking personal Hotmail forwards',
+        'Flagged for revoking CEO\'s local admin — again',
+        'Seen mass-terminating RDP sessions at inhuman speed',
+      ];
+
+      const shuffled = [...reasons];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+
+      const buildSet = (hidden) =>
+        shuffled.map(r =>
+          `<span class="neo-mq-text">${r}</span><span class="neo-mq-sep" aria-hidden="true"></span>`
+        ).join('');
+
+      track.innerHTML =
+        `<div style="display:inline-flex;align-items:center;">${buildSet(false)}</div>` +
+        `<div style="display:inline-flex;align-items:center;" aria-hidden="true">${buildSet(true)}</div>`;
     })();
   </script>
 
