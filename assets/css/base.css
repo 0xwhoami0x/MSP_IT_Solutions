@@ -1,5 +1,5 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  base.css — SHARED FOUNDATION  v4                               ║
+   ║  base.css — SHARED FOUNDATION  v5 (audit-clean)                ║
    ║  Loaded on EVERY page. Contains all shared layout, typography,  ║
    ║  components, and responsive rules. Page CSS files only add      ║
    ║  what's unique to that page.                                    ║
@@ -22,25 +22,25 @@
   --section-max-w:  1275px;
 
   /* ── SECTION LABELS ── */
-  --tag-size:       0.8rem;           /* unified uppercase label size */
+  --tag-size:       0.8rem;
   --tag-color:      #00b4d8;
 
-  /* ── SECTION TITLE ── clamp handles all breakpoints automatically */
+  /* ── SECTION TITLE ── */
   --title-size:     clamp(1.9rem, 3.5vw, 3.4rem);
   --title-color:    #ffffff;
 
   /* ── SECTION INTRO ── */
-  --intro-size:     clamp(0.95rem, 1.3vw, 1.15rem);
+  --intro-size:     clamp(0.95rem, 1.3vw, 1.1rem);
   --intro-color:    rgba(255, 255, 255, 0.55);
   --intro-weight:   300;
 
   /* ── SERVICE CARDS ── */
   --card-gap:           1.5rem;
   --card-icon-size:     2.2rem;
-  --card-title-size:    clamp(1.1rem, 1.4vw, 1.45rem);
+  --card-title-size:    clamp(1.05rem, 1.4vw, 1.35rem);
   --card-title-color:   #ffffff;
-  --card-para-size:     clamp(0.85rem, 1vw, 1rem);
-  --card-para-color:    rgba(255, 255, 255, 0.8);
+  --card-para-size:     clamp(0.85rem, 1vw, 0.95rem);
+  --card-para-color:    rgba(255, 255, 255, 0.75);
   --card-bar-gradient:  linear-gradient(90deg, #00b4d8, #1565c0);
 
   /* ── IMAGE + TEXT ROW ── */
@@ -48,16 +48,16 @@
   --img-border:        rgba(255, 255, 255, 0.07);
   --img-radius:        10px;
   --img-padding:       0.75rem;
-  --row-gap:           3rem;
-  --row-text-h3-size:  clamp(1.5rem, 2.2vw, 2.6rem);
+  --row-gap:           2.5rem;
+  --row-text-h3-size:  clamp(1.4rem, 2.2vw, 2.4rem);
   --row-text-h3-color: #ffffff;
-  --row-text-p-size:   clamp(0.9rem, 1.1vw, 1.1rem);
+  --row-text-p-size:   clamp(0.9rem, 1.1vw, 1.05rem);
   --row-text-p-color:  rgba(255, 255, 255, 0.55);
   --row-text-p-weight: 300;
 
-  /* ── HERO (service pages) — uniform height across all pages ── */
-  --svc-hero-min-height: 220px;
-  --svc-hero-padding:    5rem 4rem;
+  /* ── HERO (service pages) ── */
+  --svc-hero-min-height: 200px;
+  --svc-hero-padding:    4rem 4rem;
 }
 
 
@@ -71,7 +71,7 @@ body {
   background:  var(--page-bg);
   color:       var(--page-text);
   -webkit-font-smoothing: antialiased;
-  text-size-adjust: 100%; /* prevent iOS font inflation */
+  text-size-adjust: 100%;
 }
 
 
@@ -84,7 +84,7 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color:          var(--tag-color);
-  margin-bottom:  0.75rem;
+  margin-bottom:  0.6rem;
 }
 
 .section-title {
@@ -92,7 +92,7 @@ body {
   font-size:      var(--title-size);
   letter-spacing: 1.5px;
   color:          var(--title-color);
-  margin-bottom:  0.75rem;
+  margin-bottom:  0.6rem;
 }
 
 .section-intro {
@@ -101,39 +101,36 @@ body {
   color:         var(--intro-color);
   line-height:   1.7;
   max-width:     1250px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   4. SERVICE-PAGE HERO  — uniform height on every service page
+   4. SERVICE-PAGE HERO
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-hero {
-  position:    relative;
-  overflow:    hidden;
-  min-height:  var(--svc-hero-min-height);
-  padding:     var(--svc-hero-padding);
-  display:     flex;
+  position:       relative;
+  overflow:       hidden;
+  min-height:     var(--svc-hero-min-height);
+  padding:        var(--svc-hero-padding);
+  display:        flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align:  center;
-  background:  linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
-  /* isolate the blur pseudo-elements from scroll repaint */
-  contain:     layout style;
+  justify-content:center;
+  align-items:    center;
+  text-align:     center;
+  background:     linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
+  contain:        layout style;
 }
 
-/* Blur orbs: use will-change + transform3d so they stay on their own
-   GPU layer and don't trigger full-page repaints during scroll */
 .svc-hero::before,
 .svc-hero::after {
-  content:       '';
-  position:      absolute;
-  border-radius: 50%;
-  filter:        blur(120px);
-  z-index:       0;
-  pointer-events:none;
-  will-change:   transform;   /* keeps on compositor layer */
+  content:        '';
+  position:       absolute;
+  border-radius:  50%;
+  filter:         blur(120px);
+  z-index:        0;
+  pointer-events: none;
+  will-change:    transform;
 }
 .svc-hero::before {
   width: 600px; height: 600px;
@@ -149,16 +146,14 @@ body {
 .svc-hero .section-intro {
   margin-left:  auto;
   margin-right: auto;
-  max-width:    1000px;
+  max-width:    900px;
 }
-/* Hero title slightly larger than body sections */
 .svc-hero .section-title {
-  font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  font-size: clamp(2rem, 4.5vw, 4rem);
 }
-/* Hero tag slightly larger too */
 .svc-hero .section-tag {
-  font-size: 0.85rem;
-  letter-spacing: 4px;
+  font-size:      0.8rem;
+  letter-spacing: 3.5px;
 }
 
 
@@ -166,7 +161,7 @@ body {
    5. SECTION WRAPPER
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .section {
-  padding:   4.5rem 4rem;
+  padding:   3.5rem 3.5rem;
   max-width: var(--section-max-w);
   margin:    0 auto;
 }
@@ -191,23 +186,23 @@ body {
    6. SERVICE CARD GRID
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .services-grid {
-  display: grid;
+  display:               grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:     var(--card-gap);
-  text-align: left;
+  gap:                   var(--card-gap);
+  text-align:            left;
 }
 
 .card {
   background:    rgba(255, 255, 255, 0.03);
   border:        1px solid var(--border);
   border-radius: 10px;
-  padding:       2rem;
+  padding:       1.75rem;
   min-width:     0;
   transition:    border-color 0.25s, transform 0.25s;
 }
 .card:hover {
   border-color: rgba(0, 180, 216, 0.25);
-  transform:    translateY(-4px);
+  transform:    translateY(-3px);
 }
 
 .service-card { position: relative; overflow: hidden; }
@@ -224,15 +219,15 @@ body {
 .service-card:hover::before { transform: scaleX(1); }
 
 .service-icon {
-  width: 50px; height: 50px;
+  width: 46px; height: 46px;
   display:         flex;
   align-items:     center;
   justify-content: center;
   font-size:       var(--card-icon-size);
-  border-radius:   12px;
+  border-radius:   10px;
   background:      rgba(0, 180, 216, 0.1);
   border:          1px solid rgba(0, 180, 216, 0.2);
-  margin-bottom:   1.1rem;
+  margin-bottom:   1rem;
 }
 
 .service-card h3 {
@@ -240,7 +235,7 @@ body {
   font-size:      var(--card-title-size);
   letter-spacing: 1px;
   color:          var(--card-title-color);
-  margin-bottom:  0.75rem;
+  margin-bottom:  0.6rem;
 }
 
 .service-card p {
@@ -258,13 +253,13 @@ body {
 }
 
 .service-card .card-list li {
-  font-size:    var(--card-para-size);
-  color:        var(--card-para-color);
-  line-height:  1.65;
-  font-weight:  300;
-  margin-bottom:0.5rem;
-  padding-left: 1rem;
-  position:     relative;
+  font-size:     var(--card-para-size);
+  color:         var(--card-para-color);
+  line-height:   1.65;
+  font-weight:   300;
+  margin-bottom: 0.45rem;
+  padding-left:  1rem;
+  position:      relative;
 }
 
 .service-card .card-list li::before {
@@ -280,7 +275,7 @@ body {
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   7. IMAGE + TEXT ROW  (side-by-side on desktop, stacked on mobile)
+   7. IMAGE + TEXT ROW
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .img-wrap {
   background:    var(--img-bg);
@@ -290,7 +285,7 @@ body {
   overflow:      hidden;
   transition:    border-color 0.25s;
 }
-.img-wrap:hover { border-color: rgb(45, 236, 236); }
+.img-wrap:hover { border-color: rgba(45, 236, 236, 0.5); }
 
 .img-display {
   width: 100%; height: auto; display: block;
@@ -299,18 +294,17 @@ body {
 }
 .img-wrap:hover .img-display { transform: scale(1.015); }
 
-/* Desktop: side by side */
 .img-text-row {
   display:        flex;
-  flex-direction: row;      /* SIDE BY SIDE on desktop */
+  flex-direction: row;
   align-items:    center;
   gap:            var(--row-gap);
-  max-width:      1150px;
+  max-width:      1100px;
   margin:         0 auto;
   background:     rgba(255, 255, 255, 0.03);
   border:         1px solid var(--border);
   border-radius:  12px;
-  padding:        3rem;
+  padding:        2.5rem;
 }
 
 .img-text-row.row-reverse { flex-direction: row-reverse; }
@@ -321,16 +315,16 @@ body {
 }
 .img-col .img-display {
   width: 100%; height: auto;
-  object-fit: initial;
+  object-fit:    initial;
   border-radius: 8px;
 }
 
 .text-col {
-  flex: 1;
-  min-width: 0;
+  flex:           1;
+  min-width:      0;
   display:        flex;
   flex-direction: column;
-  gap:            1.5rem;
+  gap:            1.25rem;
   text-align:     left;
 }
 
@@ -352,14 +346,13 @@ body {
   margin:      0;
 }
 
-/* inline list inside text-col (network page uses this) */
 .text-col ul {
-  list-style: none;
-  padding:    0;
-  margin:     0;
-  display:    flex;
+  list-style:     none;
+  padding:        0;
+  margin:         0;
+  display:        flex;
   flex-direction: column;
-  gap:        0.75rem;
+  gap:            0.65rem;
 }
 .text-col ul li {
   font-size:    var(--row-text-p-size);
@@ -372,11 +365,11 @@ body {
 .text-col ul li::before {
   content:       '';
   position:      absolute;
-  left:          0; top: 0.55em;
+  left: 0; top: 0.55em;
   width: 5px; height: 5px;
   border-radius: 50%;
   background:    #00b4d8;
-  box-shadow:    0 0 5px rgba(0,180,216,0.5);
+  box-shadow:    0 0 5px rgba(0, 180, 216, 0.5);
 }
 .text-col ul li strong { color: #ffffff; font-weight: 600; }
 
@@ -387,8 +380,8 @@ body {
 .text-stats {
   display:         flex;
   flex-wrap:       wrap;
-  gap:             1.25rem;
-  margin-top:      1.5rem;
+  gap:             1rem;
+  margin-top:      1.25rem;
   justify-content: flex-start;
 }
 
@@ -399,24 +392,24 @@ body {
   background:      rgba(0, 180, 216, 0.08);
   border:          1px solid rgba(0, 180, 216, 0.2);
   border-radius:   8px;
-  padding:         0.6rem 1.1rem;
-  min-width:       80px;
+  padding:         0.55rem 1rem;
+  min-width:       76px;
 }
 
 .text-stat span:first-child {
   font-family:    var(--font-display);
-  font-size:      1.6rem;
+  font-size:      1.5rem;
   color:          #00b4d8;
   letter-spacing: 1px;
   line-height:    1;
 }
 
 .text-stat span:last-child {
-  font-size:      0.85rem;
+  font-size:      0.75rem;
   color:          rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top:     0.25rem;
+  margin-top:     0.2rem;
 }
 
 
@@ -425,30 +418,32 @@ body {
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-cta {
   text-align: center;
-  padding:    3.5rem 2rem 4.5rem;
+  padding:    3rem 2rem;
 }
 
 .svc-cta h2 {
   font-family:    var(--font-display);
-  font-size:      clamp(1.8rem, 3.5vw, 3rem);
+  font-size:      clamp(1.7rem, 3.5vw, 2.8rem);
   letter-spacing: 1.5px;
-  margin-bottom:  0.75rem;
+  margin-bottom:  0.6rem;
 }
 
 .svc-cta p {
   color:         rgba(255, 255, 255, 0.55);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   font-weight:   300;
-  font-size:     clamp(0.95rem, 1.2vw, 1.15rem);
+  font-size:     clamp(0.9rem, 1.2vw, 1.05rem);
 }
 
+/* Single authoritative .btn definition */
 .btn {
   display:         inline-block;
-  padding:         0.9rem 2.4rem;
+  padding:         0.8rem 2.2rem;
   background:      #00b4d8;
-  color:           #f6f6f8;
+  color:           #0a0f1e;
+  font-family:     var(--font-body);
   font-weight:     600;
-  font-size:       0.95rem;
+  font-size:       0.9rem;
   letter-spacing:  0.5px;
   text-decoration: none;
   border-radius:   3px;
@@ -462,8 +457,8 @@ body {
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .fade-in {
   opacity:    0;
-  transform:  translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform:  translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-in.visible {
@@ -472,53 +467,52 @@ body {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   11. RESPONSIVE SYSTEM  (one set of breakpoints, all shared elements)
+   11. RESPONSIVE SYSTEM
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 /* ── Tablet  768–1024px ── */
 @media (max-width: 1024px) {
   :root {
-    --svc-hero-padding:    4rem 2.5rem;
-    --svc-hero-min-height: 180px;
+    --svc-hero-padding:    3rem 2.5rem;
+    --svc-hero-min-height: 170px;
   }
 
-  .services-grid    { grid-template-columns: repeat(2, 1fr); }
-  .section          { padding: 3.5rem 2.5rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .section       { padding: 3rem 2.5rem; }
 }
 
 /* ── Phone  ≤ 767px ── */
 @media (max-width: 767px) {
   :root {
-    --svc-hero-padding:    2.5rem 1.25rem;
-    --svc-hero-min-height: 140px;
-    --row-gap:             1.5rem;
-    /* Tighten card titles on mobile so long text doesn't overflow tiles */
-    --card-title-size:     clamp(0.9rem, 3.5vw, 1.1rem);
-    --card-para-size:      clamp(0.8rem, 3vw, 0.9rem);
+    --svc-hero-padding:    2rem 1.25rem;
+    --svc-hero-min-height: 130px;
+    --row-gap:             1.25rem;
+    --card-title-size:     clamp(0.9rem, 3.5vw, 1.05rem);
+    --card-para-size:      clamp(0.8rem, 3vw, 0.88rem);
   }
 
-  /* Layout */
-  .section          { padding: 2.25rem 1.25rem; }
+  .section          { padding: 2rem 1.25rem; }
   .services-grid    { grid-template-columns: 1fr; }
 
-  /* img-text-row: stack on mobile */
   .img-text-row     { flex-direction: column !important; padding: 1.25rem; }
   .img-col          { flex: none; width: 100%; }
 
-  /* Hero orbs are purely decorative — hide on mobile for perf */
+  .text-stats       { gap: 0.5rem; }
+  .text-stat        { padding: 0.35rem 0.7rem; min-width: 0; flex: 1; }
+  .text-stat span:first-child { font-size: 1.15rem; }
+  .text-stat span:last-child  { font-size: 0.65rem; letter-spacing: 0.5px; }
+
   .svc-hero::before,
   .svc-hero::after  { display: none; }
 
-  /* Reduce animation travel on small screens */
   .fade-in          { transform: translateY(8px); }
-
-  /* Section spacing */
-  .section-intro    { margin-bottom: 1.5rem; }
+  .section-intro    { margin-bottom: 1.25rem; }
+  .svc-cta          { padding: 2rem 1.25rem; }
 }
 
 /* ── Small phone  ≤ 479px ── */
 @media (max-width: 479px) {
-  .section          { padding: 2rem 1rem; }
-  .img-text-row     { padding: 1rem; }
-  .card             { padding: 1.5rem; }
+  .section      { padding: 1.75rem 1rem; }
+  .img-text-row { padding: 1rem; }
+  .card         { padding: 1.4rem; }
 }

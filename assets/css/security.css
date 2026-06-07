@@ -1,5 +1,5 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  security.css — SECURITY PAGE  v4                               ║
+   ║  security.css — SECURITY PAGE  v5 (audit-clean)                ║
    ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
@@ -7,7 +7,7 @@
   --ap-bg:           rgba(255, 255, 255, 0.025);
   --ap-border:       rgba(0, 180, 216, 0.18);
   --ap-radius:       12px;
-  --ap-padding:      3rem 4rem 3.5rem;
+  --ap-padding:      2.75rem 3.5rem;
   --ap-body-color:   rgba(255, 255, 255, 0.6);
   --ap-bullet-color: #00b4d8;
   --ap-hl-color:     #00b4d8;
@@ -19,9 +19,6 @@
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    ASSESSMENT SECTION
-   FIXED: removed heavy ::after blur orb (was causing scroll repaints
-   on mobile). Left ::before accent line. Added contain: layout style
-   so the block doesn't trigger full-page layout on scroll.
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .ap-phase {
   margin:        0;
@@ -31,25 +28,24 @@
   border-radius: var(--ap-radius);
   position:      relative;
   overflow:      hidden;
-  contain:       layout style;   /* prevents scroll-triggered repaints */
+  contain:       layout style;
 }
 
 .ap-phase::before {
-  content:   '';
-  position:  absolute;
+  content:    '';
+  position:   absolute;
   top: 0; left: 0; bottom: 0;
-  width:     3px;
-  background:linear-gradient(180deg, #00b4d8, #1565c0);
+  width:      3px;
+  background: linear-gradient(180deg, #00b4d8, #1565c0);
 }
 
-/* Subtle ambient glow — static, no blur filter = no repaint */
 .ap-phase::after {
-  content:       '';
-  position:      absolute;
-  inset:         0;
-  background:    radial-gradient(ellipse at top right, rgba(0,180,216,0.05) 0%, transparent 60%);
-  pointer-events:none;
-  z-index:       0;
+  content:        '';
+  position:       absolute;
+  inset:          0;
+  background:     radial-gradient(ellipse at top right, rgba(0, 180, 216, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index:        0;
 }
 
 .ap-phase > div {
@@ -60,7 +56,7 @@
 
 .ap-tag {
   display:        inline-block;
-  font-size:      0.9rem;
+  font-size:      0.82rem;
   font-weight:    600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
@@ -68,19 +64,18 @@
   background:     var(--ap-tag-bg);
   border:         1px solid var(--ap-tag-border);
   border-radius:  3px;
-  padding:        0.28rem 0.8rem;
-  margin-bottom:  2rem;
+  padding:        0.25rem 0.75rem;
+  margin-bottom:  1.5rem;
 }
 
 .ap-header {
-  text-align: left;
-  max-width:  1000px;
-  margin:     0;
-  padding-bottom: 1.25rem;
+  text-align:     left;
+  max-width:      1000px;
+  margin:         0;
+  padding-bottom: 1rem;
 }
 
-/* Assessment title uses base --title-size via .section-title */
-.ap-header .section-title { margin-bottom: 1rem; }
+.ap-header .section-title { margin-bottom: 0.75rem; }
 
 .ap-intro {
   font-size:   var(--intro-size);
@@ -94,7 +89,7 @@
 .ap-divider {
   border:     none;
   border-top: 1px solid rgba(0, 180, 216, 0.15);
-  margin:     2rem 0;
+  margin:     1.75rem 0;
 }
 
 .ap-list {
@@ -103,29 +98,29 @@
   display:    grid;
   gap:        0;
   max-width:  900px;
-  margin:     0 0 0 1.5rem;
+  margin:     0 0 0 1.25rem;
   text-align: left;
 }
 
 .ap-list li {
-  display:      flex;
-  align-items:  flex-start;
-  gap:          0.85rem;
-  font-size:    var(--intro-size);   /* inherit base intro size = consistent */
-  color:        var(--ap-body-color);
-  padding:      0.85rem 0;
-  border-bottom:1px solid rgba(255, 255, 255, 0.05);
-  line-height:  1.55;
+  display:       flex;
+  align-items:   flex-start;
+  gap:           0.75rem;
+  font-size:     var(--intro-size);
+  color:         var(--ap-body-color);
+  padding:       0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  line-height:   1.55;
 }
 
 .ap-list li::before {
-  content:      '';
-  flex-shrink:  0;
+  content:       '';
+  flex-shrink:   0;
   width: 6px; height: 6px;
-  border-radius:50%;
-  background:   var(--ap-bullet-color);
-  margin-top:   0.42em;
-  box-shadow:   0 0 6px rgba(0, 180, 216, 0.5);
+  border-radius: 50%;
+  background:    var(--ap-bullet-color);
+  margin-top:    0.42em;
+  box-shadow:    0 0 6px rgba(0, 180, 216, 0.5);
 }
 
 
@@ -133,13 +128,13 @@
    NEO SECTION
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .neo-dossier {
-  display:       grid;
+  display:               grid;
   grid-template-columns: 200px 1fr;
-  gap:           3rem;
-  padding:       4rem;
-  background:    #060a15;
-  border:        1px solid rgba(0, 180, 216, 0.3);
-  border-radius: 12px;
+  gap:                   2.5rem;
+  padding:               3rem 3.5rem;
+  background:            #060a15;
+  border:                1px solid rgba(0, 180, 216, 0.3);
+  border-radius:         12px;
 }
 
 .neo-photo {
@@ -162,45 +157,45 @@
 
 .neo-content h2 {
   font-family:    'Courier New', Courier, monospace;
-  font-size:      clamp(1.5rem, 2.5vw, 2.8rem);
+  font-size:      clamp(1.4rem, 2.5vw, 2.6rem);
   text-transform: uppercase;
   color:          #00b4d8;
-  margin-bottom:  0.5rem;
+  margin-bottom:  0.4rem;
   letter-spacing: 3px;
 }
 
 .neo-meta {
   display:        flex;
   flex-wrap:      wrap;
-  gap:            0.75rem 2rem;
+  gap:            0.6rem 1.75rem;
   font-family:    'Courier New', Courier, monospace;
-  font-size:      clamp(0.8rem, 1vw, 1.1rem);
+  font-size:      clamp(0.78rem, 1vw, 1rem);
   color:          rgba(255, 255, 255, 0.6);
-  margin-bottom:  2rem;
+  margin-bottom:  1.75rem;
   border-bottom:  1px solid rgba(0, 180, 216, 0.2);
-  padding-bottom: 1rem;
+  padding-bottom: 0.85rem;
 }
 
 .neo-content p {
   font-size:     var(--intro-size);
   line-height:   1.6;
   color:         rgba(255, 255, 255, 0.7);
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .ap-list-2 {
-  list-style: none;
-  padding:    0;
-  display:    grid;
+  list-style:            none;
+  padding:               0;
+  display:               grid;
   grid-template-columns: 1fr 1fr;
-  gap:        1.5rem;
-  margin:     0;
+  gap:                   1.25rem;
+  margin:                0;
 }
 
 .ap-list-2 li {
   background:    rgba(255, 255, 255, 0.03);
   border:        1px solid rgba(255, 255, 255, 0.08);
-  padding:       1.5rem;
+  padding:       1.25rem;
   border-radius: 6px;
   font-size:     var(--card-para-size);
 }
@@ -209,7 +204,7 @@
   display:        block;
   color:          #00b4d8;
   font-size:      var(--card-title-size);
-  margin-bottom:  0.75rem;
+  margin-bottom:  0.6rem;
   font-family:    var(--font-display);
   text-transform: uppercase;
 }
@@ -224,25 +219,25 @@
   border-radius: 6px;
   overflow:      hidden;
   position:      relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 .neo-marquee-wrap::before,
 .neo-marquee-wrap::after {
-  content:       '';
-  position:      absolute; top: 0; bottom: 0;
-  width:         60px; z-index: 2; pointer-events: none;
+  content:        '';
+  position:       absolute; top: 0; bottom: 0;
+  width:          50px; z-index: 2; pointer-events: none;
 }
 .neo-marquee-wrap::before { left: 0;  background: linear-gradient(to right, #060a15, transparent); }
 .neo-marquee-wrap::after  { right: 0; background: linear-gradient(to left,  #060a15, transparent); }
 
 .neo-marquee-track {
-  display:      flex;
-  align-items:  center;
-  width:        max-content;
-  padding:      0.65rem 0;
-  animation:    neo-scroll 40s linear infinite;
-  will-change:  transform;
-  transform:    translate3d(0, 0, 0);
+  display:     flex;
+  align-items: center;
+  width:       max-content;
+  padding:     0.6rem 0;
+  animation:   neo-scroll 40s linear infinite;
+  will-change: transform;
+  transform:   translate3d(0, 0, 0);
 }
 
 @keyframes neo-scroll {
@@ -252,10 +247,10 @@
 
 .neo-marquee-track span.neo-mq-text {
   font-family:    'Courier New', Courier, monospace;
-  font-size:      clamp(0.8rem, 1.1vw, 1rem);
+  font-size:      clamp(0.78rem, 1.1vw, 0.95rem);
   color:          rgba(0, 180, 216, 0.7);
   white-space:    nowrap;
-  padding:        0 1.6rem;
+  padding:        0 1.4rem;
   letter-spacing: 0.5px;
 }
 .neo-marquee-track span.neo-mq-sep {
@@ -274,30 +269,28 @@
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   RESPONSIVE  (security-specific)
+   RESPONSIVE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* ── Tablet ── */
 @media (max-width: 1024px) {
-  .ap-phase              { padding: 2.5rem 2.5rem; }
-  .neo-dossier           { padding: 2.5rem; gap: 2rem; }
-  .ap-list-2 li          { padding: 1.25rem; }
+  .ap-phase    { padding: 2.25rem 2.5rem; }
+  .neo-dossier { padding: 2.25rem 2.5rem; gap: 1.75rem; }
+  .ap-list-2 li { padding: 1rem; }
 }
 
-/* ── Phone ── */
 @media (max-width: 767px) {
-  .ap-phase              { padding: 1.5rem 1.25rem; }
-  .ap-header             { max-width: 100%; }
-  .ap-list               { margin-left: 0.25rem; }
-  .ap-list li            { padding: 0.65rem 0; }
+  .ap-phase       { padding: 1.5rem 1.25rem; }
+  .ap-header      { max-width: 100%; }
+  .ap-list        { margin-left: 0.25rem; }
+  .ap-list li     { padding: 0.6rem 0; }
 
-  .neo-dossier           { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.25rem; }
-  .neo-photo             { width: 110px; height: 110px; justify-self: center; }
-  .neo-meta              { gap: 0.4rem 1rem; }
-  .neo-content p         { margin-bottom: 1rem; }
-  .ap-list-2             { grid-template-columns: 1fr; gap: 0.75rem; }
-  .ap-list-2 li          { padding: 1rem; }
-  .ap-list-2 li strong   { margin-bottom: 0.4rem; }
+  .neo-dossier    { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.25rem; }
+  .neo-photo      { width: 100px; height: 100px; justify-self: center; }
+  .neo-meta       { gap: 0.35rem 0.9rem; }
+  .neo-content p  { margin-bottom: 1rem; }
+  .ap-list-2      { grid-template-columns: 1fr; gap: 0.65rem; }
+  .ap-list-2 li   { padding: 1rem; }
+  .ap-list-2 li strong { margin-bottom: 0.35rem; }
   .neo-marquee-wrap::before,
-  .neo-marquee-wrap::after { width: 25px; }
+  .neo-marquee-wrap::after { width: 24px; }
 }

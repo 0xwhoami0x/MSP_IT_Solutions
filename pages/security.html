@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security — MSP IT Solutions</title>
-  <link rel="stylesheet" href="../assets/css/nav.css?v=15" />
-  <link rel="stylesheet" href="../assets/css/base.css?v=15" />
-  <link rel="stylesheet" href="../assets/hermes/widget.css?v=15" />
-  <link rel="stylesheet" href="../assets/css/security.css?v=15" />
+  <link rel="stylesheet" href="../assets/css/nav.css?v=16" />
+  <link rel="stylesheet" href="../assets/css/base.css?v=16" />
+  <link rel="stylesheet" href="../assets/hermes/widget.css?v=16" />
+  <link rel="stylesheet" href="../assets/css/security.css?v=16" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <script defer src="../assets/js/nav.js?v=15"></script>
-  <script defer src="../assets/js/main.js?v=15"></script>
-  <script defer src="../assets/hermes/hermes.js?v=15"></script>
+  <script defer src="../assets/js/nav.js?v=16"></script>
+  <script defer src="../assets/js/main.js?v=16"></script>
+  <script defer src="../assets/hermes/hermes.js?v=16"></script>
 
   <!-- ═══════════════ PAGE-LOCAL STYLES ═══════════════ -->
   <style>
@@ -93,6 +93,16 @@
 
     @media (max-width: 768px) {
       .jb-marquee__edge { width: 25px; }
+    }
+
+    @media (max-width: 600px) {
+      #typed-role                 { min-width: 0; font-size: clamp(1.1rem, 5.5vw, 1.55rem); }
+      #typed-role ~ .hero__blink  { font-size: clamp(1.1rem, 5.5vw, 1.55rem); }
+    }
+
+    @media (max-width: 400px) {
+      #typed-role                 { font-size: clamp(0.88rem, 4.2vw, 1.1rem); }
+      #typed-role ~ .hero__blink  { font-size: clamp(0.88rem, 4.2vw, 1.1rem); }
     }
   </style>
 </head>

@@ -1,152 +1,170 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  pricing.css — PRICING PAGE                                     ║
+   ║  pricing.css — PRICING PAGE  v6 (audit-clean)                  ║
    ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
 :root {
-  --pricing-gap:       2rem;
-  --pricing-max-width: 1250px;
-  --card-padding:      2.5rem;
+  --pricing-gap:       1.75rem;
+  --pricing-max-width: 1200px;
+  --card-padding:      2.25rem;
   --card-radius:       10px;
   --featured-border:   rgba(0, 180, 216, 0.4);
   --featured-bg:       rgba(0, 180, 216, 0.05);
-  --card-title-size:   1.5rem;
-  --card-title-color:  #ffffff;
-  --card-desc-size:    1.25rem;
-  --card-desc-color:   rgba(255, 255, 255, 0.4);
-  --price-size:        3rem;
-  --price-color:       #00b4d8;
-  --price-note-size:   1.1rem;
-  --price-note-color:  rgba(255, 255, 255, 0.4);
-  --list-size:         1.1rem;
-  --list-color:        rgba(255, 255, 255, 0.6);
-  --list-check-color:  #00b4d8;
-  --arrow-color:       #00b4d8;
-  --trans-title-size:  1.3rem;
-  --trans-para-size:   0.86rem;
 }
 
 
 /* ── PRICING CARD GRID ──────────────────────────────────────────── */
 .pricing-grid {
-  display: grid;
+  display:               grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--pricing-gap);
-  max-width: var(--pricing-max-width);
-  margin: 0 auto;
+  gap:                   var(--pricing-gap);
+  max-width:             var(--pricing-max-width);
+  margin:                0 auto;
 }
 
 .pricing-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
+  background:    rgba(255, 255, 255, 0.03);
+  border:        1px solid var(--border);
   border-radius: var(--card-radius);
-  padding: var(--card-padding);
-  position: relative;
-  text-align: left;
+  padding:       var(--card-padding);
+  position:      relative;
+  text-align:    left;
 }
 
 .pricing-card.featured {
   border-color: var(--featured-border);
-  background: var(--featured-bg);
+  background:   var(--featured-bg);
 }
 
 .pricing-card.featured::before {
-  content: 'RECOMMENDED';
-  position: absolute;
+  content:       'RECOMMENDED';
+  position:      absolute;
   top: -1px; right: 1.5rem;
-  background: var(--accent);
-  color: var(--page-bg);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 0.25rem 0.75rem;
+  background:    var(--accent);
+  color:         var(--page-bg);
+  font-size:     0.7rem;
+  font-weight:   700;
+  letter-spacing:1.5px;
+  padding:       0.2rem 0.65rem;
   border-radius: 0 0 4px 4px;
 }
 
 .pricing-card h3 {
-  font-family: var(--font-display);
-  font-size: var(--card-title-size);
-  color: var(--card-title-color);
+  font-family:    var(--font-display);
+  font-size:      clamp(1.15rem, 1.5vw, 1.45rem);
+  color:          var(--title-color);
   letter-spacing: 1px;
-  margin-bottom: 0.25rem;
+  margin-bottom:  0.2rem;
 }
 
-.pricing-card .tier-desc { font-size: var(--card-desc-size); color: var(--card-desc-color); margin-bottom: 1rem; }
+.pricing-card .tier-desc {
+  font-size:     clamp(0.82rem, 1vw, 0.95rem);
+  color:         var(--intro-color);
+  margin-bottom: 0.85rem;
+}
 
 .price {
-  font-family: var(--font-display);
-  font-size: var(--price-size);
-  color: var(--price-color);
+  font-family:    var(--font-display);
+  font-size:      clamp(1.9rem, 3.5vw, 2.8rem);
+  color:          var(--accent);
   letter-spacing: 1px;
-  line-height: 1;
-  margin-bottom: 0.3rem;
+  line-height:    1;
+  margin-bottom:  0.25rem;
 }
 
-.price-note { font-size: var(--price-note-size); color: var(--price-note-color); margin-bottom: 1.5rem; }
+.price-note {
+  font-size:     clamp(0.78rem, 0.95vw, 0.9rem);
+  color:         var(--intro-color);
+  margin-bottom: 1.25rem;
+}
 
-.pricing-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; padding: 0; }
-.pricing-card ul li { font-size: var(--list-size); color: var(--list-color); padding-left: 1.2rem; position: relative; }
-.pricing-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--list-check-color); font-size: 1.25rem; }
+.pricing-card ul {
+  list-style:     none;
+  display:        flex;
+  flex-direction: column;
+  gap:            0.5rem;
+  padding:        0;
+}
+
+.pricing-card ul li {
+  font-size:    clamp(0.82rem, 1vw, 0.95rem);
+  color:        rgba(255, 255, 255, 0.7);
+  padding-left: 1.3rem;
+  position:     relative;
+  line-height:  1.55;
+}
+
+.pricing-card ul li::before {
+  content:   '✓';
+  position:  absolute;
+  left:      0;
+  color:     var(--accent);
+  font-size: 0.9rem;
+}
 
 
 /* ── TRANSITION CARD GRID ───────────────────────────────────────── */
 .transition-grid {
-  display: grid;
+  display:               grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--pricing-gap);
-  max-width: var(--pricing-max-width);
-  margin: 0 auto;
+  gap:                   var(--pricing-gap);
+  max-width:             var(--pricing-max-width);
+  margin:                0 auto;
 }
 
 .transition-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
+  background:    rgba(255, 255, 255, 0.03);
+  border:        1px solid var(--border);
   border-radius: 8px;
-  padding: 2rem;
-  transition: border-color 0.25s;
-  text-align: left;
+  padding:       1.75rem;
+  transition:    border-color 0.25s;
+  text-align:    left;
 }
 .transition-card:hover { border-color: rgba(0, 180, 216, 0.25); }
 
 .transition-card h3 {
-  font-family: var(--font-display);
-  font-size: var(--trans-title-size);
+  font-family:    var(--font-display);
+  font-size:      clamp(1.05rem, 1.3vw, 1.3rem);
   letter-spacing: 1px;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
+  color:          var(--accent);
+  margin-bottom:  0.6rem;
 }
 
 .transition-card p {
-  font-size: var(--trans-para-size);
-  font-weight: 300;
-  color: var(--list-color);
-  line-height: 1.65;
-  margin-bottom: 1rem;
+  font-size:     clamp(0.82rem, 0.9vw, 0.9rem);
+  font-weight:   300;
+  color:         var(--intro-color);
+  line-height:   1.65;
+  margin-bottom: 0.85rem;
 }
 
-.transition-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; padding: 0; }
-.transition-card ul li { font-size: var(--list-size); color: var(--list-color); padding-left: 1.2rem; position: relative; line-height: 1.5; }
-.transition-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--arrow-color); font-size: 0.85rem; }
-
-
-/* ── RESPONSIVE (pricing-specific only) ─────────────────────────── */
-@media (max-width: 1024px) {
-  .pricing-card h3   { font-size: 1.35rem; }
-  .price             { font-size: 2.6rem; }
-  .transition-card h3 { font-size: 1.2rem; }
+.transition-card ul {
+  list-style:     none;
+  display:        flex;
+  flex-direction: column;
+  gap:            0.45rem;
+  padding:        0;
 }
 
+.transition-card ul li {
+  font-size:    clamp(0.82rem, 0.9vw, 0.9rem);
+  color:        rgba(255, 255, 255, 0.65);
+  padding-left: 1.1rem;
+  position:     relative;
+  line-height:  1.5;
+}
+
+.transition-card ul li::before {
+  content:   '→';
+  position:  absolute;
+  left:      0;
+  color:     var(--accent);
+  font-size: 0.82rem;
+}
+
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  .pricing-grid      { grid-template-columns: 1fr; }
-  .price             { font-size: 2rem; }
-  .price-note        { font-size: 0.95rem; }
-  .transition-grid   { grid-template-columns: 1fr; }
-  .transition-card h3 { font-size: 1.1rem; }
+  .pricing-grid    { grid-template-columns: 1fr; }
+  .transition-grid { grid-template-columns: 1fr; }
 }
-/* v4 alignment: use clamp for pricing sizes */
-.pricing-card h3  { font-size: clamp(1.2rem, 1.5vw, 1.55rem); }
-.price            { font-size: clamp(2rem, 3.5vw, 3rem); }
-.tier-desc        { font-size: clamp(0.9rem, 1.1vw, 1.2rem); }
-.pricing-card ul li { font-size: clamp(0.9rem, 1.1vw, 1.1rem); }
-.transition-card h3 { font-size: clamp(1.1rem, 1.3vw, 1.35rem); }
-.transition-card p  { font-size: clamp(0.85rem, 0.95vw, 0.92rem); }

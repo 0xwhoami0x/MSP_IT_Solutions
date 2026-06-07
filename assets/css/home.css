@@ -1,5 +1,5 @@
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  home.css — HOME PAGE  v4                                       ║
+   ║  home.css — HOME PAGE  v5 (audit-clean)                        ║
    ║  Only page-specific styles. Shared → base.css                   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 
@@ -7,20 +7,17 @@
   --hero-bg-start:        #0a0f1e;
   --hero-bg-mid:          #0b1f3a;
   --hero-bg-end:          #0d2b50;
-  --glow-top-right:       rgba(0,180,216,0.12);
-  --glow-bottom-center:   rgba(21,101,192,0.15);
+  --glow-top-right:       rgba(0, 180, 216, 0.12);
+  --glow-bottom-center:   rgba(21, 101, 192, 0.15);
 
-  --tag-bg:               rgba(0,180,216,0.15);
-  --tag-border:           rgba(0,180,216,0.4);
+  --tag-bg:               rgba(0, 180, 216, 0.15);
+  --tag-border:           rgba(0, 180, 216, 0.4);
 
   --title-span-color:     #00b4d8;
-  --sub-color:            rgba(255,255,255,0.65);
-  --sub-weight:           300;
+  --sub-color:            rgba(255, 255, 255, 0.65);
 
-  --btn-bg:               #00b4d8;
-  --btn-text:             #0a0f1e;
   --btn-hover-bg:         #00d4f5;
-  --btn-outline-border:   rgba(255,255,255,0.3);
+  --btn-outline-border:   rgba(255, 255, 255, 0.3);
   --btn-outline-text:     #ffffff;
 
   --avatar-gradient:      linear-gradient(135deg, #1565c0, #00b4d8);
@@ -29,10 +26,10 @@
 
 /* ── HOME HERO ──────────────────────────────────────────────── */
 .hero {
-  min-height:      calc(78vh - 70px);
+  min-height:      calc(76vh - 70px);
   display:         flex;
   align-items:     center;
-  padding:         0 4rem;
+  padding:         0 3.5rem;
   position:        relative;
   overflow:        hidden;
   justify-content: center;
@@ -43,26 +40,26 @@
 }
 
 .hero::before {
-  content:       '';
-  position:      absolute;
+  content:        '';
+  position:       absolute;
   top: -200px; right: -200px;
   width: 700px; height: 700px;
-  background:    radial-gradient(circle, var(--glow-top-right) 0%, transparent 70%);
-  pointer-events:none;
-  will-change:   transform;
+  background:     radial-gradient(circle, var(--glow-top-right) 0%, transparent 70%);
+  pointer-events: none;
+  will-change:    transform;
 }
 .hero::after {
-  content:       '';
-  position:      absolute;
+  content:        '';
+  position:       absolute;
   bottom: -100px; left: 30%;
   width: 400px; height: 400px;
-  background:    radial-gradient(circle, var(--glow-bottom-center) 0%, transparent 70%);
-  pointer-events:none;
-  will-change:   transform;
+  background:     radial-gradient(circle, var(--glow-bottom-center) 0%, transparent 70%);
+  pointer-events: none;
+  will-change:    transform;
 }
 
 .hero-content {
-  max-width:  720px;
+  max-width:  680px;
   position:   relative;
   z-index:    1;
   animation:  heroFadeUp 0.9s ease both;
@@ -78,145 +75,208 @@
   background:     var(--tag-bg);
   border:         1px solid var(--tag-border);
   color:          var(--tag-color);
-  font-size:      clamp(0.75rem, 1vw, 0.95rem);
+  font-size:      clamp(0.72rem, 1vw, 0.88rem);
   font-weight:    600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding:        0.4rem 1rem;
+  padding:        0.35rem 0.9rem;
   border-radius:  2px;
-  margin-bottom:  1.5rem;
+  margin-bottom:  1.25rem;
 }
 
 .hero h1 {
   font-family:    var(--font-display);
-  font-size:      clamp(2.8rem, 7vw, 6rem);
+  font-size:      clamp(2.6rem, 7vw, 5.5rem);
   line-height:    1;
   letter-spacing: 2px;
   color:          var(--title-color);
-  margin-bottom:  1.5rem;
+  margin-bottom:  1.25rem;
 }
 .hero h1 span { color: var(--title-span-color); }
 
-.hero-sub {
-  font-size:     clamp(1rem, 1.5vw, 1.3rem);
-  font-weight:   var(--sub-weight);
-  color:         var(--sub-color);
-  line-height:   1.7;
-  max-width:     540px;
-  margin:        0 auto 2.5rem;
-}
-
 
 /* ── HOME BUTTONS ───────────────────────────────────────────── */
-.btn {
-  background:  var(--btn-bg);
-  color:       var(--btn-text);
-  font-family: var(--font-body);
-}
+/* .btn is defined in base.css — only home-specific overrides here */
 .btn:hover { background: var(--btn-hover-bg); }
 
 .btn-outline {
   background:  transparent;
   border:      1px solid var(--btn-outline-border);
   color:       var(--btn-outline-text);
-  margin-left: 1rem;
+  margin-left: 0.85rem;
 }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+.btn-outline:hover {
+  border-color: var(--accent);
+  color:        var(--accent);
+  background:   transparent;
+}
 
 
 /* ── VALUE PROPS ────────────────────────────────────────────── */
-.home-section       { padding: 4.5rem 4rem; max-width: 1275px; margin: 0 auto; }
-.home-props         { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+/* Uses .section from base.css for padding/max-width */
+.home-props {
+  display:               grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:                   1.5rem;
+}
 
 .prop {
-  background:    rgba(255,255,255,0.03);
-  border:        1px solid rgba(255,255,255,0.07);
+  background:    rgba(255, 255, 255, 0.03);
+  border:        1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
-  padding:       2rem 1.75rem;
+  padding:       1.75rem;
   transition:    border-color 0.25s, transform 0.25s;
 }
-.prop:hover { border-color: rgba(0,180,216,0.25); transform: translateY(-4px); }
+.prop:hover { border-color: rgba(0, 180, 216, 0.25); transform: translateY(-3px); }
 
 .prop .ico {
-  width: 50px; height: 50px;
+  width: 46px; height: 46px;
   display:         flex;
   align-items:     center;
   justify-content: center;
-  font-size:       2.0rem;
-  border-radius:   12px;
-  background:      rgba(0,180,216,0.1);
-  border:          1px solid rgba(0,180,216,0.2);
-  margin-bottom:   1rem;
+  font-size:       1.9rem;
+  border-radius:   10px;
+  background:      rgba(0, 180, 216, 0.1);
+  border:          1px solid rgba(0, 180, 216, 0.2);
+  margin-bottom:   0.9rem;
 }
-.prop h3 { font-family: var(--font-display); font-size: clamp(1.2rem, 1.5vw, 1.55rem); letter-spacing: 1px; margin-bottom: 0.5rem; }
-.prop p  { font-size: clamp(0.95rem, 1.1vw, 1.2rem); color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+.prop h3 {
+  font-family:    var(--font-display);
+  font-size:      clamp(1.15rem, 1.5vw, 1.45rem);
+  letter-spacing: 1px;
+  margin-bottom:  0.4rem;
+}
+.prop p {
+  font-size:   clamp(0.88rem, 1.1vw, 1rem);
+  color:       rgba(255, 255, 255, 0.55);
+  line-height: 1.65;
+  font-weight: 300;
+}
 
 
 /* ── TEAM ───────────────────────────────────────────────────── */
-.home-team-section { padding: 3rem 4rem; max-width: 1275px; margin: 0 auto; }
+/* Shares .section padding from base.css via the HTML class */
 .team-grid {
   display:               grid;
   grid-template-columns: repeat(3, 1fr);
-  gap:                   1.5rem;
-  margin-top:            2rem;
+  gap:                   1.25rem;
+  margin-top:            1.75rem;
 }
 .team-card {
-  background:    rgba(255,255,255,0.03);
-  border:        1px solid rgba(255,255,255,0.07);
+  background:    rgba(255, 255, 255, 0.03);
+  border:        1px solid rgba(255, 255, 255, 0.07);
   border-radius: 8px;
-  padding:       1.75rem 1.5rem;
+  padding:       1.5rem 1.25rem;
   text-align:    center;
   transition:    border-color 0.25s;
 }
-.team-card:hover { border-color: rgba(0,180,216,0.25); }
+.team-card:hover { border-color: rgba(0, 180, 216, 0.25); }
 .avatar {
-  width: 56px; height: 56px;
+  width: 52px; height: 52px;
   border-radius:   50%;
   background:      var(--avatar-gradient);
   display:         flex;
   align-items:     center;
   justify-content: center;
-  margin:          0 auto 1rem;
+  margin:          0 auto 0.85rem;
   font-family:     var(--font-display);
-  font-size:       1.5rem;
+  font-size:       1.4rem;
   color:           #fff;
 }
-.team-card h4   { font-size: clamp(1rem, 1.2vw, 1.25rem); font-weight: 600; color: #fff; margin-bottom: 0.3rem; }
-.team-card .role{ font-size: clamp(0.85rem, 1vw, 1rem);  font-weight: 500; color: var(--accent); }
+.team-card h4    { font-size: clamp(0.95rem, 1.2vw, 1.15rem); font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+.team-card .role { font-size: clamp(0.8rem, 1vw, 0.92rem); font-weight: 500; color: var(--accent); }
 
 
 /* ── HOME CTA ───────────────────────────────────────────────── */
 .home-cta {
   text-align: center;
-  padding:    4rem 2rem 5rem;
+  padding:    3rem 2rem;
   background: #0a0f1e;
 }
 .home-cta h2 {
   font-family:    var(--font-display);
-  font-size:      clamp(1.8rem, 3.5vw, 3.2rem);
+  font-size:      clamp(1.7rem, 3.5vw, 3rem);
   letter-spacing: 1.5px;
-  margin-bottom:  0.75rem;
+  margin-bottom:  1rem;
 }
 
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .home-section       { padding: 3.5rem 2.5rem; }
-  .home-team-section  { padding: 3rem 2.5rem; }
+  .hero      { padding: 0 2.5rem; }
 }
 
 @media (max-width: 767px) {
-  .hero               { padding: 4rem 1.5rem; min-height: auto; }
-  /* hero glows off — perf */
+  .hero      { padding: 3.5rem 1.5rem; min-height: auto; }
   .hero::before,
-  .hero::after        { display: none; }
-  .home-section       { padding: 2.25rem 1.25rem; }
-  .home-team-section  { padding: 2.25rem 1.25rem; }
-  .btn-outline        { margin-left: 0; margin-top: 0.75rem; }
-  .team-grid          { grid-template-columns: 1fr 1fr; }
-  .home-props         { grid-template-columns: 1fr; }
+  .hero::after { display: none; }
+  .btn-outline { margin-left: 0; margin-top: 0.65rem; }
+  .team-grid   { grid-template-columns: 1fr 1fr; }
+  .home-props  { grid-template-columns: 1fr; }
+  .home-cta    { padding: 2rem 1.25rem; }
 }
 
 @media (max-width: 479px) {
-  .team-grid          { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── OVERVIEW / DIAGRAM SECTION ─────────────────────────────────── */
+/* (extracted from inline <style> in home.html) */
+.ap-hero {
+  position:   relative;
+  overflow:   hidden;
+  padding:    3.5rem 3.5rem;
+  background: linear-gradient(to bottom, #0d2b50 0%, #0a0f1e 50%, #0a0f1e 100%);
+  text-align: center;
+}
+
+.diagram-row {
+  display:     flex;
+  align-items: center;
+  gap:         3rem;
+  max-width:   1100px;
+  margin:      2.75rem auto 0;
+  position:    relative;
+  z-index:     1;
+}
+
+.diagram-text { flex: 1.1; }
+.diagram-text .section-intro {
+  text-align:    left;
+  margin-left:   0;
+  margin-bottom: 1rem;
+}
+.diagram-text .section-intro strong { color: #fff; font-weight: 600; }
+
+.diagram-visual { flex: 1; }
+
+.netmap { width: 100%; max-width: 560px; margin: 0 auto; display: block; }
+.netmap svg { width: 100%; height: auto; display: block; overflow: visible; }
+.nm-line { stroke: rgba(0, 180, 216, 0.28); stroke-width: 2; }
+.nm-node { transition: transform 0.3s ease; }
+.nm-node circle { filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45)); }
+.nm-node:hover { transform: translateY(-3px); }
+.nm-icon { font-size: 30px; text-anchor: middle; dominant-baseline: central; }
+.nm-center-label {
+  font-family:      var(--font-display);
+  fill:             #fff;
+  font-size:        26px;
+  letter-spacing:   1px;
+  text-anchor:      middle;
+  dominant-baseline:central;
+}
+
+@media (max-width: 768px) {
+  .ap-hero { padding: 2.5rem 1.5rem; }
+  .diagram-row {
+    flex-direction: column;
+    gap:            2rem;
+    margin-top:     2rem;
+  }
+  .diagram-text .section-intro {
+    text-align:   center;
+    margin-left:  auto;
+    margin-right: auto;
+  }
 }
