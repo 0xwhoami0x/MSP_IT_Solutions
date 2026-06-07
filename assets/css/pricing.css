@@ -49,13 +49,20 @@ body { background: var(--page-bg); }
 
 /* ── CENTERS MAIN HEADERS ── */
 .section > .section-tag,
-.section > .section-title,
-.section > .section-intro {
+.section > .section-title {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block; 
 }
+
+.section > .section-intro {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+}
+
 
 /* ── PRICING CARD GRID ─────────────────────────────────────────── */
 .pricing-grid {

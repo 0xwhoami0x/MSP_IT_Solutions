@@ -61,9 +61,15 @@
 
 /* Centers tags, titles, and paragraphs */
 .section > .section-tag,
-.section > .section-title,
-.section > .section-intro {
+.section > .section-title {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+}
+
+.section > .section-intro {
+  text-align: left;
   margin-left: auto;
   margin-right: auto;
   display: block; 

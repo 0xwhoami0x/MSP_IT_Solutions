@@ -19,9 +19,9 @@
   /* Service Cards */
   --card-gap:           1.5rem;
   --card-icon-size:     2.5rem;
-  --card-title-size:    1.8rem;
+  --card-title-size:    1.6rem;
   --card-title-color:   #ffffff;
-  --card-para-size:     1.3rem;
+  --card-para-size:     1.1rem;
   --card-para-color:    rgb(250, 249, 249);
   --card-bar-gradient:  linear-gradient(90deg, #00b4d8, #1565c0);
 
@@ -91,14 +91,18 @@
 }
 
 .section > .section-tag,
-.section > .section-title,
-.section > .section-intro {
+.section > .section-title {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-
+.section > .section-intro {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SERVICE CARD GRID
