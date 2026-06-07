@@ -21,7 +21,7 @@
 .svc-hero {
   position: relative;
   overflow: hidden;
-  padding: 5rem 4rem; 
+  padding: 3rem 3rem; 
   text-align: center;
   background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
 }
@@ -30,7 +30,7 @@
 
 /* ── SECTION WRAPPER ── */
 .section { 
-  padding: 4.5rem 4rem; 
+  padding: 3rem 3rem; 
   max-width: var(--section-max-w); 
   margin: 0 auto; 
 }
@@ -44,25 +44,25 @@
   display: block; 
 }
 
-/* ── SOFTWARE-STACK / WORKFLOW BLOCK ── */
+/* ── Help Desk Services ── */
 .hd-stack {
   max-width: var(--section-max-w); 
   margin: 0 auto; 
-  padding: 4.5rem 4rem;
+  padding: 3rem 3rem;
   font-family: var(--font-ui);
   text-align: center;
 }
 
-.hd-head { margin-bottom: 3rem; }
+.hd-head { margin-bottom: 2rem; }
 .hd-head h3 { font-family: var(--font-display); letter-spacing: 1px; font-size: 3rem; color: #fff; margin-bottom: 1rem; }
-.hd-head p { font-size: 1.3rem; color: var(--s-muted); max-width: 800px; margin: 0 auto; }
+.hd-head p { font-size: 1.3rem; color: var(--s-muted); max-width: 1000px; margin: 0 auto; }
 
 /* ── 2x5 TOOL GRID ── */
 .tool-grid {
   display: grid; 
   grid-template-columns: repeat(5, 1fr); /* Force 5 columns */
   gap: 1rem; 
-  margin-bottom: 4rem; 
+  margin-bottom: 3rem; 
   text-align: left;
 }
 .tool-card {
@@ -84,8 +84,13 @@
   letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem;
 }
 .workflow-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; text-align: left;
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); /* Force 5 columns */
+  gap: 1rem; 
+  margin-bottom: .25rem; 
+  text-align: left;
 }
+
 .workflow-card { background: var(--s-surface); border: 1px solid var(--s-border); border-radius: 0.75rem; padding: 1.5rem; }
 .workflow-step {
   width: 30px; height: 30px; border-radius: 50%; background: var(--s-primary); color: #06121b;
@@ -124,12 +129,34 @@
 }
 .kpi-value { font-family: var(--font-display); font-size: 2.8rem; color: #00b4d8; }
 
-/* ── CTA ── */
-.svc-cta { text-align: center; padding: 4rem 2rem 5rem; }
-.btn {
-  display: inline-block; padding: 0.85rem 2.2rem; background: #00b4d8; color: #0a0f1e;
-  font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; text-decoration: none; border-radius: 3px;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA BAND
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.svc-cta {
+  text-align: center;
+  padding: 3.5rem 2rem 4.5rem;
 }
+.svc-cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.75rem;
+}
+.svc-cta p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; font-weight: 300; }
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  background: #00b4d8;
+  color: #f6f6f8;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn:hover { background: #2ecbe9; transform: translateY(-2px); }
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
