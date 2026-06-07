@@ -28,7 +28,6 @@
   border-radius: var(--ap-radius);
   position:      relative;
   overflow:      hidden;
-  contain:       layout style;
 }
 
 .ap-phase::before {
@@ -75,14 +74,22 @@
   padding-bottom: 1rem;
 }
 
-.ap-header .section-title { margin-bottom: 0.75rem; }
+.ap-header .section-title {
+  font-family:    var(--font-display);
+  font-size:      var(--title-size);
+  letter-spacing: 1.5px;
+  color:          var(--title-color);
+  margin-bottom:  0.75rem;
+}
 
 .ap-intro {
+  font-family: var(--font-body);
   font-size:   var(--intro-size);
-  color:       var(--ap-body-color);
+  color:       var(--intro-color);
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: var(--intro-weight);
   margin:      0;
+  max-width:   100%;
 }
 .ap-intro .hl { color: var(--ap-hl-color); font-weight: 500; }
 
@@ -106,8 +113,10 @@
   display:       flex;
   align-items:   flex-start;
   gap:           0.75rem;
+  font-family:   var(--font-body);
   font-size:     var(--intro-size);
-  color:         var(--ap-body-color);
+  color:         var(--intro-color);
+  font-weight:   var(--intro-weight);
   padding:       0.75rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   line-height:   1.55;
@@ -269,6 +278,51 @@
 
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CENTRALIZED SECURITY OPS — img-text-row fixes
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section .img-text-row {
+  align-items: flex-start;
+  max-width:   1275px;
+}
+
+/* Image column: natural width, no forced height or crop */
+.section .img-text-row .img-col {
+  flex:      0 0 52%;
+  max-width: 52%;
+}
+
+.section .img-text-row .img-col .img-wrap {
+  padding: 0.5rem;
+}
+
+.section .img-text-row .img-col .img-wrap .img-display {
+  width:      100%;
+  height:     auto;
+  object-fit: contain;
+  display:    block;
+}
+
+.section .img-text-row .text-col {
+  flex:      1;
+  min-width: 0;
+}
+
+/* Stat badges — always one row, equal width, never wrap */
+.section .img-text-row .text-stats {
+  display:         flex;
+  flex-wrap:       nowrap;
+  gap:             0.75rem;
+  justify-content: flex-start;
+  width:           100%;
+}
+
+.section .img-text-row .text-stat {
+  flex:       1 1 0;
+  min-width:  0;
+  white-space: nowrap;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RESPONSIVE
    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
@@ -293,4 +347,27 @@
   .ap-list-2 li strong { margin-bottom: 0.35rem; }
   .neo-marquee-wrap::before,
   .neo-marquee-wrap::after { width: 24px; }
+
+  /* On mobile the row stacks — image goes full width, stats stay one row */
+  .section .img-text-row .img-col {
+    flex:      none;
+    max-width: 100%;
+    width:     100%;
+  }
+  .section .img-text-row .text-stats {
+    flex-wrap:       nowrap;
+    gap:             0.5rem;
+  }
+  .section .img-text-row .text-stat {
+    flex:        1 1 0;
+    min-width:   0;
+    padding:     0.4rem 0.5rem;
+  }
+  .section .img-text-row .text-stat span:first-child {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  .section .img-text-row .text-stat span:last-child {
+    font-size:      0.6rem;
+    letter-spacing: 0.5px;
+  }
 }
