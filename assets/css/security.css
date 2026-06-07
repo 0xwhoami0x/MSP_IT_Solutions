@@ -323,19 +323,26 @@
 }
 .img-wrap:hover .img-display { transform: scale(1.015); }
 
-/* Stacked Layout */
+/* Stacked Layout with Card Styling */
 .img-text-row {
   display: flex;
   flex-direction: column; 
   align-items: center;
   gap: var(--row-gap);
   max-width: 1150px;      
-  margin: 0 auto;         
+  margin: 0 auto;
+  
+  /* Added Card Styling */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 3rem; /* Extra padding for the container */
 }
 
 .img-text-row.row-reverse { flex-direction: column; } 
 
 .img-col { width: 100%; min-width: 0; }
+/* Ensures the image doesn't get squashed against the card edges */
 .img-col .img-display { width: 100%; height: auto; object-fit: initial; }
 
 .text-col {

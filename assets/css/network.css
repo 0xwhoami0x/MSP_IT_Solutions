@@ -1,26 +1,48 @@
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  network.css — NETWORK PAGE                                     ║
+   ║  Self-contained styles for this page only.                      ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PAGE-LEVEL VARIABLES
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
   --page-bg:   #0a0f1e;
-  --border:    rgba(255, 255, 255, 0.07);   /* fixed: was lime-green test value */
-  --tag-color: #00b4d8;                      /* fixed: was purple test value   */
+  --border:    rgba(255, 255, 255, 0.07);
+  --tag-color: #00b4d8;
 
-  --card-min-col: 280px;
-  --card-gap:     1.5rem;
-  --card-icon-size:  1.8rem;
-  --card-title-size: 1.4rem;
-  --card-title-color: #ffffff;
-  --card-para-size:  0.88rem;
-  --card-para-color: rgba(255, 255, 255, 0.55);
+  /* Service Card Grid */
+  --card-gap:          1.5rem;
+  --card-icon-size:    2.5rem;
+  --card-title-size:   1.8rem;
+  --card-title-color:  #ffffff;
+  --card-para-size:    1.3rem;
+  --card-para-color:   rgb(250, 249, 249);
   --card-bar-gradient: linear-gradient(90deg, #00b4d8, #1565c0);
+
+  /* Image Container / Stacked Row */
+  --img-bg:            rgba(255,255,255,0.03); 
+  --img-border:        rgba(255,255,255,0.07);
+  --img-radius:        10px; 
+  --img-padding:       0.75rem;
+  --row-gap:           3rem;
+  --row-text-h3-size:  3.2rem;       
+  --row-text-h3-color: #ffffff;      
+  --row-text-p-size:   1.3rem;      
+  --row-text-p-color:  rgba(255,255,255,0.55);
+  --row-text-p-weight: 300;
 }
 
 
-/* ── HERO ──────────────────────────────────────────────────────── */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-hero {
   position: relative;
   overflow: hidden;
-  padding: 4rem 2rem 3rem;
+  padding: 5rem 4rem; /* Matched to Home */
   text-align: center;
-  background: linear-gradient(135deg, #0a0f1e 0%, #0b1f3a 60%, #0d2b50 100%);
+  background: linear-gradient(135deg, #7b8696 0%, #0b1f3a 60%, #0d2b50 100%);
 }
 .svc-hero::before,
 .svc-hero::after {
@@ -34,19 +56,41 @@
 .svc-hero::before { width: 600px; height: 600px; background: rgba(0,180,216,0.12); top: -260px; right: -180px; }
 .svc-hero::after  { width: 520px; height: 520px; background: rgba(21,101,192,0.16); bottom: -260px; left: -120px; }
 .svc-hero > * { position: relative; z-index: 1; }
-
 .svc-hero .section-intro { margin-left: auto; margin-right: auto; max-width: 1000px; }
 
 
+/* ── SECTION WRAPPER (Matched to Home Spacing) ── */
+.section { 
+  padding: 4.5rem 4rem; 
+  max-width: 1150px; 
+  margin: 0 auto; 
+}
 
-/* ── SERVICE CARD GRID ─────────────────────────────────────────── */
-.section { padding: 4rem 4rem; }
+/* Centers tags, titles, and paragraphs at the top of standard sections */
+.section > .section-tag,
+.section > .section-title,
+.section > .section-intro {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; 
+}
 
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SERVICE CARD GRID
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-min-col), 1fr));
+  /* Changed from repeat(3, 1fr) to repeat(2, 1fr) to force 2 columns */
+  grid-template-columns: repeat(2, 1fr); 
   gap: var(--card-gap);
+  text-align: left; 
+  /* Added max-width to keep the 2-column layout from stretching too wide on massive screens */
+  max-width: 1150px;
+  margin: 0 auto;
 }
+
 .card {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
@@ -55,6 +99,7 @@
   transition: border-color 0.25s, transform 0.25s;
 }
 .card:hover { border-color: rgba(0, 180, 216, 0.25); transform: translateY(-4px); }
+
 .service-card { position: relative; overflow: hidden; }
 .service-card::before {
   content: '';
@@ -67,6 +112,7 @@
   transition: transform 0.3s;
 }
 .service-card:hover::before { transform: scaleX(1); }
+
 .service-icon {
   width: 50px; height: 50px;
   display: flex; align-items: center; justify-content: center;
@@ -88,32 +134,13 @@
   color: var(--card-para-color);
   line-height: 1.65;
   font-weight: 300;
+  margin: 0;
 }
 
 
-
-/* IMAGE + TEXT ROW VARIABLES */
-:root {
-  --img-bg:      rgba(255,255,255,0.03);
-  --img-border:  rgba(255,255,255,0.07);
-  --img-radius:  10px;
-  --img-padding: 0.75rem;
-
-  --caption-size:   0.82rem;
-  --caption-color:  rgba(255,255,255,0.4);
-  --caption-margin: 0.75rem;
-
-  --row-gap:             3rem;         /* gap between image and text columns */
-  --row-text-h3-size:    1.8rem;       /* heading size */
-  --row-text-h3-color:   #ffffff;      /* heading color */
-  --row-text-p-size:     1.1rem;      /* paragraph size */
-  --row-text-p-color:    rgba(255,255,255,0.55);
-  --row-text-p-weight:   300;
-
-}
-
-
-/* IMAGE + TEXT ROW */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   IMAGE + TEXT ROW (Stacked Vertical Layout)
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .img-wrap {
   background: var(--img-bg);
   border: 1px solid var(--img-border);
@@ -122,7 +149,7 @@
   overflow: visible;
   transition: border-color 0.25s;
 }
-.img-wrap:hover { border-color: rgba(0,180,216,0.3); }
+.img-wrap:hover { border-color: rgb(45, 236, 236); }
 
 .img-display {
   width: 100%; height: auto; display: block;
@@ -131,34 +158,91 @@
 }
 .img-wrap:hover .img-display { transform: scale(1.015); }
 
+/* Stacked Layout with Card Styling */
 .img-text-row {
   display: flex;
+  flex-direction: column; 
   align-items: center;
   gap: var(--row-gap);
+  max-width: 1150px;      
+  margin: 0 auto;
+  
+  /* Added Card Styling */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 3rem; /* Extra padding for the container */
 }
-.img-text-row.row-reverse { flex-direction: row-reverse; }
 
-.img-col { flex: 1; min-width: 0; }
+.img-text-row.row-reverse { flex-direction: column; } 
+
+.img-col { width: 100%; min-width: 0; }
+/* Ensures the image doesn't get squashed against the card edges */
 .img-col .img-display { width: 100%; height: auto; object-fit: initial; }
 
 .text-col {
-  flex: 1;
+  width: 100%;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  text-align: left; 
 }
 
-/* ── Body paragraphs ── */
+.text-col h3 {
+  font-family: var(--font-display);
+  font-size: var(--row-text-h3-size);
+  color: var(--row-text-h3-color);
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin: 0;
+}
+
 .text-col p {
   font-size: var(--row-text-p-size);
   color: var(--row-text-p-color);
   font-weight: var(--row-text-p-weight);
   line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Centered Stat badges ── */
+.text-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  justify-content: center; /* Centers badges under paragraph */
+}
+.text-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0,180,216,0.08);
+  border: 1px solid rgba(0,180,216,0.2);
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  min-width: 80px;
+}
+.text-stat span:first-child {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: #00b4d8;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.text-stat span:last-child {
+  font-size: 1.0rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
 }
 
 
-/* ── CTA BAND ──────────────────────────────────────────────────── */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CTA BAND
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .svc-cta {
   text-align: center;
   padding: 3.5rem 2rem 4.5rem;
@@ -174,7 +258,7 @@
   display: inline-block;
   padding: 0.85rem 2.2rem;
   background: #00b4d8;
-  color: #0a0f1e;
+  color: #f6f6f8;
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
@@ -185,12 +269,14 @@
 .btn:hover { background: #2ecbe9; transform: translateY(-2px); }
 
 
-
-/* ── MOBILE ──────────────────────────────────────────────────────── */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   MOBILE OVERRIDES
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media (max-width: 768px) {
-  .svc-hero      { padding: 3rem 1.25rem 2rem; }
-  .section       { padding: 2.5rem 1.25rem; }
+  .svc-hero { padding: 4rem 1.5rem; } 
+  .section  { padding: 3rem 1.5rem; } 
+
   .services-grid { grid-template-columns: 1fr; }
-  .img-text-row,
-  .img-text-row.row-reverse { flex-direction: column; }
+
+  .img-text-row { flex-direction: column; }
 }
