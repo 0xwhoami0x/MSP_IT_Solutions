@@ -304,7 +304,7 @@ body {
   background:     rgba(255, 255, 255, 0.03);
   border:         1px solid var(--border);
   border-radius:  12px;
-  padding:        2.5rem;
+  padding:        1.0rem;
 }
 
 .img-text-row.row-reverse { flex-direction: row-reverse; }
